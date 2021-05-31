@@ -16,9 +16,9 @@ public abstract class DeptXpackService extends PluginMenuService {
 
     public abstract List<XpackDeptTreeNode> searchTree(Long deptId);
 
-    public abstract boolean add(XpackCreateDept xpackCreateDept);
+    public abstract int add(XpackCreateDept xpackCreateDept);
 
-    public abstract boolean update(XpackCreateDept xpackCreateDept);
+    public abstract int update(XpackCreateDept xpackCreateDept);
 
     public abstract int batchDelete(List<XpackDeleteDept> requests);
 }
