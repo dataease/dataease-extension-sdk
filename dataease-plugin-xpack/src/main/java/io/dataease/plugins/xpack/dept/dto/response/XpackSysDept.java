@@ -1,9 +1,11 @@
 package io.dataease.plugins.xpack.dept.dto.response;
 
 
+import io.dataease.plugins.common.annotation.PluginResultMap;
 import lombok.Data;
 
 @Data
+@PluginResultMap
 public class XpackSysDept {
 
     private Long deptId;
