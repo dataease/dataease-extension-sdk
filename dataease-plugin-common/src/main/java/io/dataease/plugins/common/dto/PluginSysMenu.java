@@ -43,6 +43,8 @@ public class PluginSysMenu {
 
     private Long updateTime;
 
+    private boolean noLayout;
+
     private static final long serialVersionUID = 1L;
 
     /**

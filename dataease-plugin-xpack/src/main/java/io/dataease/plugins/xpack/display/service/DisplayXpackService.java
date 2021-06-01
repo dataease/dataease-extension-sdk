@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-public abstract class DisPlayXpackService extends PluginMenuService {
+public abstract class DisplayXpackService extends PluginMenuService {
 
 
     public abstract List<SysSettingDto> systemSettings();
