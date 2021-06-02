@@ -11,12 +11,19 @@ public class XpackGridRequest implements Serializable {
 
     private List<XpackConditionEntity> conditions;
 
+    private List<String> orders;
+
     public XpackGridExample convertExample(){
         XpackGridExample gridExample = new XpackGridExample();
-        if (CollectionUtils.isEmpty(conditions))return gridExample;
+        if (!CollectionUtils.isEmpty(conditions)){
+            XpackGridExample.Criteria criteria = gridExample.createCriteria();
+            conditions.forEach(criteria::addCondtion);
+        }
+        if (!CollectionUtils.isEmpty(orders)) {
+            String orderByClause = String.join(", ", orders);
+            gridExample.setOrderByClause(orderByClause);
+        }
 
-        XpackGridExample.Criteria criteria = gridExample.createCriteria();
-        conditions.forEach(criteria::addCondtion);
         return gridExample;
     }
 }
