@@ -9,9 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
+        <module>dataease-plugin-common</module>
         <module>dataease-plugin-xpack</module>
         <module>dataease-plugin-filter</module>
-        <module>dataease-plugin-common</module>
     </modules>
 
     <parent>
