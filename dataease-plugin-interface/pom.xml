@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <artifactId>dataease-plugin-xpack</artifactId>
+    <artifactId>dataease-plugin-interface</artifactId>
 
     <dependencies>
         <dependency>

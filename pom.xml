@@ -10,7 +10,7 @@
     <version>1.0</version>
     <modules>
         <module>dataease-plugin-common</module>
-        <module>dataease-plugin-xpack</module>
+        <module>dataease-plugin-interface</module>
         <module>dataease-plugin-filter</module>
     </modules>
 
