@@ -4,6 +4,7 @@ import io.dataease.plugins.common.entity.XpackGridRequest;
 import io.dataease.plugins.common.service.PluginMenuService;
 import io.dataease.plugins.xpack.dept.dto.request.XpackCreateDept;
 import io.dataease.plugins.xpack.dept.dto.request.XpackDeleteDept;
+import io.dataease.plugins.xpack.dept.dto.request.XpackMoveDept;
 import io.dataease.plugins.xpack.dept.dto.response.XpackDeptTreeNode;
 import io.dataease.plugins.xpack.dept.dto.response.XpackSysDept;
 import java.util.List;
@@ -21,4 +22,6 @@ public abstract class DeptXpackService extends PluginMenuService {
     public abstract int update(XpackCreateDept xpackCreateDept);
 
     public abstract int batchDelete(List<XpackDeleteDept> requests);
+
+    public abstract void move(XpackMoveDept xpackMoveDept);
 }
