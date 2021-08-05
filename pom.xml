@@ -7,7 +7,7 @@
     <groupId>io.dataease</groupId>
     <artifactId>dataease-plugins</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.1</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
@@ -34,13 +34,9 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
-
-
     </dependencies>
 
     <build>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -62,6 +58,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
