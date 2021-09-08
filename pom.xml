@@ -7,7 +7,7 @@
     <groupId>io.dataease</groupId>
     <artifactId>dataease-plugins</artifactId>
     <packaging>pom</packaging>
-    <version>1.2</version>
+    <version>1.3</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
@@ -33,6 +33,31 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils-core</artifactId>
+            <version>1.8.0</version>
         </dependency>
     </dependencies>
 
