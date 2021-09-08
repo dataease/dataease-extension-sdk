@@ -3,6 +3,7 @@ package io.dataease.plugins.common.util;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 public class BeanUtils {
 
@@ -19,6 +20,19 @@ public class BeanUtils {
         try {
             org.springframework.beans.BeanUtils.copyProperties(source, target, ignoreProperties);
             return target;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to copy object: ", e);
+        }
+    }
+
+    public static <T> T mapToBean(Map<String, Object> map, Class<T> beanClass) {
+        if (map == null) return null;
+
+        T obj = null;
+        try {
+            obj = beanClass.newInstance();
+            org.apache.commons.beanutils.BeanUtils.populate(obj, map);
+            return obj;
         } catch (Exception e) {
             throw new RuntimeException("Failed to copy object: ", e);
         }

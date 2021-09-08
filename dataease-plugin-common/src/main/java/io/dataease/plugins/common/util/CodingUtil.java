@@ -2,7 +2,7 @@ package io.dataease.plugins.common.util;
 
 
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.util.StringUtils;
 
 import javax.crypto.*;
