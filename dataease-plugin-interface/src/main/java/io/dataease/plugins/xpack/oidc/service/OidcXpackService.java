@@ -17,7 +17,7 @@ public abstract class OidcXpackService {
         return false;
     }
 
-    public abstract SSOToken requestSsoToken(String code, String state);
+    public abstract SSOToken requestSsoToken(Map<String,String> config, String code, String state);
 
     public abstract SSOUserInfo requestUserInfo(Map<String, String> config, String accessToken);
 
