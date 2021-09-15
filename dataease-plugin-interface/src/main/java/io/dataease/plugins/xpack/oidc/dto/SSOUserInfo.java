@@ -8,7 +8,9 @@ import java.io.Serializable;
 @Data
 public class SSOUserInfo implements Serializable {
 
-    private String userName;
+    private String sub;
+
+    private String username;
 
     private String nickName;
 
