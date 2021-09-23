@@ -7,11 +7,11 @@ import java.io.Serializable;
 
 @Data
 @Builder
-public class ValidateResult implements Serializable {
+public class ValidateResult<T> implements Serializable {
 
     private boolean success;
 
-    private String userName;
+    private T data;
 
     private String msg;
 
