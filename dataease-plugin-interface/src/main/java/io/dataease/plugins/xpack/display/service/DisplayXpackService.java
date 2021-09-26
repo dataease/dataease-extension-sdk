@@ -2,13 +2,14 @@ package io.dataease.plugins.xpack.display.service;
 
 
 
-import io.dataease.plugins.common.service.PluginMenuService;
+
 import io.dataease.plugins.xpack.display.dto.response.SysSettingDto;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-public abstract class DisplayXpackService extends PluginMenuService {
+/*public abstract class DisplayXpackService extends PluginMenuService {*/
+public abstract class DisplayXpackService  {
 
 
     public abstract List<SysSettingDto> systemSettings();
