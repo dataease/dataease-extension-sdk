@@ -6,10 +6,10 @@ import io.dataease.plugins.common.entity.XpackLdapUserEntity;
 import io.dataease.plugins.xpack.display.dto.response.SysSettingDto;
 import io.dataease.plugins.xpack.ldap.dto.request.LdapValidateRequest;
 import io.dataease.plugins.xpack.ldap.dto.response.LdapInfo;
-import io.dataease.plugins.common.service.PluginMenuService;
+/* import io.dataease.plugins.common.service.PluginMenuService; */
 import io.dataease.plugins.xpack.ldap.dto.response.ValidateResult;
-
-public abstract class LdapXpackService extends PluginMenuService{
+import io.dataease.plugins.common.service.PluginComponentService;
+public abstract class LdapXpackService extends PluginComponentService /* extends PluginMenuService */{
 
     public abstract LdapInfo info();
 
