@@ -6,8 +6,8 @@ import java.util.Map;
 import io.dataease.plugins.xpack.display.dto.response.SysSettingDto;
 import io.dataease.plugins.xpack.oidc.dto.SSOToken;
 import io.dataease.plugins.xpack.oidc.dto.SSOUserInfo;
-
-public abstract class OidcXpackService {
+import io.dataease.plugins.common.service.PluginComponentService;
+public abstract class OidcXpackService extends PluginComponentService{
 
     public abstract List<SysSettingDto> oidcSettings();
 
