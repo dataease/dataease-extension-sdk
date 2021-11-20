@@ -7,6 +7,7 @@ import io.dataease.plugins.common.entity.GlobalTaskInstance;
 import io.dataease.plugins.common.entity.XpackGridRequest;
 import io.dataease.plugins.common.service.PluginMenuService;
 import io.dataease.plugins.xpack.email.dto.request.XpackEmailTaskRequest;
+import io.dataease.plugins.xpack.email.dto.response.XpackEmailTemplateDTO;
 import io.dataease.plugins.xpack.email.dto.response.XpackTaskGridDTO;
 import io.dataease.plugins.xpack.email.dto.response.XpackTaskInstanceDTO;
 
@@ -26,8 +27,10 @@ public abstract class EmailXpackService extends PluginMenuService{
 
     public abstract GlobalTaskInstance instanceForm(Long instanceId);
 
-    public abstract void executeJob(GlobalTaskEntity taskEntity, GlobalTaskInstance instance);
+    public abstract String print( String url, String token);
 
     public abstract List<GlobalTaskEntity> allTask();
+
+    public abstract XpackEmailTemplateDTO emailTemplate(Long taskId);
     
 }

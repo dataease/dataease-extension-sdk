@@ -23,7 +23,7 @@ public class XpackTaskCreateRequest implements Serializable{
 
     private String rateVal;
 
-    private String creator;
+    private Long creator;
 
     private Long createTime;
 }
