@@ -18,5 +18,7 @@ public class XpackTaskInstanceDTO implements Serializable{
     private Long executeTime;
 
     private Integer status;
+
+    private String info;
     
 }

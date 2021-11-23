@@ -16,5 +16,7 @@ public class GlobalTaskInstance implements Serializable{
     private Long finishTime;
 
     private Integer status;
+
+    private String info;
     
 }
