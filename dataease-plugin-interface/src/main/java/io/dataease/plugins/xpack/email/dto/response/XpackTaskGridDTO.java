@@ -13,11 +13,15 @@ public class XpackTaskGridDTO implements Serializable{
 
     private String taskName;
 
+    private Long instanceId;
+
     private Long lastSendTime;
 
     private Integer lastSendStatus;
 
     private Long creator;
+
+    private String creatorName;
 
     private Long createTime;
     
