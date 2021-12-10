@@ -7,7 +7,7 @@
     <groupId>io.dataease</groupId>
     <artifactId>dataease-plugins</artifactId>
     <packaging>pom</packaging>
-    <version>1.5</version>
+    <version>1.6</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
