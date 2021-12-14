@@ -18,6 +18,8 @@ public class DatasetRowPermissions implements Serializable {
 
     private String filter;
 
+    private String logic;
+
     private Long updateTime;
 
     private static final long serialVersionUID = 1L;
