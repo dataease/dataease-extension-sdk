@@ -20,6 +20,10 @@ public class DatasetRowPermissions implements Serializable {
 
     private String logic;
 
+    private String filterType;
+
+    private String enumCheckField;
+
     private Long updateTime;
 
     private static final long serialVersionUID = 1L;
