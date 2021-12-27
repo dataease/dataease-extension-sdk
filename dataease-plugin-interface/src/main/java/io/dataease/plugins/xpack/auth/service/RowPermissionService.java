@@ -1,14 +1,18 @@
 package io.dataease.plugins.xpack.auth.service;
 
+import io.dataease.plugins.common.entity.XpackGridRequest;
+import io.dataease.plugins.common.service.PluginComponentService;
 import io.dataease.plugins.xpack.auth.dto.request.DataSetRowPermissionsDTO;
 import io.dataease.plugins.xpack.auth.dto.request.DatasetRowPermissions;
-import io.dataease.plugins.xpack.auth.dto.response.XpackSysAuthDetailDTO;
 
 import java.util.List;
 
-public abstract class RowPermissionService  {
-    public abstract List<DataSetRowPermissionsDTO> searchRowPermissions(XpackSysAuthDetailDTO request);
+public abstract class RowPermissionService extends PluginComponentService {
+    public abstract List<DataSetRowPermissionsDTO> searchRowPermissions(DataSetRowPermissionsDTO request);
+    public abstract List<DataSetRowPermissionsDTO> queryRowPermissions(XpackGridRequest arg0) ;
     public abstract void save(DatasetRowPermissions datasetRowPermissions);
     public abstract void delete(String id);
-    public abstract List<DatasetRowPermissions> listDatasetRowPermissions(String datasetId, List<Long>authTargetIds, String authTargetType);
+    public abstract List<? extends Object> authObjs(DataSetRowPermissionsDTO request);
+    public abstract DataSetRowPermissionsDTO dataSetRowPermissionInfo(DataSetRowPermissionsDTO datasetRowPermissions);
+
 }
