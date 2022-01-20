@@ -27,4 +27,10 @@ public class XpackTaskGridDTO implements Serializable {
 
     private Long createTime;
 
+    private Integer rateType;
+
+    private String rateVal;
+
+    private Long endTime;
+
 }
