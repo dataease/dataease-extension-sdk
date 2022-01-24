@@ -6,6 +6,6 @@ import lombok.Data;
 public class ColumnPermissionItem {
     private String id;
     private String name;
-    private Boolean selected;
+    private Boolean selected = false;
     private String opt;
 }
