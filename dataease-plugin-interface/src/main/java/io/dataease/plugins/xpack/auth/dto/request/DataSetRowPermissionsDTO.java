@@ -5,10 +5,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-/**
- * @Author gin
- * @Date 2021/3/9 3:19 下午
- */
 @Getter
 @Setter
 public class DataSetRowPermissionsDTO extends DatasetRowPermissions {
