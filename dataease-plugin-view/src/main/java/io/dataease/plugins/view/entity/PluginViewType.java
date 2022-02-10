@@ -10,5 +10,7 @@ public class PluginViewType implements Serializable {
 
     private String render;
 
-    private String name;
+    private String category;
+
+    private String value;
 }
