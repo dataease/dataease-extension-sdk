@@ -12,6 +12,7 @@
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
         <module>dataease-plugin-filter</module>
+        <module>dataease-plugin-view</module>
     </modules>
 
     <parent>
@@ -90,6 +91,7 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
+        <pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -140,5 +142,6 @@
                 </executions>
             </plugin>
         </plugins>
+        </pluginManagement>
     </build>
 </project>
