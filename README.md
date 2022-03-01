@@ -1,2 +1,2 @@
-# dataease-plugin-sdk
-plugin-sdk of dataease
+# dataease-extension-sdk
+extension-sdk of dataease
