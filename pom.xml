@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.dataease</groupId>
-    <artifactId>dataease-plugins</artifactId>
+    <artifactId>dataease-extenstion-sdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.5</version>
+    <version>1.9.0</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
         <module>dataease-plugin-filter</module>
+        <module>dataease-plugin-view</module>
     </modules>
 
     <parent>
@@ -70,7 +71,25 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.13</version>
         </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-complete</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.4</version>
+        </dependency>
+
     </dependencies>
+
+    <distributionManagement>
+	<repository>
+    	    <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <resources>
@@ -83,6 +102,7 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
+        <pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -92,6 +112,47 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        </pluginManagement>
     </build>
 </project>

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @PluginResultMap
 @Data
-public class XpackTaskGridDTO implements Serializable{
+public class XpackTaskGridDTO implements Serializable {
 
     private Long taskId;
 
@@ -19,10 +19,18 @@ public class XpackTaskGridDTO implements Serializable{
 
     private Integer lastSendStatus;
 
+    private Long nextExecTime;
+
     private Long creator;
 
     private String creatorName;
 
     private Long createTime;
-    
+
+    private Integer rateType;
+
+    private String rateVal;
+
+    private Long endTime;
+
 }
