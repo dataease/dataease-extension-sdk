@@ -1,8 +1,9 @@
 package io.dataease.plugins.common.constants;
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.ck;
+
 public class CKConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
@@ -35,7 +36,7 @@ public class CKConstants extends SQLConstants {
 
     public static final String NAME = "ck";
 
-    static {
+    /*static {
         ConstantsUtil.add(CKConstants.class);
-    }
+    }*/
 }

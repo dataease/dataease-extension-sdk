@@ -1,6 +1,5 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.sqlServer;
 
@@ -39,7 +38,7 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String NAME = "sqlServer";
 
-    static {
+    /*static {
         ConstantsUtil.add(SqlServerSQLConstants.class);
-    }
+    }*/
 }

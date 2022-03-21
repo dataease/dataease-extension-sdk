@@ -1,5 +1,7 @@
 package io.dataease.plugins.common.constants;
 
+import io.dataease.plugins.common.util.ConstantsUtil;
+
 import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 
 public class ImpalaConstants extends SQLConstants {
@@ -34,5 +36,9 @@ public class ImpalaConstants extends SQLConstants {
     public static final String WHERE_BETWEEN = "'%s' AND '%s'";
 
     public static final String BRACKETS = "(%s)";
+
+    /*static {
+        ConstantsUtil.add(ImpalaConstants.class);
+    }*/
 }
 

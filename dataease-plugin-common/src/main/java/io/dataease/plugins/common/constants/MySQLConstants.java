@@ -42,7 +42,7 @@ public class MySQLConstants extends SQLConstants {
 
     public static final String NAME = "mysql";
 
-    static {
+    /*static {
         ConstantsUtil.add(MySQLConstants.class);
-    }
+    }*/
 }

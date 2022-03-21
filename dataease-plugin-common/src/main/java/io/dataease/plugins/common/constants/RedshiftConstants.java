@@ -39,9 +39,9 @@ public class RedshiftConstants extends SQLConstants {
 
     public static final String NAME = "redshift";
 
-    static {
+    /*static {
         ConstantsUtil.add(RedshiftConstants.class);
-    }
+    }*/
 
 
 }

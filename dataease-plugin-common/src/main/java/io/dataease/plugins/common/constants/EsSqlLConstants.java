@@ -33,7 +33,7 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String NAME = "es";
 
-    static {
+    /*static {
         ConstantsUtil.add(EsSqlLConstants.class);
-    }
+    }*/
 }

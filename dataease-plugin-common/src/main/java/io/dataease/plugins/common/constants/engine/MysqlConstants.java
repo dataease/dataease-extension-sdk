@@ -1,14 +1,13 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.engine;
 
+import io.dataease.plugins.common.constants.SQLConstants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
+import static io.dataease.plugins.common.constants.DatasourceTypes.engine_mysql;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.ds_doris;
+public class MysqlConstants extends SQLConstants {
+    public static final String KEYWORD_TABLE = engine_mysql.getKeywordPrefix() + "%s" + engine_mysql.getKeywordSuffix();
 
-public class DorisConstants extends SQLConstants {
-    public static final String KEYWORD_TABLE = DatasourceTypes.ds_doris.getKeywordPrefix() + "%s" + ds_doris.getKeywordSuffix();
-
-    public static final String KEYWORD_FIX = "%s." + ds_doris.getKeywordPrefix() + "%s" + ds_doris.getKeywordSuffix();
+    public static final String KEYWORD_FIX = "%s." + engine_mysql.getKeywordPrefix() + "%s" + engine_mysql.getKeywordSuffix();
 
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
@@ -22,7 +21,7 @@ public class DorisConstants extends SQLConstants {
 
     public static final String DEFAULT_DATE_FORMAT = "%Y-%m-%d %H:%i:%S";
 
-    public static final String DEFAULT_INT_FORMAT = "BIGINT";
+    public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
     public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
 
@@ -43,10 +42,4 @@ public class DorisConstants extends SQLConstants {
     public static final String ROUND = "ROUND(%s,%s)";
 
     public static final String VARCHAR = "VARCHAR";
-
-    public static final String NAME = "de_doris";
-
-    /*static {
-        ConstantsUtil.add(DorisConstants.class);
-    }*/
 }
