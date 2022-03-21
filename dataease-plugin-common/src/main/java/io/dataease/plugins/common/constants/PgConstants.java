@@ -1,10 +1,11 @@
 package io.dataease.plugins.common.constants;
 
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.pg;
+
 public class PgConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = pg.getKeywordPrefix() + "%s" + pg.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + pg.getKeywordPrefix() + "%s" + pg.getKeywordSuffix();
@@ -37,9 +38,5 @@ public class PgConstants extends SQLConstants {
 
     public static final String NAME = "pg";
 
-
-    /*static {
-        ConstantsUtil.add(PgConstants.class);
-    }*/
 
 }

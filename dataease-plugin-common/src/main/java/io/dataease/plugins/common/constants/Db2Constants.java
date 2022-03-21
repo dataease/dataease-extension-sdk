@@ -1,10 +1,10 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.db2;
 
 public class Db2Constants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = db2.getKeywordPrefix() + "%s" + db2.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + db2.getKeywordPrefix() + "%s" + db2.getKeywordSuffix();
@@ -39,7 +39,5 @@ public class Db2Constants extends SQLConstants {
 
     public static final String NAME = "db2";
 
-    /*static {
-        ConstantsUtil.add(Db2Constants.class);
-    }*/
+
 }

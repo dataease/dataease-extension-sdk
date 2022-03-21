@@ -1,6 +1,5 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.es;
 
@@ -33,7 +32,5 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String NAME = "es";
 
-    /*static {
-        ConstantsUtil.add(EsSqlLConstants.class);
-    }*/
+
 }

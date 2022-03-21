@@ -1,14 +1,15 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.engine;
 
+import io.dataease.plugins.common.constants.SQLConstants;
 
+import static io.dataease.plugins.common.constants.DatasourceTypes.engine_doris;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.ds_doris;
 
 public class DorisConstants extends SQLConstants {
 
-    public static final String KEYWORD_TABLE = DatasourceTypes.ds_doris.getKeywordPrefix() + "%s" + ds_doris.getKeywordSuffix();
+    public static final String KEYWORD_TABLE = engine_doris.getKeywordPrefix() + "%s" + engine_doris.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + ds_doris.getKeywordPrefix() + "%s" + ds_doris.getKeywordSuffix();
+    public static final String KEYWORD_FIX = "%s." + engine_doris.getKeywordPrefix() + "%s" + engine_doris.getKeywordSuffix();
 
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
@@ -44,7 +45,7 @@ public class DorisConstants extends SQLConstants {
 
     public static final String VARCHAR = "VARCHAR";
 
-    public static final String NAME = "ds_doris";
+    public static final String NAME = "engine_doris";
 
 
 }

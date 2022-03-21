@@ -1,13 +1,14 @@
 package io.dataease.plugins.common.constants;
 
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.pg;
+import static io.dataease.plugins.common.constants.DatasourceTypes.redshift;
+
 public class RedshiftConstants extends SQLConstants {
-    public static final String KEYWORD_TABLE = pg.getKeywordPrefix() + "%s" + pg.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + pg.getKeywordPrefix() + "%s" + pg.getKeywordSuffix();
+    public static final String KEYWORD_TABLE = redshift.getKeywordPrefix() + "%s" + redshift.getKeywordSuffix();
+
+    public static final String KEYWORD_FIX = "%s." + redshift.getKeywordPrefix() + "%s" + redshift.getKeywordSuffix();
 
     public static final String UNIX_TIMESTAMP = "floor(extract(epoch from(( %s - timestamp '1970-01-01 00:00:00')*1000))) ";
 
@@ -38,10 +39,5 @@ public class RedshiftConstants extends SQLConstants {
     public static final String BRACKETS = "(%s)";
 
     public static final String NAME = "redshift";
-
-    /*static {
-        ConstantsUtil.add(RedshiftConstants.class);
-    }*/
-
 
 }

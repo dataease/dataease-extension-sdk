@@ -1,13 +1,13 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
+import static io.dataease.plugins.common.constants.DatasourceTypes.impala;
 
 public class ImpalaConstants extends SQLConstants {
-    public static final String KEYWORD_TABLE = mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
+    public static final String KEYWORD_TABLE = impala.getKeywordPrefix() + "%s" + impala.getKeywordSuffix();
+
+    public static final String KEYWORD_FIX = "%s." + impala.getKeywordPrefix() + "%s" + impala.getKeywordSuffix();
 
     public static final String UNIX_TIMESTAMP = "unix_timestamp(%s)";
 
@@ -37,8 +37,7 @@ public class ImpalaConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
-    /*static {
-        ConstantsUtil.add(ImpalaConstants.class);
-    }*/
+    public static final String NAME = "impala";
+
 }
 

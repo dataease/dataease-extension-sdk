@@ -1,11 +1,11 @@
 package io.dataease.plugins.common.constants;
 
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 
 public class MySQLConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
@@ -42,7 +42,4 @@ public class MySQLConstants extends SQLConstants {
 
     public static final String NAME = "mysql";
 
-    /*static {
-        ConstantsUtil.add(MySQLConstants.class);
-    }*/
 }

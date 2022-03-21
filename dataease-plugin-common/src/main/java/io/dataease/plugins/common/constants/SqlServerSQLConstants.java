@@ -4,6 +4,7 @@ package io.dataease.plugins.common.constants;
 import static io.dataease.plugins.common.constants.DatasourceTypes.sqlServer;
 
 public class SqlServerSQLConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = sqlServer.getKeywordPrefix() + "%s" + sqlServer.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + sqlServer.getKeywordPrefix() + "%s" + sqlServer.getKeywordSuffix();
@@ -38,7 +39,4 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String NAME = "sqlServer";
 
-    /*static {
-        ConstantsUtil.add(SqlServerSQLConstants.class);
-    }*/
 }

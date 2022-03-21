@@ -1,10 +1,11 @@
 package io.dataease.plugins.common.constants;
 
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.oracle;
+
 public class OracleConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = oracle.getKeywordPrefix() + "%s" + oracle.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + oracle.getKeywordPrefix() + "%s" + oracle.getKeywordSuffix();
@@ -51,7 +52,5 @@ public class OracleConstants extends SQLConstants {
 
     public static final String NAME = "oracle";
 
-    /*static {
-        ConstantsUtil.add(OracleConstants.class);
-    }*/
+
 }

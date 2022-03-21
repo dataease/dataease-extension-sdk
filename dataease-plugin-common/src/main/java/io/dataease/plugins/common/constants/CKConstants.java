@@ -36,7 +36,5 @@ public class CKConstants extends SQLConstants {
 
     public static final String NAME = "ck";
 
-    /*static {
-        ConstantsUtil.add(CKConstants.class);
-    }*/
+
 }
