@@ -37,7 +37,7 @@ public class HiveConstants extends SQLConstants {
 
     public static final String NAME = "hive";
 
-    static {
+    /*static {
         ConstantsUtil.add(HiveConstants.class);
-    }
+    }*/
 }

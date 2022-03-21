@@ -39,7 +39,7 @@ public class MongoConstants extends SQLConstants {
 
     public static final String NAME = "mongo";
 
-    static {
+    /*static {
         ConstantsUtil.add(MongoConstants.class);
-    }
+    }*/
 }

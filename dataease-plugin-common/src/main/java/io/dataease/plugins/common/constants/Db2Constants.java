@@ -39,7 +39,7 @@ public class Db2Constants extends SQLConstants {
 
     public static final String NAME = "db2";
 
-    static {
+    /*static {
         ConstantsUtil.add(Db2Constants.class);
-    }
+    }*/
 }

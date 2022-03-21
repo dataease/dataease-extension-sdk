@@ -38,8 +38,8 @@ public class PgConstants extends SQLConstants {
     public static final String NAME = "pg";
 
 
-    static {
+    /*static {
         ConstantsUtil.add(PgConstants.class);
-    }
+    }*/
 
 }

@@ -51,7 +51,7 @@ public class OracleConstants extends SQLConstants {
 
     public static final String NAME = "oracle";
 
-    static {
+    /*static {
         ConstantsUtil.add(OracleConstants.class);
-    }
+    }*/
 }
