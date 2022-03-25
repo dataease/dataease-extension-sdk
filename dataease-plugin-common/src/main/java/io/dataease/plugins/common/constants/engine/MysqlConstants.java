@@ -41,7 +41,7 @@ public class MysqlConstants extends SQLConstants {
 
     public static final String ROUND = "ROUND(%s,%s)";
 
-    public static final String VARCHAR = "VARCHAR";
+    public static final String CHAR = "CHAR";
 
     public static final String NAME = "engine_mysql";
 }
