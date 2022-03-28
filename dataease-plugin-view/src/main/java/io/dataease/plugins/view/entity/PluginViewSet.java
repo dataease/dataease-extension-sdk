@@ -10,4 +10,8 @@ public class PluginViewSet {
     private String info;
 
     private String dsType;
+
+    private Integer mode;
+
+    private String tabelId;
 }
