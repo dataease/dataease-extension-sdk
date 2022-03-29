@@ -3,6 +3,7 @@ package io.dataease.plugins.common.constants.engine;
 import io.dataease.plugins.common.constants.SQLConstants;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.engine_doris;
+import static io.dataease.plugins.common.constants.DatasourceTypes.engine_mysql;
 
 
 public class DorisConstants extends SQLConstants {
@@ -10,6 +11,8 @@ public class DorisConstants extends SQLConstants {
     public static final String KEYWORD_TABLE = engine_doris.getKeywordPrefix() + "%s" + engine_doris.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + engine_doris.getKeywordPrefix() + "%s" + engine_doris.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = engine_doris.getAliasPrefix() + "%s" + engine_doris.getAliasSuffix();
 
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 

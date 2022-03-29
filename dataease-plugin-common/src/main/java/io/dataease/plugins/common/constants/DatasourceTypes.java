@@ -19,7 +19,7 @@ public enum DatasourceTypes {
     redshift("redshift", "redshift", "org.postgresql.Driver", "\"", "\"", "\"", "\""),
     api("api", "api", "", "\"", "\"", "\"", "\""),
     engine_doris("engine_doris", "engine_doris", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    engine_mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "'", "'");
+    engine_mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "", "");
 
 
     private String feature;
