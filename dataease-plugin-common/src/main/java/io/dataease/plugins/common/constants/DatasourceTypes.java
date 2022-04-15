@@ -1,51 +1,59 @@
 package io.dataease.plugins.common.constants;
 
 public enum DatasourceTypes {
-    excel("excel", "excel", "", "", "", "", ""),
-    mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    TiDB("TiDB", "TiDB", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    hive("hive", "hive", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'"),
-    impala("impala", "impala", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'"),
-    mariadb("mariadb", "mariadb", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    StarRocks("StarRocks", "StarRocks", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    ds_doris("ds_doris", "ds_doris", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    pg("pg", "pg", "org.postgresql.Driver", "\"", "\"", "\"", "\""),
-    sqlServer("sqlServer", "sqlServer", "com.microsoft.sqlserver.jdbc.SQLServerDriver", "\"", "\"", "\"", "\""),
-    oracle("oracle", "oracle", "oracle.jdbc.driver.OracleDriver", "\"", "\"", "\"", "\""),
-    mongo("mongo", "mongodb", "com.mongodb.jdbc.MongoDriver", "`", "`", "\"", "\""),
-    ck("ch", "ch", "ru.yandex.clickhouse.ClickHouseDriver", "`", "`", "'", "'"),
-    db2("db2", "db2", "com.ibm.db2.jcc.DB2Driver", "\"", "\"", "\"", "\""),
-    es("es", "es", "", "\"", "\"", "\"", "\""),
-    redshift("redshift", "redshift", "org.postgresql.Driver", "\"", "\"", "\"", "\""),
-    api("api", "api", "", "\"", "\"", "\"", "\""),
-    engine_doris("engine_doris", "engine_doris", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    engine_mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "", "");
+    //jdbc
+    mysql("mysql", "MySQL", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    TiDB("TiDB", "TiDB", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    hive("hive", "Apache Hive", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'", ""),
+    impala("impala", "Apache Impala", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'", "AuthMech=0"),
+    mariadb("mariadb", "MariaDB", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    StarRocks("StarRocks", "StarRocks", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    ds_doris("ds_doris", "Doris", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    pg("pg", "PostgreSQL", "org.postgresql.Driver", "\"", "\"", "\"", "\"", ""),
+    sqlServer("sqlServer", "SQL Server", "com.microsoft.sqlserver.jdbc.SQLServerDriver", "\"", "\"", "\"", "\"", ""),
+    oracle("oracle", "Oracle", "oracle.jdbc.driver.OracleDriver", "\"", "\"", "\"", "\"", ""),
+    mongo("mongo", "MongoDB", "com.mongodb.jdbc.MongoDriver", "`", "`", "\"", "\"", "rebuildschema=true&authSource=admin"),
+    ck("ch", "ClickHouse", "ru.yandex.clickhouse.ClickHouseDriver", "`", "`", "'", "'", ""),
+    db2("db2", "Db2", "com.ibm.db2.jcc.DB2Driver", "\"", "\"", "\"", "\"", ""),
+    redshift("redshift", "AWS Redshift", "org.postgresql.Driver", "\"", "\"", "\"", "\"", ""),
+
+    es("es", "Elasticsearch", "", "\"", "\"", "\"", "\"", ""),
+    api("api", "API", "", "\"", "\"", "\"", "\"", "rebuildschema=true&authSource=admin"),
+
+    excel("excel", "Excel", "", "", "", "", "", ""),
+
+    //engine
+    engine_doris("engine_doris", "engine_doris", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
+    engine_mysql("engine_mysql", "engine_mysql", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true")
+            ;
 
 
-    private String feature;
-    private String desc;
+    private String type;
+    private String name;
     private String driver;
     private String keywordPrefix;
     private String keywordSuffix;
     private String aliasPrefix;
     private String aliasSuffix;
+    private String extraParams;
 
-    DatasourceTypes(String feature, String desc, String driver, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix) {
-        this.feature = feature;
-        this.desc = desc;
+    DatasourceTypes(String type, String name, String driver, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix, String extraParams) {
+        this.type = type;
+        this.name = name;
         this.driver = driver;
         this.keywordPrefix = keywordPrefix;
         this.keywordSuffix = keywordSuffix;
         this.aliasPrefix = aliasPrefix;
         this.aliasSuffix = aliasSuffix;
+        this.extraParams = extraParams;
     }
 
-    public String getFeature() {
-        return feature;
+    public String getType() {
+        return type;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getName() {
+        return name;
     }
 
     public String getDriver() {
@@ -66,6 +74,10 @@ public enum DatasourceTypes {
 
     public String getAliasSuffix() {
         return aliasSuffix;
+    }
+
+    public String getExtraParams() {
+        return extraParams;
     }
 }
 
