@@ -1,55 +1,61 @@
 package io.dataease.plugins.common.constants;
 
 public enum DatasourceTypes {
-    excel("excel", "excel", "", "", "", "", ""),
-    mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    TiDB("TiDB", "TiDB", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    hive("hive", "hive", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'"),
-    impala("impala", "impala", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'"),
-    mariadb("mariadb", "mariadb", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    StarRocks("StarRocks", "StarRocks", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    ds_doris("ds_doris", "ds_doris", "com.mysql.jdbc.Driver", "`", "`", "'", "'"),
-    pg("pg", "pg", "org.postgresql.Driver", "\"", "\"", "\"", "\""),
-    sqlServer("sqlServer", "sqlServer", "com.microsoft.sqlserver.jdbc.SQLServerDriver", "\"", "\"", "\"", "\""),
-    oracle("oracle", "oracle", "oracle.jdbc.driver.OracleDriver", "\"", "\"", "\"", "\""),
-    mongo("mongo", "mongodb", "com.mongodb.jdbc.MongoDriver", "`", "`", "\"", "\""),
-    ck("ch", "ch", "ru.yandex.clickhouse.ClickHouseDriver", "`", "`", "'", "'"),
-    db2("db2", "db2", "com.ibm.db2.jcc.DB2Driver", "\"", "\"", "\"", "\""),
-    es("es", "es", "", "\"", "\"", "\"", "\""),
-    redshift("redshift", "redshift", "org.postgresql.Driver", "\"", "\"", "\"", "\""),
-    api("api", "api", "", "\"", "\"", "\"", "\""),
-    engine_doris("engine_doris", "engine_doris", "com.mysql.jdbc.Driver", "`", "`", "", ""),
-    engine_mysql("mysql", "mysql", "com.mysql.jdbc.Driver", "`", "`", "", "");
+    //jdbc
+    mysql("mysql", "MySQL", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    TiDB("TiDB", "TiDB", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    hive("hive", "Apache Hive", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
+    impala("impala", "Apache Impala", "`", "`", "'", "'", "AuthMech=0", true, DatasourceCalculationMode.DIRECT),
+    mariadb("mariadb", "MariaDB", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    StarRocks("StarRocks", "StarRocks", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    ds_doris("ds_doris", "Doris", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    pg("pg", "PostgreSQL", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    sqlServer("sqlServer", "SQL Server", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    oracle("oracle", "Oracle", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    mongo("mongo", "MongoDB", "`", "`", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.DIRECT),
+    ck("ch", "ClickHouse", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
+    db2("db2", "Db2", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    redshift("redshift", "AWS Redshift", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT),
+
+    es("es", "Elasticsearch", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT),
+    api("api", "API", "\"", "\"", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.SYNC),
+
+    excel("excel", "Excel", "", "", "", "", "", false, DatasourceCalculationMode.SYNC),
+
+    //engine
+    engine_doris("engine_doris", "engine_doris", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null),
+    engine_mysql("engine_mysql", "engine_mysql", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null);
 
 
-    private String feature;
-    private String desc;
-    private String driver;
+    private String type;
+    private String name;
     private String keywordPrefix;
     private String keywordSuffix;
     private String aliasPrefix;
     private String aliasSuffix;
+    private String extraParams;
+    private boolean isDatasource;
+    private DatasourceCalculationMode calculationMode;
 
-    DatasourceTypes(String feature, String desc, String driver, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix) {
-        this.feature = feature;
-        this.desc = desc;
-        this.driver = driver;
+
+    DatasourceTypes(String type, String name, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix, String extraParams, boolean isDatasource, DatasourceCalculationMode calculationMode) {
+        this.type = type;
+        this.name = name;
         this.keywordPrefix = keywordPrefix;
         this.keywordSuffix = keywordSuffix;
         this.aliasPrefix = aliasPrefix;
         this.aliasSuffix = aliasSuffix;
+        this.extraParams = extraParams;
+        this.isDatasource = isDatasource;
+        this.calculationMode = calculationMode;
     }
 
-    public String getFeature() {
-        return feature;
+    public String getType() {
+        return type;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public String getDriver() {
-        return driver;
+    public String getName() {
+        return name;
     }
 
     public String getKeywordPrefix() {
@@ -67,5 +73,17 @@ public enum DatasourceTypes {
     public String getAliasSuffix() {
         return aliasSuffix;
     }
+
+    public String getExtraParams() {
+        return extraParams;
+    }
+    public DatasourceCalculationMode getCalculationMode() {
+        return calculationMode;
+    }
+
+    public boolean isDatasource() {
+        return isDatasource;
+    }
+
 }
 
