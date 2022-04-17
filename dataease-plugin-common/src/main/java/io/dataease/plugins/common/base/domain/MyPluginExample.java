@@ -1083,6 +1083,76 @@ public class MyPluginExample {
             addCriterion("icon not between", value1, value2, "icon");
             return (Criteria) this;
         }
+
+        public Criteria andDsTypeIsNull() {
+            addCriterion("ds_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeIsNotNull() {
+            addCriterion("ds_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeEqualTo(String value) {
+            addCriterion("ds_type =", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeNotEqualTo(String value) {
+            addCriterion("ds_type <>", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeGreaterThan(String value) {
+            addCriterion("ds_type >", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("ds_type >=", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeLessThan(String value) {
+            addCriterion("ds_type <", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeLessThanOrEqualTo(String value) {
+            addCriterion("ds_type <=", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeLike(String value) {
+            addCriterion("ds_type like", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeNotLike(String value) {
+            addCriterion("ds_type not like", value, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeIn(List<String> values) {
+            addCriterion("ds_type in", values, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeNotIn(List<String> values) {
+            addCriterion("ds_type not in", values, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeBetween(String value1, String value2) {
+            addCriterion("ds_type between", value1, value2, "dsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDsTypeNotBetween(String value1, String value2) {
+            addCriterion("ds_type not between", value1, value2, "dsType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

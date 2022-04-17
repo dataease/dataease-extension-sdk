@@ -17,6 +17,7 @@
     <result column="install_time" jdbcType="BIGINT" property="installTime" />
     <result column="module_name" jdbcType="VARCHAR" property="moduleName" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="ds_type" jdbcType="VARCHAR" property="dsType" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +79,7 @@
   </sql>
   <sql id="Base_Column_List">
     plugin_id, `name`, store, `free`, cost, category, descript, version, install_type, 
-    creator, load_mybatis, release_time, install_time, module_name, icon
+    creator, load_mybatis, release_time, install_time, module_name, icon, ds_type
   </sql>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.MyPluginExample" resultMap="BaseResultMap">
     select
@@ -115,12 +116,14 @@
       `free`, cost, category, descript, 
       version, install_type, creator, 
       load_mybatis, release_time, install_time, 
-      module_name, icon)
+      module_name, icon, ds_type
+      )
     values (#{pluginId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{store,jdbcType=VARCHAR}, 
       #{free,jdbcType=BIT}, #{cost,jdbcType=INTEGER}, #{category,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
       #{version,jdbcType=VARCHAR}, #{installType,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
       #{loadMybatis,jdbcType=BIT}, #{releaseTime,jdbcType=BIGINT}, #{installTime,jdbcType=BIGINT}, 
-      #{moduleName,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR})
+      #{moduleName,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{dsType,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.MyPlugin">
     insert into my_plugin
@@ -170,6 +173,9 @@
       <if test="icon != null">
         icon,
       </if>
+      <if test="dsType != null">
+        ds_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="pluginId != null">
@@ -216,6 +222,9 @@
       </if>
       <if test="icon != null">
         #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="dsType != null">
+        #{dsType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -273,6 +282,9 @@
       <if test="record.icon != null">
         icon = #{record.icon,jdbcType=VARCHAR},
       </if>
+      <if test="record.dsType != null">
+        ds_type = #{record.dsType,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -294,7 +306,8 @@
       release_time = #{record.releaseTime,jdbcType=BIGINT},
       install_time = #{record.installTime,jdbcType=BIGINT},
       module_name = #{record.moduleName,jdbcType=VARCHAR},
-      icon = #{record.icon,jdbcType=VARCHAR}
+      icon = #{record.icon,jdbcType=VARCHAR},
+      ds_type = #{record.dsType,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -344,6 +357,9 @@
       <if test="icon != null">
         icon = #{icon,jdbcType=VARCHAR},
       </if>
+      <if test="dsType != null">
+        ds_type = #{dsType,jdbcType=VARCHAR},
+      </if>
     </set>
     where plugin_id = #{pluginId,jdbcType=BIGINT}
   </update>
@@ -362,7 +378,8 @@
       release_time = #{releaseTime,jdbcType=BIGINT},
       install_time = #{installTime,jdbcType=BIGINT},
       module_name = #{moduleName,jdbcType=VARCHAR},
-      icon = #{icon,jdbcType=VARCHAR}
+      icon = #{icon,jdbcType=VARCHAR},
+      ds_type = #{dsType,jdbcType=VARCHAR}
     where plugin_id = #{pluginId,jdbcType=BIGINT}
   </update>
 </mapper>

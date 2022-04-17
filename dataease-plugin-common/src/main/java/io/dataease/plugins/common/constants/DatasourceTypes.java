@@ -2,50 +2,52 @@ package io.dataease.plugins.common.constants;
 
 public enum DatasourceTypes {
     //jdbc
-    mysql("mysql", "MySQL", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    TiDB("TiDB", "TiDB", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    hive("hive", "Apache Hive", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'", ""),
-    impala("impala", "Apache Impala", "org.apache.hive.jdbc.HiveDriver", "`", "`", "'", "'", "AuthMech=0"),
-    mariadb("mariadb", "MariaDB", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    StarRocks("StarRocks", "StarRocks", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    ds_doris("ds_doris", "Doris", "com.mysql.jdbc.Driver", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    pg("pg", "PostgreSQL", "org.postgresql.Driver", "\"", "\"", "\"", "\"", ""),
-    sqlServer("sqlServer", "SQL Server", "com.microsoft.sqlserver.jdbc.SQLServerDriver", "\"", "\"", "\"", "\"", ""),
-    oracle("oracle", "Oracle", "oracle.jdbc.driver.OracleDriver", "\"", "\"", "\"", "\"", ""),
-    mongo("mongo", "MongoDB", "com.mongodb.jdbc.MongoDriver", "`", "`", "\"", "\"", "rebuildschema=true&authSource=admin"),
-    ck("ch", "ClickHouse", "ru.yandex.clickhouse.ClickHouseDriver", "`", "`", "'", "'", ""),
-    db2("db2", "Db2", "com.ibm.db2.jcc.DB2Driver", "\"", "\"", "\"", "\"", ""),
-    redshift("redshift", "AWS Redshift", "org.postgresql.Driver", "\"", "\"", "\"", "\"", ""),
+    mysql("mysql", "MySQL", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    TiDB("TiDB", "TiDB", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    hive("hive", "Apache Hive", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
+    impala("impala", "Apache Impala", "`", "`", "'", "'", "AuthMech=0", true, DatasourceCalculationMode.DIRECT),
+    mariadb("mariadb", "MariaDB", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    StarRocks("StarRocks", "StarRocks", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    ds_doris("ds_doris", "Doris", "`", "`", "'", "'", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    pg("pg", "PostgreSQL", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    sqlServer("sqlServer", "SQL Server", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    oracle("oracle", "Oracle", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    mongo("mongo", "MongoDB", "`", "`", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.DIRECT),
+    ck("ch", "ClickHouse", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
+    db2("db2", "Db2", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
+    redshift("redshift", "AWS Redshift", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT),
 
-    es("es", "Elasticsearch", "", "\"", "\"", "\"", "\"", ""),
-    api("api", "API", "", "\"", "\"", "\"", "\"", "rebuildschema=true&authSource=admin"),
+    es("es", "Elasticsearch", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT),
+    api("api", "API", "\"", "\"", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.SYNC),
 
-    excel("excel", "Excel", "", "", "", "", "", ""),
+    excel("excel", "Excel", "", "", "", "", "", false, DatasourceCalculationMode.SYNC),
 
     //engine
-    engine_doris("engine_doris", "engine_doris", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true"),
-    engine_mysql("engine_mysql", "engine_mysql", "com.mysql.jdbc.Driver", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true")
-            ;
+    engine_doris("engine_doris", "engine_doris", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null),
+    engine_mysql("engine_mysql", "engine_mysql", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null);
 
 
     private String type;
     private String name;
-    private String driver;
     private String keywordPrefix;
     private String keywordSuffix;
     private String aliasPrefix;
     private String aliasSuffix;
     private String extraParams;
+    private boolean isDatasource;
+    private DatasourceCalculationMode calculationMode;
 
-    DatasourceTypes(String type, String name, String driver, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix, String extraParams) {
+
+    DatasourceTypes(String type, String name, String keywordPrefix, String keywordSuffix, String aliasPrefix, String aliasSuffix, String extraParams, boolean isDatasource, DatasourceCalculationMode calculationMode) {
         this.type = type;
         this.name = name;
-        this.driver = driver;
         this.keywordPrefix = keywordPrefix;
         this.keywordSuffix = keywordSuffix;
         this.aliasPrefix = aliasPrefix;
         this.aliasSuffix = aliasSuffix;
         this.extraParams = extraParams;
+        this.isDatasource = isDatasource;
+        this.calculationMode = calculationMode;
     }
 
     public String getType() {
@@ -54,10 +56,6 @@ public enum DatasourceTypes {
 
     public String getName() {
         return name;
-    }
-
-    public String getDriver() {
-        return driver;
     }
 
     public String getKeywordPrefix() {
@@ -79,5 +77,13 @@ public enum DatasourceTypes {
     public String getExtraParams() {
         return extraParams;
     }
+    public DatasourceCalculationMode getCalculationMode() {
+        return calculationMode;
+    }
+
+    public boolean isDatasource() {
+        return isDatasource;
+    }
+
 }
 

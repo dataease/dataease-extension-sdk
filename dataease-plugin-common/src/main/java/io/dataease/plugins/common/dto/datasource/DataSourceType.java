@@ -1,16 +1,21 @@
 package io.dataease.plugins.common.dto.datasource;
 
+import io.dataease.plugins.common.constants.DatasourceCalculationMode;
 import lombok.Data;
 
 @Data
 public class DataSourceType {
-    private String type;
-    private String name;
-    private String driver;
-    private boolean isPlugin = true;
-    private String keywordPrefix;
-    private String keywordSuffix;
-    private String aliasPrefix;
-    private String aliasSuffix;
-    private String extraParams;
+    public String type;
+    public String name;
+    public boolean isPlugin = true;
+    public DatasourceCalculationMode calculationMode = DatasourceCalculationMode.DIRECT;
+    public String extraParams;
+
+    public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode){
+        this.type = type;
+        this.name = name;
+        this.isPlugin = isPlugin;
+        this.extraParams = extraParams;
+        this.calculationMode = calculationMode;
+    }
 }

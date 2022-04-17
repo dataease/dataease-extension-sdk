@@ -23,14 +23,15 @@ public abstract class DefaultJdbcProvider extends Provider {
     protected Map<String, DruidDataSource> jdbcConnection = new HashMap<>();
     protected ExtendedJdbcClassLoader extendedJdbcClassLoader;
     static private final String FILE_PATH = "/opt/dataease/drivers";
+    static private final String thirdpart = "/opt/dataease/plugins/thirdpart";
 
     abstract public boolean isUseDatasourcePool() ;
 
     @PostConstruct
     public void init() throws Exception {
         String jarPath = FILE_PATH;
-        if (!getName().equalsIgnoreCase("built-in")) {
-            jarPath = jarPath + "/" + getName();
+        if (!getType().equalsIgnoreCase("built-in")) {
+            jarPath = thirdpart + "/" + getType() + "Driver";
         }
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         extendedJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(jarPath).toURI().toURL()}, classLoader);
@@ -49,7 +50,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         });
     }
 
-    abstract public String getName();
+    abstract public String getType();
 
     @Override
     public List<String[]> getData(DatasourceRequest dsr) throws Exception {
