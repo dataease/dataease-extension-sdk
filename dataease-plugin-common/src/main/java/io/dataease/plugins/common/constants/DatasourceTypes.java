@@ -13,7 +13,7 @@ public enum DatasourceTypes {
     sqlServer("sqlServer", "SQL Server", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
     oracle("oracle", "Oracle", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
     mongo("mongo", "MongoDB", "`", "`", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.DIRECT),
-    ck("ch", "ClickHouse", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
+    ck("ck", "ClickHouse", "`", "`", "'", "'", "", true, DatasourceCalculationMode.DIRECT),
     db2("db2", "Db2", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC),
     redshift("redshift", "AWS Redshift", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT),
 
