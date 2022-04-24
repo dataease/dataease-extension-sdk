@@ -15,6 +15,7 @@ public class JdbcConfiguration {
     private String schema;
     private String dataSourceType = "jdbc";
 
+    private String charset;
     private int initialPoolSize = 5;
     private int minPoolSize = 5;
     private int maxPoolSize = 50;

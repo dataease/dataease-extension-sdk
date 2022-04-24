@@ -3,6 +3,8 @@ package io.dataease.plugins.common.dto.datasource;
 import io.dataease.plugins.common.constants.DatasourceCalculationMode;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class DataSourceType {
     public String type;
@@ -10,6 +12,7 @@ public class DataSourceType {
     public boolean isPlugin = true;
     public DatasourceCalculationMode calculationMode = DatasourceCalculationMode.DIRECT;
     public String extraParams;
+    public List<String> charset;
 
     public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode){
         this.type = type;
