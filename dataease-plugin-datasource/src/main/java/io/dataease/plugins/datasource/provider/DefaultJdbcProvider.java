@@ -31,14 +31,15 @@ public abstract class DefaultJdbcProvider extends Provider {
     @PostConstruct
     public void init() throws Exception {
         String jarPath = FILE_PATH;
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
             if(getType().equalsIgnoreCase("maxcompute")){
                 jarPath = defaultPath + "/" + getType() + "Driver";
             }else {
                 jarPath = thirdpart + "/" + getType() + "Driver";
             }
+            classLoader= null;
         }
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         extendedJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(jarPath).toURI().toURL()}, classLoader);
         File file = new File(jarPath);
         File[] array = file.listFiles();
