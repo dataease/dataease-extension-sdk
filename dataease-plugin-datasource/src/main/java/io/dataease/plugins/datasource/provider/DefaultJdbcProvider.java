@@ -24,6 +24,7 @@ public abstract class DefaultJdbcProvider extends Provider {
     protected ExtendedJdbcClassLoader extendedJdbcClassLoader;
     static private final String FILE_PATH = "/opt/dataease/drivers";
     static private final String thirdpart = "/opt/dataease/plugins/thirdpart";
+    static private final String defaultPath = "/opt/dataease/plugins/default";
 
     abstract public boolean isUseDatasourcePool() ;
 
@@ -31,7 +32,11 @@ public abstract class DefaultJdbcProvider extends Provider {
     public void init() throws Exception {
         String jarPath = FILE_PATH;
         if (!getType().equalsIgnoreCase("built-in")) {
-            jarPath = thirdpart + "/" + getType() + "Driver";
+            if(getType().equalsIgnoreCase("maxcompute")){
+                jarPath = defaultPath + "/" + getType() + "Driver";
+            }else {
+                jarPath = thirdpart + "/" + getType() + "Driver";
+            }
         }
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         extendedJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(jarPath).toURI().toURL()}, classLoader);
