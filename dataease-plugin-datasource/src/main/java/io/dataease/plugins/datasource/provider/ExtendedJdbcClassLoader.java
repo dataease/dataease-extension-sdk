@@ -9,7 +9,7 @@ import java.net.URLClassLoader;
 public class ExtendedJdbcClassLoader extends URLClassLoader {
 
     public ExtendedJdbcClassLoader(URL[] urls, ClassLoader parent) {
-        super(urls);
+        super(urls, parent);
     }
 
     @Override
