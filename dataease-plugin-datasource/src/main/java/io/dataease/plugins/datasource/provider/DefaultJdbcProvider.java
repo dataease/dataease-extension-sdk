@@ -182,6 +182,7 @@ public abstract class DefaultJdbcProvider extends Provider {
                 dataSource = jdbcConnection.get(datasourceRequest.getDatasource().getId());
                 if (dataSource != null) {
                     dataSource.close();
+                    jdbcConnection.remove(datasourceRequest.getDatasource().getId());
                 }
                 checkStatus(datasourceRequest);
                 addToPool(datasourceRequest);
