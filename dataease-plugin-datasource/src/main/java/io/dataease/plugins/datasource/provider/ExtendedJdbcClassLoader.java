@@ -66,11 +66,6 @@ public class ExtendedJdbcClassLoader extends URLClassLoader {
     }
 
 
-    @Override
-    protected Package getPackage(String name) {
-        return null;
-    }
-
 
     public void addFile(String s) throws IOException {
         File f = new File(s);
