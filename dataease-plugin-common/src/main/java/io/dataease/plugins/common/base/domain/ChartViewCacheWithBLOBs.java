@@ -33,7 +33,5 @@ public class ChartViewCacheWithBLOBs extends ChartViewCache implements Serializa
 
     private String snapshot;
 
-    private String customSort;
-
     private static final long serialVersionUID = 1L;
 }
