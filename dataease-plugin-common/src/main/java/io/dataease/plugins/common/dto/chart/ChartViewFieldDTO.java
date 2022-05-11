@@ -12,4 +12,6 @@ import java.util.List;
 @Data
 public class ChartViewFieldDTO extends ChartViewFieldBaseDTO implements Serializable {
     private List<ChartViewFieldFilterDTO> filter;
+
+    private List<String> customSort;
 }
