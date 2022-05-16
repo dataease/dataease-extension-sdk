@@ -31,5 +31,7 @@ public class PanelGroup implements Serializable {
 
     private Boolean mobileLayout;
 
+    private String status;
+
     private static final long serialVersionUID = 1L;
 }
