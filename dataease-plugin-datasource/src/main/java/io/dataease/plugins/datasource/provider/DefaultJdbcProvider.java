@@ -4,6 +4,7 @@ import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.wall.WallFilter;
 import com.google.gson.Gson;
+import io.dataease.plugins.common.base.domain.DeDriver;
 import io.dataease.plugins.common.constants.DatasourceTypes;
 import io.dataease.plugins.common.dto.datasource.TableDesc;
 import io.dataease.plugins.common.dto.datasource.TableField;
@@ -22,23 +23,26 @@ import java.util.*;
 public abstract class DefaultJdbcProvider extends Provider {
     protected Map<String, DruidDataSource> jdbcConnection = new HashMap<>();
     protected ExtendedJdbcClassLoader extendedJdbcClassLoader;
-    static private final String FILE_PATH = "/opt/dataease/drivers";
-    static private final String thirdpart = "/opt/dataease/plugins/thirdpart";
-    static private final String defaultPath = "/opt/dataease/plugins/default";
+    private Map<String, ExtendedJdbcClassLoader> customJdbcClassLoaders = new HashMap<>();
 
-    abstract public boolean isUseDatasourcePool() ;
+    static private final String FILE_PATH = "/opt/dataease/drivers";
+    static private final String THIRDPART_PATH = "/opt/dataease/plugins/thirdpart";
+    static private final String DEFAULT_PATH = "/opt/dataease/plugins/default";
+    static private final String CUSTOM_PATH = "/opt/dataease/drivers/custom/";
+
+    abstract public boolean isUseDatasourcePool();
 
     @PostConstruct
     public void init() throws Exception {
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
-            if(getType().equalsIgnoreCase("maxcompute")){
-                jarPath = defaultPath + "/" + getType() + "Driver";
-            }else {
-                jarPath = thirdpart + "/" + getType() + "Driver";
+            if (getType().equalsIgnoreCase("maxcompute")) {
+                jarPath = DEFAULT_PATH + "/" + getType() + "Driver";
+            } else {
+                jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
             }
-            classLoader= null;
+            classLoader = null;
         }
         extendedJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(jarPath).toURI().toURL()}, classLoader);
         File file = new File(jarPath);
@@ -276,7 +280,9 @@ public abstract class DefaultJdbcProvider extends Provider {
         if (!isUseDatasourcePool()) {
             return getConnection(datasourceRequest);
         }
-        if (datasourceRequest.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.mongo.name()) || datasourceRequest.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.impala.name())) {
+        if (datasourceRequest.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.mongo.name()) ||
+                datasourceRequest.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.impala.name())
+                || datasourceRequest.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.hive.name())) {
             return getConnection(datasourceRequest);
         }
         DruidDataSource dataSource = jdbcConnection.get(datasourceRequest.getDatasource().getId());
@@ -409,6 +415,47 @@ public abstract class DefaultJdbcProvider extends Provider {
         }
         tableDesc.setName(resultSet.getString(1));
         return tableDesc;
+    }
+
+
+    protected ExtendedJdbcClassLoader getCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+        ExtendedJdbcClassLoader customJdbcClassLoader = customJdbcClassLoaders.get(deDriver.getId());
+        if (customJdbcClassLoader == null) {
+            return addCustomJdbcClassLoader(deDriver);
+        } else {
+            if (customJdbcClassLoader.getDriver().equalsIgnoreCase(deDriver.getDriverClass())) {
+                return customJdbcClassLoader;
+            } else {
+                customJdbcClassLoaders.remove(deDriver.getId());
+                return addCustomJdbcClassLoader(deDriver);
+            }
+        }
+    }
+
+    private ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+        ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, null);
+        customJdbcClassLoader.setDriver(deDriver.getDriverClass());
+
+        File file = new File(CUSTOM_PATH + deDriver.getId());
+        File[] array = file.listFiles();
+        Optional.ofNullable(array).ifPresent(files -> {
+            for (File tmp : array) {
+                if (tmp.getName().endsWith(".jar")) {
+                    try {
+                        customJdbcClassLoader.addFile(tmp);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        customJdbcClassLoaders.put(deDriver.getId(), customJdbcClassLoader);
+        return customJdbcClassLoader;
+    }
+
+    protected boolean isDefaultClassLoader(String customDriver){
+        return StringUtils.isEmpty(customDriver) || customDriver.equalsIgnoreCase("default");
     }
 
 }

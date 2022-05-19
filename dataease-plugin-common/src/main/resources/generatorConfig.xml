@@ -64,7 +64,8 @@
 <!--            <columnOverride column="configuration" property="configuration" javaType="java.lang.String"/>-->
 <!--        </table>-->
 <!--        <table tableName="chart_view"/>-->
-        <table tableName="panel_group"/>
+<!--        <table tableName="de_driver_details"/>-->
+        <table tableName="de_driver"/>
 <!--        <table tableName="panel_link_jump_info"/>-->
 <!--        <table tableName="panel_outer_params_info"/>-->
 <!--        <table tableName="panel_outer_params_target_view_info"/>-->

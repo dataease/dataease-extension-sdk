@@ -13,12 +13,14 @@ public class DataSourceType {
     public DatasourceCalculationMode calculationMode = DatasourceCalculationMode.DIRECT;
     public String extraParams;
     public List<String> charset;
+    public boolean isJdbc = false;
 
-    public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode){
+    public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode,boolean isJdbc){
         this.type = type;
         this.name = name;
         this.isPlugin = isPlugin;
         this.extraParams = extraParams;
         this.calculationMode = calculationMode;
+        this.isJdbc = isJdbc;
     }
 }

@@ -14,6 +14,8 @@ public class JdbcConfiguration {
     private String dataBase;
     private String schema;
     private String dataSourceType = "jdbc";
+    private String customDriver = "default";
+    private String authMethod = "passwd";
 
     private String charset;
     private int initialPoolSize = 5;
