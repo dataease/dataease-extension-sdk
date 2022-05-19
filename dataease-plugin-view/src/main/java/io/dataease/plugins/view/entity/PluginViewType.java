@@ -13,4 +13,7 @@ public class PluginViewType implements Serializable {
     private String category;
 
     private String value;
+
+    // 支持的样式组件类型
+    private String[] properties;
 }
