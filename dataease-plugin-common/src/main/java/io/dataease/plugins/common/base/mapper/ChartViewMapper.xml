@@ -32,6 +32,8 @@
     <result column="drill_fields" jdbcType="LONGVARCHAR" property="drillFields" />
     <result column="senior" jdbcType="LONGVARCHAR" property="senior" />
     <result column="snapshot" jdbcType="LONGVARCHAR" property="snapshot" />
+    <result column="custom_sort" jdbcType="LONGVARCHAR" property="customSort" />
+    <result column="view_fields" jdbcType="LONGVARCHAR" property="viewFields" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -97,7 +99,7 @@
   </sql>
   <sql id="Blob_Column_List">
     x_axis, x_axis_ext, y_axis, y_axis_ext, ext_stack, ext_bubble, custom_attr, custom_style, 
-    custom_filter, drill_fields, senior, snapshot
+    custom_filter, drill_fields, senior, snapshot, custom_sort, view_fields
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="io.dataease.plugins.common.base.domain.ChartViewExample" resultMap="ResultMapWithBLOBs">
     select
@@ -157,7 +159,8 @@
       y_axis, y_axis_ext, ext_stack, 
       ext_bubble, custom_attr, custom_style, 
       custom_filter, drill_fields, senior, 
-      snapshot)
+      snapshot, custom_sort, view_fields
+      )
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{sceneId,jdbcType=VARCHAR}, #{tableId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{render,jdbcType=VARCHAR}, #{resultCount,jdbcType=INTEGER}, #{resultMode,jdbcType=VARCHAR}, 
@@ -167,7 +170,8 @@
       #{yAxis,jdbcType=LONGVARCHAR}, #{yAxisExt,jdbcType=LONGVARCHAR}, #{extStack,jdbcType=LONGVARCHAR}, 
       #{extBubble,jdbcType=LONGVARCHAR}, #{customAttr,jdbcType=LONGVARCHAR}, #{customStyle,jdbcType=LONGVARCHAR}, 
       #{customFilter,jdbcType=LONGVARCHAR}, #{drillFields,jdbcType=LONGVARCHAR}, #{senior,jdbcType=LONGVARCHAR}, 
-      #{snapshot,jdbcType=LONGVARCHAR})
+      #{snapshot,jdbcType=LONGVARCHAR}, #{customSort,jdbcType=LONGVARCHAR}, #{viewFields,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.ChartViewWithBLOBs">
     insert into chart_view
@@ -256,6 +260,12 @@
       <if test="snapshot != null">
         snapshot,
       </if>
+      <if test="customSort != null">
+        custom_sort,
+      </if>
+      <if test="viewFields != null">
+        view_fields,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -341,6 +351,12 @@
       </if>
       <if test="snapshot != null">
         #{snapshot,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="customSort != null">
+        #{customSort,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="viewFields != null">
+        #{viewFields,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -437,6 +453,12 @@
       <if test="record.snapshot != null">
         snapshot = #{record.snapshot,jdbcType=LONGVARCHAR},
       </if>
+      <if test="record.customSort != null">
+        custom_sort = #{record.customSort,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.viewFields != null">
+        view_fields = #{record.viewFields,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -471,7 +493,9 @@
       custom_filter = #{record.customFilter,jdbcType=LONGVARCHAR},
       drill_fields = #{record.drillFields,jdbcType=LONGVARCHAR},
       senior = #{record.senior,jdbcType=LONGVARCHAR},
-      snapshot = #{record.snapshot,jdbcType=LONGVARCHAR}
+      snapshot = #{record.snapshot,jdbcType=LONGVARCHAR},
+      custom_sort = #{record.customSort,jdbcType=LONGVARCHAR},
+      view_fields = #{record.viewFields,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -582,6 +606,12 @@
       <if test="snapshot != null">
         snapshot = #{snapshot,jdbcType=LONGVARCHAR},
       </if>
+      <if test="customSort != null">
+        custom_sort = #{customSort,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="viewFields != null">
+        view_fields = #{viewFields,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -613,7 +643,9 @@
       custom_filter = #{customFilter,jdbcType=LONGVARCHAR},
       drill_fields = #{drillFields,jdbcType=LONGVARCHAR},
       senior = #{senior,jdbcType=LONGVARCHAR},
-      snapshot = #{snapshot,jdbcType=LONGVARCHAR}
+      snapshot = #{snapshot,jdbcType=LONGVARCHAR},
+      custom_sort = #{customSort,jdbcType=LONGVARCHAR},
+      view_fields = #{viewFields,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="io.dataease.plugins.common.base.domain.ChartView">
