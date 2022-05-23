@@ -8,6 +8,16 @@ import java.net.URLClassLoader;
 
 public class ExtendedJdbcClassLoader extends URLClassLoader {
 
+    private String driver;
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+
     public ExtendedJdbcClassLoader(URL[] urls, ClassLoader parent) {
         super(urls, parent);
     }
