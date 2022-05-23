@@ -419,6 +419,9 @@ public abstract class DefaultJdbcProvider extends Provider {
 
 
     protected ExtendedJdbcClassLoader getCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+        if(deDriver == null){
+            throw new Exception("Can not found custom Driver");
+        }
         ExtendedJdbcClassLoader customJdbcClassLoader = customJdbcClassLoaders.get(deDriver.getId());
         if (customJdbcClassLoader == null) {
             return addCustomJdbcClassLoader(deDriver);
@@ -433,7 +436,7 @@ public abstract class DefaultJdbcProvider extends Provider {
     }
 
     private ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
-        ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, null);
+        ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, Thread.currentThread().getContextClassLoader());
         customJdbcClassLoader.setDriver(deDriver.getDriverClass());
 
         File file = new File(CUSTOM_PATH + deDriver.getId());
