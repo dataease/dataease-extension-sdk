@@ -28,7 +28,7 @@ public abstract class DefaultJdbcProvider extends Provider {
     static private final String FILE_PATH = "/opt/dataease/drivers";
     static private final String THIRDPART_PATH = "/opt/dataease/plugins/thirdpart";
     static private final String DEFAULT_PATH = "/opt/dataease/plugins/default";
-    static private final String CUSTOM_PATH = "/opt/dataease/drivers/custom/";
+    static private final String CUSTOM_PATH = "/opt/dataease/custom-drivers/";
 
     abstract public boolean isUseDatasourcePool();
 
