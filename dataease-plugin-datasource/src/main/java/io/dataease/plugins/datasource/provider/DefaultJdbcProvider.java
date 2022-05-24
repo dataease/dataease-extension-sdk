@@ -37,7 +37,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
-            if (getType().equalsIgnoreCase("maxcompute")) {
+            if (getType().equalsIgnoreCase("maxcompute") || getType().equalsIgnoreCase("presto")) {
                 jarPath = DEFAULT_PATH + "/" + getType() + "Driver";
             } else {
                 jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
