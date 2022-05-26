@@ -26,4 +26,6 @@ public class ChartExtFilterRequest {
     private List<String> viewIds;
     @ApiModelProperty("过滤字段")
     private DatasetTableField datasetTableField;
+    @ApiModelProperty("是否树")
+    private Boolean isTree;
 }
