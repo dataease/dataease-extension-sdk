@@ -433,7 +433,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         if (customJdbcClassLoader == null) {
             return addCustomJdbcClassLoader(deDriver);
         } else {
-            if (customJdbcClassLoader.getDriver().equalsIgnoreCase(deDriver.getDriverClass())) {
+            if (StringUtils.isNotEmpty(customJdbcClassLoader.getDriver()) && customJdbcClassLoader.getDriver().equalsIgnoreCase(deDriver.getDriverClass())) {
                 return customJdbcClassLoader;
             } else {
                 customJdbcClassLoaders.remove(deDriver.getId());
