@@ -42,7 +42,7 @@ public abstract class DefaultJdbcProvider extends Provider {
             } else {
                 jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
             }
-            classLoader = null;
+            classLoader = classLoader.getParent();
         }
         extendedJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(jarPath).toURI().toURL()}, classLoader);
         File file = new File(jarPath);
@@ -443,7 +443,8 @@ public abstract class DefaultJdbcProvider extends Provider {
     }
 
     private synchronized ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
-        ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, Thread.currentThread().getContextClassLoader());
+
+        ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, Thread.currentThread().getContextClassLoader().getParent());
         customJdbcClassLoader.setDriver(deDriver.getDriverClass());
 
         File file = new File(CUSTOM_PATH + deDriver.getId());
