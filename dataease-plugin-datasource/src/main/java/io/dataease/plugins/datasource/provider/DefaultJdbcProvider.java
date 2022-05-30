@@ -318,6 +318,13 @@ public abstract class DefaultJdbcProvider extends Provider {
         return null;
     }
 
+    public void reloadCustomJdbcClassLoader(DeDriver deDriver) throws Exception{
+        if(customJdbcClassLoaders.get(deDriver.getId()) != null){
+            customJdbcClassLoaders.remove(deDriver.getId());
+        }
+        addCustomJdbcClassLoader(deDriver);
+    }
+
     private TableField getTableFiled(ResultSet resultSet, DatasourceRequest datasourceRequest) throws SQLException {
         TableField tableField = new TableField();
         String colName = resultSet.getString("COLUMN_NAME");
@@ -419,7 +426,7 @@ public abstract class DefaultJdbcProvider extends Provider {
 
 
     protected ExtendedJdbcClassLoader getCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
-        if(deDriver == null){
+        if (deDriver == null) {
             throw new Exception("Can not found custom Driver");
         }
         ExtendedJdbcClassLoader customJdbcClassLoader = customJdbcClassLoaders.get(deDriver.getId());
@@ -435,7 +442,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         }
     }
 
-    private ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+    private synchronized ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
         ExtendedJdbcClassLoader customJdbcClassLoader = new ExtendedJdbcClassLoader(new URL[]{new File(CUSTOM_PATH + deDriver.getId()).toURI().toURL()}, Thread.currentThread().getContextClassLoader());
         customJdbcClassLoader.setDriver(deDriver.getDriverClass());
 
@@ -457,7 +464,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         return customJdbcClassLoader;
     }
 
-    protected boolean isDefaultClassLoader(String customDriver){
+    protected boolean isDefaultClassLoader(String customDriver) {
         return StringUtils.isEmpty(customDriver) || customDriver.equalsIgnoreCase("default");
     }
 
