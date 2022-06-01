@@ -3,7 +3,6 @@ package io.dataease.plugins.common.constants.engine;
 import io.dataease.plugins.common.constants.SQLConstants;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.engine_doris;
-import static io.dataease.plugins.common.constants.DatasourceTypes.engine_mysql;
 
 
 public class DorisConstants extends SQLConstants {

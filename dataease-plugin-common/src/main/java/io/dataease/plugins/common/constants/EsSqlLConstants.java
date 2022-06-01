@@ -8,6 +8,8 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String KEYWORD_FIX = "%s." + es.getKeywordPrefix() + "%s" + es.getKeywordSuffix();
 
+    public static final String ALIAS_FIX = es.getAliasPrefix() + "%s" + es.getAliasSuffix();
+
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
     public static final String DATETIME_FORMAT = "DATETIME_FORMAT(%s,'%s')";

@@ -8,6 +8,8 @@ public class CKConstants extends SQLConstants {
 
     public static final String KEYWORD_FIX = "%s." + ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
 
+    public static final String ALIAS_FIX = ck.getAliasPrefix() + "%s" + ck.getAliasSuffix();
+
     public static final String toInt32 = "toInt32(%s)";
 
     public static final String toDateTime = "toDateTime(%s)";
