@@ -7,6 +7,8 @@ public class HiveConstants extends SQLConstants {
 
     public static final String KEYWORD_FIX = "%s." + hive.getKeywordPrefix() + "%s" + hive.getKeywordSuffix();
 
+    public static final String ALIAS_FIX = hive.getAliasPrefix() + "%s" + hive.getAliasSuffix();
+
     public static final String UNIX_TIMESTAMP = "unix_timestamp(%s)";
 
     public static final String DATE_FORMAT = "DATE_FORMAT(%s,'%s')";

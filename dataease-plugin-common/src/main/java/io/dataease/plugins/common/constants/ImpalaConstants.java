@@ -9,6 +9,8 @@ public class ImpalaConstants extends SQLConstants {
 
     public static final String KEYWORD_FIX = "%s." + impala.getKeywordPrefix() + "%s" + impala.getKeywordSuffix();
 
+    public static final String ALIAS_FIX = impala.getAliasPrefix() + "%s" + impala.getAliasSuffix();
+
     public static final String UNIX_TIMESTAMP = "unix_timestamp(%s)";
 
     public static final String DATE_FORMAT = "from_unixtime(UNIX_TIMESTAMP(%s), '%s')";

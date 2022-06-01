@@ -9,6 +9,8 @@ public class Db2Constants extends SQLConstants {
 
     public static final String KEYWORD_FIX = "%s." + db2.getKeywordPrefix() + "%s" + db2.getKeywordSuffix();
 
+    public static final String ALIAS_FIX = db2.getAliasPrefix() + "%s" + db2.getAliasSuffix();
+
     public static final String UNIX_TIMESTAMP = "BIGINT(TIMESTAMPDIFF(2,CHAR(%s -TIMESTAMP('1970-01-01 08:00:00'))))";
 
     public static final String DATE_FORMAT = "TO_CHAR(TIMESTAMP(%s),'%s')";
