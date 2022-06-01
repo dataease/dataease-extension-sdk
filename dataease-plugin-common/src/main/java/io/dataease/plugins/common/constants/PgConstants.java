@@ -36,6 +36,8 @@ public class PgConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
+    public static final String GROUP_CONCAT = "array_to_string(array_agg(%s),',')";
+
     public static final String NAME = "pg";
 
 

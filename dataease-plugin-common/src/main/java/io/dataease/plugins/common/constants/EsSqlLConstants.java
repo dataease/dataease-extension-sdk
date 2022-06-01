@@ -32,5 +32,7 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String NAME = "es";
 
+    public static final String GROUP_CONCAT = "FIRST(%s)";
+
 
 }

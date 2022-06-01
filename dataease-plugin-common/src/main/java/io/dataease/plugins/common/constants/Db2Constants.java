@@ -41,5 +41,7 @@ public class Db2Constants extends SQLConstants {
 
     public static final String NAME = "db2";
 
+    public static final String GROUP_CONCAT = "LISTAGG(%s, ',')";
+
 
 }
