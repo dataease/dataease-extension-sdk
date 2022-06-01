@@ -39,5 +39,7 @@ public class MongoConstants extends SQLConstants {
 
     public static final String NAME = "mongo";
 
+    public static final String GROUP_CONCAT = "listagg(%s, ',')";
+
 
 }

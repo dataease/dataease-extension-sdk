@@ -8,7 +8,6 @@ import io.dataease.plugins.view.service.ViewPluginBaseService;
 import io.dataease.plugins.view.service.ViewPluginService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupFile;
@@ -83,18 +82,7 @@ public class DefaultViewStatHandler implements PluginViewStatHandler {
         if (CollectionUtils.isNotEmpty(aggWheres)) st.add("filters", aggWheres);
         if (CollectionUtils.isNotEmpty(orders)) st.add("orders", orders);
         if (ObjectUtils.isNotEmpty(tableSQL)) st.add("table", tableSQL);
-        return sqlLimit(st.render(), pluginViewParam.getPluginViewLimit());
+        return baseService.sqlLimit(dsType, st.render(), pluginViewParam.getPluginViewLimit());
     }
-
-
-
-    private String sqlLimit(String sql, PluginViewLimit view) {
-        if (StringUtils.equalsIgnoreCase(view.getResultMode(), "custom")) {
-            return sql + " LIMIT 0," + view.getResultCount();
-        } else {
-            return sql;
-        }
-    }
-
 
 }

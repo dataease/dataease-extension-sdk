@@ -39,4 +39,6 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String NAME = "sqlServer";
 
+    public static final String GROUP_CONCAT = "string_agg(%s, ',')";
+
 }

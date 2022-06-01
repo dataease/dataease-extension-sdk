@@ -40,4 +40,6 @@ public class RedshiftConstants extends SQLConstants {
 
     public static final String NAME = "redshift";
 
+    public static final String GROUP_CONCAT = "listagg(%s, ',')";
+
 }

@@ -14,4 +14,6 @@ public interface ViewPluginBaseService {
     String panelWhere(String dsType, List<PluginChartExtFilter> pluginChartExtFilters, PluginViewSQL tableObj);
 
     PluginViewSQL getTableObj(PluginViewSet pluginViewSet);
+
+    String sqlLimit(String dsType, String sql, PluginViewLimit view);
 }
