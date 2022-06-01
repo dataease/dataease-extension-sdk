@@ -36,5 +36,7 @@ public class CKConstants extends SQLConstants {
 
     public static final String NAME = "ck";
 
+    public static final String GROUP_CONCAT = "arrayStringConcat(groupArray(%s), ',')";
+
 
 }

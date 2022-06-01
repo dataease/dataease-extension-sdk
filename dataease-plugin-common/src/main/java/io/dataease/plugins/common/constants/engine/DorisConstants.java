@@ -50,5 +50,7 @@ public class DorisConstants extends SQLConstants {
 
     public static final String NAME = "engine_doris";
 
+    public static final String GROUP_CONCAT = "group_concat(%s)";
+
 
 }

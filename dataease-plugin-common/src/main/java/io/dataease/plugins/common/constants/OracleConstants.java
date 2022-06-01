@@ -50,6 +50,9 @@ public class OracleConstants extends SQLConstants {
 
     public static final String CALC_SUB = "%s - %s";
 
+    // public static final String GROUP_CONCAT = "vm_concat(%s)";
+    public static final String GROUP_CONCAT = "to_char(listagg(%s,',' ) within GROUP (order by (%s)))";
+
     public static final String NAME = "oracle";
 
 

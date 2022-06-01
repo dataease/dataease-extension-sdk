@@ -47,4 +47,6 @@ public class MysqlConstants extends SQLConstants {
     public static final String CHAR = "CHAR";
 
     public static final String NAME = "engine_mysql";
+
+    public static final String GROUP_CONCAT = "group_concat(%s)";
 }

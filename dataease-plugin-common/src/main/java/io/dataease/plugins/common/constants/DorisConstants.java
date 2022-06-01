@@ -46,5 +46,7 @@ public class DorisConstants extends SQLConstants {
 
     public static final String NAME = "ds_doris";
 
+    public static final String GROUP_CONCAT = "group_concat(%s, ',')";
+
 
 }

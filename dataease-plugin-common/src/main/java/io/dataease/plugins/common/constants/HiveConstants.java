@@ -35,6 +35,8 @@ public class HiveConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
+    public static final String GROUP_CONCAT = "concat_ws(',' ,collect_list(%s))";
+
     public static final String NAME = "hive";
 
 
