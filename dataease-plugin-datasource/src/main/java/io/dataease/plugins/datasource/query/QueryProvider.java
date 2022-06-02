@@ -10,6 +10,8 @@ import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
 import io.dataease.plugins.common.dto.sqlObj.SQLObj;
 import io.dataease.plugins.common.request.chart.ChartExtFilterRequest;
 import io.dataease.plugins.datasource.entity.JdbcConfiguration;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -69,9 +71,12 @@ public abstract class QueryProvider {
 
     public void setSchema(SQLObj tableObj, Datasource ds) {
         if (ds != null && !tableObj.getTableName().startsWith("(") && !tableObj.getTableName().endsWith(")")) {
-            String schema = new Gson().fromJson(ds.getConfiguration(), JdbcConfiguration.class).getSchema();
-            schema = String.format(PgConstants.KEYWORD_TABLE, schema);
-            tableObj.setTableName(schema + "." + tableObj.getTableName());
+            JdbcConfiguration configuration = new Gson().fromJson(ds.getConfiguration(), JdbcConfiguration.class);
+            String schema;
+            if (ObjectUtils.isNotEmpty(configuration) && StringUtils.isNotBlank((schema = configuration.getSchema()))) {
+                schema = String.format(PgConstants.KEYWORD_TABLE, schema);
+                tableObj.setTableName(schema + "." + tableObj.getTableName());
+            }
         }
     }
 
