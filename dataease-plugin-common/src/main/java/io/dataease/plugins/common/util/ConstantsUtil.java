@@ -11,6 +11,8 @@ import org.apache.ibatis.io.ResolverUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ConstantsUtil {
 
@@ -33,6 +35,10 @@ public class ConstantsUtil {
     }
 
     public static String constantsValue(String dsType, String constantKey) {
+        String[] mysqlTreaties = {"mariadb", "ds_doris", "TiDB", "StarRocks"};
+        if (Stream.of(mysqlTreaties).collect(Collectors.toList()).contains(dsType)) {
+            dsType = "mysql";
+        }
         List<Class> allSQLConstantsClass = ConstantsUtil.getAllSQLConstants();
         Object result;
 
