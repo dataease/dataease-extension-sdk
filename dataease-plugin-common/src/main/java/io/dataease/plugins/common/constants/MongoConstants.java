@@ -1,10 +1,10 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.mongo;
 
 public class MongoConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = "%s";
 
     public static final String KEYWORD_FIX = "%s." + mongo.getKeywordPrefix() + "%s" + mongo.getKeywordSuffix();
@@ -39,7 +39,7 @@ public class MongoConstants extends SQLConstants {
 
     public static final String NAME = "mongo";
 
-    static {
-        ConstantsUtil.add(MongoConstants.class);
-    }
+    public static final String GROUP_CONCAT = "listagg(%s, ',')";
+
+
 }

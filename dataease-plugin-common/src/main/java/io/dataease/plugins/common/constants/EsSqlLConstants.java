@@ -1,6 +1,5 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.es;
 
@@ -8,6 +7,8 @@ public class EsSqlLConstants extends SQLConstants {
     public static final String KEYWORD_TABLE = es.getKeywordPrefix() + "%s" + es.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + es.getKeywordPrefix() + "%s" + es.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = es.getAliasPrefix() + "%s" + es.getAliasSuffix();
 
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
@@ -33,7 +34,7 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String NAME = "es";
 
-    static {
-        ConstantsUtil.add(EsSqlLConstants.class);
-    }
+    public static final String GROUP_CONCAT = "FIRST(%s)";
+
+
 }

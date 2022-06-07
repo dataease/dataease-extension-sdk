@@ -1,13 +1,16 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
+import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 import static io.dataease.plugins.common.constants.DatasourceTypes.sqlServer;
 
 public class SqlServerSQLConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = sqlServer.getKeywordPrefix() + "%s" + sqlServer.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + sqlServer.getKeywordPrefix() + "%s" + sqlServer.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = sqlServer.getAliasPrefix() + "%s" + sqlServer.getAliasSuffix();
 
     public static final String UNIX_TIMESTAMP = "CAST(DATEDIFF(ss,'1970-01-01 08:00:00', %s) as bigint ) * 1000 ";
 
@@ -39,7 +42,6 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String NAME = "sqlServer";
 
-    static {
-        ConstantsUtil.add(SqlServerSQLConstants.class);
-    }
+    public static final String GROUP_CONCAT = "string_agg(%s, ',')";
+
 }

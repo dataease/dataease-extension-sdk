@@ -1,11 +1,13 @@
 package io.dataease.plugins.common.constants;
-import io.dataease.plugins.common.util.ConstantsUtil;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
+import static io.dataease.plugins.common.constants.DatasourceTypes.hive;
+
 public class HiveConstants extends SQLConstants {
-    public static final String KEYWORD_TABLE = mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
+    public static final String KEYWORD_TABLE = hive.getKeywordPrefix() + "%s" + hive.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
+    public static final String KEYWORD_FIX = "%s." + hive.getKeywordPrefix() + "%s" + hive.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = hive.getAliasPrefix() + "%s" + hive.getAliasSuffix();
 
     public static final String UNIX_TIMESTAMP = "unix_timestamp(%s)";
 
@@ -35,9 +37,9 @@ public class HiveConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
+    public static final String GROUP_CONCAT = "concat_ws(',' ,collect_list(%s))";
+
     public static final String NAME = "hive";
 
-    static {
-        ConstantsUtil.add(HiveConstants.class);
-    }
+
 }

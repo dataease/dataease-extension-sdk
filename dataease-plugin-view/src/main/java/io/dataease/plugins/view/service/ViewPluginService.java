@@ -1,6 +1,5 @@
 package io.dataease.plugins.view.service;
 
-import io.dataease.plugins.common.plugin.DeInterceptorChain;
 import io.dataease.plugins.common.service.PluginComponentService;
 import io.dataease.plugins.common.util.PluginSpringContextUtil;
 import io.dataease.plugins.view.entity.PluginViewParam;
@@ -17,7 +16,6 @@ public abstract class ViewPluginService extends PluginComponentService {
 
     protected ViewPluginBaseService viewPluginBaseService;
 
-    private DeInterceptorChain interceptorChain = new DeInterceptorChain();
     private PluginViewStatHandler statHandler;
 
     private PluginViewRSHandler<Map> rsHandler;
@@ -28,13 +26,11 @@ public abstract class ViewPluginService extends PluginComponentService {
 
     public String generateSQL(PluginViewParam param) {
         statHandler = new DefaultViewStatHandler();
-        statHandler = (PluginViewStatHandler)interceptorChain.pluginAll(statHandler);
         return statHandler.build(param, this);
     }
 
     public Map<String, Object> formatResult(PluginViewParam param, List<String[]> lists, Boolean isDrill) {
         rsHandler = new DefaultViewRSHandler();
-        rsHandler = (PluginViewRSHandler<Map>) interceptorChain.pluginAll(rsHandler);
         return rsHandler.format(param, lists, isDrill);
     }
 

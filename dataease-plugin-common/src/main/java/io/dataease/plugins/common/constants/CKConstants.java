@@ -1,11 +1,14 @@
 package io.dataease.plugins.common.constants;
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.ck;
+
 public class CKConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = ck.getAliasPrefix() + "%s" + ck.getAliasSuffix();
 
     public static final String toInt32 = "toInt32(%s)";
 
@@ -35,7 +38,7 @@ public class CKConstants extends SQLConstants {
 
     public static final String NAME = "ck";
 
-    static {
-        ConstantsUtil.add(CKConstants.class);
-    }
+    public static final String GROUP_CONCAT = "arrayStringConcat(groupArray(%s), ',')";
+
+
 }

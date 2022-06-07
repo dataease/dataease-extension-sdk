@@ -1,19 +1,23 @@
 package io.dataease.plugins.common.constants;
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.db2;
 
 public class Db2Constants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = db2.getKeywordPrefix() + "%s" + db2.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + db2.getKeywordPrefix() + "%s" + db2.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = db2.getAliasPrefix() + "%s" + db2.getAliasSuffix();
 
     public static final String UNIX_TIMESTAMP = "BIGINT(TIMESTAMPDIFF(2,CHAR(%s -TIMESTAMP('1970-01-01 08:00:00'))))";
 
     public static final String DATE_FORMAT = "TO_CHAR(TIMESTAMP(%s),'%s')";
 
     public static final String FROM_UNIXTIME = "TO_CHAR(TIMESTAMP('1970-01-01 08:00:00') +(%s)SECONDS, '%s')";
+
+    public static final String FORMAT_TIME = "TO_CHAR(TIMESTAMP(CAST(CONCAT('1970-01-01 ',%s) AS VARCHAR)),'%s') ";
 
     public static final String STR_TO_DATE = "timestamp(trim(char(%s)))";
 
@@ -39,7 +43,7 @@ public class Db2Constants extends SQLConstants {
 
     public static final String NAME = "db2";
 
-    static {
-        ConstantsUtil.add(Db2Constants.class);
-    }
+    public static final String GROUP_CONCAT = "LISTAGG(%s, ',')";
+
+
 }

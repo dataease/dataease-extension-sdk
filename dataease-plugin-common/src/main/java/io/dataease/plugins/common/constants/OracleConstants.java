@@ -1,10 +1,11 @@
 package io.dataease.plugins.common.constants;
 
 
-import io.dataease.plugins.common.util.ConstantsUtil;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.oracle;
+
 public class OracleConstants extends SQLConstants {
+
     public static final String KEYWORD_TABLE = oracle.getKeywordPrefix() + "%s" + oracle.getKeywordSuffix();
 
     public static final String KEYWORD_FIX = "%s." + oracle.getKeywordPrefix() + "%s" + oracle.getKeywordSuffix();
@@ -49,9 +50,10 @@ public class OracleConstants extends SQLConstants {
 
     public static final String CALC_SUB = "%s - %s";
 
+    // public static final String GROUP_CONCAT = "vm_concat(%s)";
+    public static final String GROUP_CONCAT = "to_char(listagg(%s,',' ) within GROUP (order by (%s)))";
+
     public static final String NAME = "oracle";
 
-    static {
-        ConstantsUtil.add(OracleConstants.class);
-    }
+
 }
