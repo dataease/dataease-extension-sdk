@@ -1,6 +1,6 @@
 package io.dataease.plugins.common.constants.engine;
 
-import io.dataease.plugins.common.constants.SQLConstants;
+import io.dataease.plugins.common.constants.datasource.SQLConstants;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.engine_doris;
 

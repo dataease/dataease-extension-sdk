@@ -1,4 +1,4 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.db2;

@@ -60,8 +60,9 @@
         </javaClientGenerator>
 
         <!--要生成的数据库表 -->
-
-        <table tableName="chart_view"/>
-        <table tableName="chart_view_cache"/>
+        <table tableName="dataset_table">
+            <columnOverride column="info"   javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="sql_variable_details"   javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
     </context>
 </generatorConfiguration>

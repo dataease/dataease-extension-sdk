@@ -1,6 +1,6 @@
 package io.dataease.plugins.view.handler.impl;
 
-import io.dataease.plugins.common.constants.SQLConstants;
+import io.dataease.plugins.common.constants.datasource.SQLConstants;
 import io.dataease.plugins.common.util.ConstantsUtil;
 import io.dataease.plugins.view.entity.*;
 import io.dataease.plugins.view.handler.PluginViewStatHandler;

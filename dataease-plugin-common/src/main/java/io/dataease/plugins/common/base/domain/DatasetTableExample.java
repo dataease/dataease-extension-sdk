@@ -514,6 +514,76 @@ public class DatasetTableExample {
             return (Criteria) this;
         }
 
+        public Criteria andInfoIsNull() {
+            addCriterion("info is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoIsNotNull() {
+            addCriterion("info is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoEqualTo(String value) {
+            addCriterion("info =", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoNotEqualTo(String value) {
+            addCriterion("info <>", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoGreaterThan(String value) {
+            addCriterion("info >", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoGreaterThanOrEqualTo(String value) {
+            addCriterion("info >=", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoLessThan(String value) {
+            addCriterion("info <", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoLessThanOrEqualTo(String value) {
+            addCriterion("info <=", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoLike(String value) {
+            addCriterion("info like", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoNotLike(String value) {
+            addCriterion("info not like", value, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoIn(List<String> values) {
+            addCriterion("info in", values, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoNotIn(List<String> values) {
+            addCriterion("info not in", values, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoBetween(String value1, String value2) {
+            addCriterion("info between", value1, value2, "info");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfoNotBetween(String value1, String value2) {
+            addCriterion("info not between", value1, value2, "info");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateByIsNull() {
             addCriterion("create_by is null");
             return (Criteria) this;
@@ -841,6 +911,76 @@ public class DatasetTableExample {
 
         public Criteria andLastUpdateTimeNotBetween(Long value1, Long value2) {
             addCriterion("last_update_time not between", value1, value2, "lastUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsIsNull() {
+            addCriterion("sql_variable_details is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsIsNotNull() {
+            addCriterion("sql_variable_details is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsEqualTo(String value) {
+            addCriterion("sql_variable_details =", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsNotEqualTo(String value) {
+            addCriterion("sql_variable_details <>", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsGreaterThan(String value) {
+            addCriterion("sql_variable_details >", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsGreaterThanOrEqualTo(String value) {
+            addCriterion("sql_variable_details >=", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsLessThan(String value) {
+            addCriterion("sql_variable_details <", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsLessThanOrEqualTo(String value) {
+            addCriterion("sql_variable_details <=", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsLike(String value) {
+            addCriterion("sql_variable_details like", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsNotLike(String value) {
+            addCriterion("sql_variable_details not like", value, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsIn(List<String> values) {
+            addCriterion("sql_variable_details in", values, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsNotIn(List<String> values) {
+            addCriterion("sql_variable_details not in", values, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsBetween(String value1, String value2) {
+            addCriterion("sql_variable_details between", value1, value2, "sqlVariableDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andSqlVariableDetailsNotBetween(String value1, String value2) {
+            addCriterion("sql_variable_details not between", value1, value2, "sqlVariableDetails");
             return (Criteria) this;
         }
     }

@@ -1,6 +1,8 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 
+
+import io.dataease.plugins.common.constants.DatasourceTypes;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.ds_doris;
 

@@ -1,15 +1,14 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
+import static io.dataease.plugins.common.constants.DatasourceTypes.ck;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.mongo;
+public class CKConstants extends SQLConstants {
 
-public class MongoConstants extends SQLConstants {
+    public static final String KEYWORD_TABLE = ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
 
-    public static final String KEYWORD_TABLE = "%s";
+    public static final String KEYWORD_FIX = "%s." + ck.getKeywordPrefix() + "%s" + ck.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + mongo.getKeywordPrefix() + "%s" + mongo.getKeywordSuffix();
-
-    public static final String ALIAS_FIX = mongo.getAliasPrefix() + "%s" + mongo.getAliasSuffix();
+    public static final String ALIAS_FIX = ck.getAliasPrefix() + "%s" + ck.getAliasSuffix();
 
     public static final String toInt32 = "toInt32(%s)";
 
@@ -37,9 +36,9 @@ public class MongoConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
-    public static final String NAME = "mongo";
+    public static final String NAME = "ck";
 
-    public static final String GROUP_CONCAT = "listagg(%s, ',')";
+    public static final String GROUP_CONCAT = "arrayStringConcat(groupArray(%s), ',')";
 
 
 }

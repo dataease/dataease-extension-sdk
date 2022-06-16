@@ -1,7 +1,6 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 import static io.dataease.plugins.common.constants.DatasourceTypes.sqlServer;
 
 public class SqlServerSQLConstants extends SQLConstants {

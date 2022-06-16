@@ -8,14 +8,13 @@
     <result column="data_source_id" jdbcType="VARCHAR" property="dataSourceId" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="mode" jdbcType="INTEGER" property="mode" />
+    <result column="info" jdbcType="VARCHAR" property="info" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="qrtz_instance" jdbcType="VARCHAR" property="qrtzInstance" />
     <result column="sync_status" jdbcType="VARCHAR" property="syncStatus" />
     <result column="last_update_time" jdbcType="BIGINT" property="lastUpdateTime" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.dataease.plugins.common.base.domain.DatasetTable">
-    <result column="info" jdbcType="LONGVARCHAR" property="info" />
+    <result column="sql_variable_details" jdbcType="VARCHAR" property="sqlVariableDetails" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,28 +75,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, scene_id, data_source_id, `type`, `mode`, create_by, create_time, qrtz_instance, 
-    sync_status, last_update_time
+    id, `name`, scene_id, data_source_id, `type`, `mode`, info, create_by, create_time, 
+    qrtz_instance, sync_status, last_update_time, sql_variable_details
   </sql>
-  <sql id="Blob_Column_List">
-    info
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="io.dataease.plugins.common.base.domain.DatasetTableExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from dataset_table
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.DatasetTableExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -112,11 +92,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from dataset_table
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -133,14 +111,14 @@
   <insert id="insert" parameterType="io.dataease.plugins.common.base.domain.DatasetTable">
     insert into dataset_table (id, `name`, scene_id, 
       data_source_id, `type`, `mode`, 
-      create_by, create_time, qrtz_instance, 
-      sync_status, last_update_time, info
-      )
+      info, create_by, create_time, 
+      qrtz_instance, sync_status, last_update_time, 
+      sql_variable_details)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sceneId,jdbcType=VARCHAR}, 
       #{dataSourceId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{mode,jdbcType=INTEGER}, 
-      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{qrtzInstance,jdbcType=VARCHAR}, 
-      #{syncStatus,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=BIGINT}, #{info,jdbcType=LONGVARCHAR}
-      )
+      #{info,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{qrtzInstance,jdbcType=VARCHAR}, #{syncStatus,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=BIGINT}, 
+      #{sqlVariableDetails,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.DatasetTable">
     insert into dataset_table
@@ -163,6 +141,9 @@
       <if test="mode != null">
         `mode`,
       </if>
+      <if test="info != null">
+        info,
+      </if>
       <if test="createBy != null">
         create_by,
       </if>
@@ -178,8 +159,8 @@
       <if test="lastUpdateTime != null">
         last_update_time,
       </if>
-      <if test="info != null">
-        info,
+      <if test="sqlVariableDetails != null">
+        sql_variable_details,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -201,6 +182,9 @@
       <if test="mode != null">
         #{mode,jdbcType=INTEGER},
       </if>
+      <if test="info != null">
+        #{info,jdbcType=VARCHAR},
+      </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
@@ -216,8 +200,8 @@
       <if test="lastUpdateTime != null">
         #{lastUpdateTime,jdbcType=BIGINT},
       </if>
-      <if test="info != null">
-        #{info,jdbcType=LONGVARCHAR},
+      <if test="sqlVariableDetails != null">
+        #{sqlVariableDetails,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -248,6 +232,9 @@
       <if test="record.mode != null">
         `mode` = #{record.mode,jdbcType=INTEGER},
       </if>
+      <if test="record.info != null">
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
       <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
       </if>
@@ -263,28 +250,10 @@
       <if test="record.lastUpdateTime != null">
         last_update_time = #{record.lastUpdateTime,jdbcType=BIGINT},
       </if>
-      <if test="record.info != null">
-        info = #{record.info,jdbcType=LONGVARCHAR},
+      <if test="record.sqlVariableDetails != null">
+        sql_variable_details = #{record.sqlVariableDetails,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update dataset_table
-    set id = #{record.id,jdbcType=VARCHAR},
-      `name` = #{record.name,jdbcType=VARCHAR},
-      scene_id = #{record.sceneId,jdbcType=VARCHAR},
-      data_source_id = #{record.dataSourceId,jdbcType=VARCHAR},
-      `type` = #{record.type,jdbcType=VARCHAR},
-      `mode` = #{record.mode,jdbcType=INTEGER},
-      create_by = #{record.createBy,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=BIGINT},
-      qrtz_instance = #{record.qrtzInstance,jdbcType=VARCHAR},
-      sync_status = #{record.syncStatus,jdbcType=VARCHAR},
-      last_update_time = #{record.lastUpdateTime,jdbcType=BIGINT},
-      info = #{record.info,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -297,11 +266,13 @@
       data_source_id = #{record.dataSourceId,jdbcType=VARCHAR},
       `type` = #{record.type,jdbcType=VARCHAR},
       `mode` = #{record.mode,jdbcType=INTEGER},
+      info = #{record.info,jdbcType=VARCHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       qrtz_instance = #{record.qrtzInstance,jdbcType=VARCHAR},
       sync_status = #{record.syncStatus,jdbcType=VARCHAR},
-      last_update_time = #{record.lastUpdateTime,jdbcType=BIGINT}
+      last_update_time = #{record.lastUpdateTime,jdbcType=BIGINT},
+      sql_variable_details = #{record.sqlVariableDetails,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -324,6 +295,9 @@
       <if test="mode != null">
         `mode` = #{mode,jdbcType=INTEGER},
       </if>
+      <if test="info != null">
+        info = #{info,jdbcType=VARCHAR},
+      </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
@@ -339,25 +313,10 @@
       <if test="lastUpdateTime != null">
         last_update_time = #{lastUpdateTime,jdbcType=BIGINT},
       </if>
-      <if test="info != null">
-        info = #{info,jdbcType=LONGVARCHAR},
+      <if test="sqlVariableDetails != null">
+        sql_variable_details = #{sqlVariableDetails,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="io.dataease.plugins.common.base.domain.DatasetTable">
-    update dataset_table
-    set `name` = #{name,jdbcType=VARCHAR},
-      scene_id = #{sceneId,jdbcType=VARCHAR},
-      data_source_id = #{dataSourceId,jdbcType=VARCHAR},
-      `type` = #{type,jdbcType=VARCHAR},
-      `mode` = #{mode,jdbcType=INTEGER},
-      create_by = #{createBy,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT},
-      qrtz_instance = #{qrtzInstance,jdbcType=VARCHAR},
-      sync_status = #{syncStatus,jdbcType=VARCHAR},
-      last_update_time = #{lastUpdateTime,jdbcType=BIGINT},
-      info = #{info,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="io.dataease.plugins.common.base.domain.DatasetTable">
@@ -367,11 +326,13 @@
       data_source_id = #{dataSourceId,jdbcType=VARCHAR},
       `type` = #{type,jdbcType=VARCHAR},
       `mode` = #{mode,jdbcType=INTEGER},
+      info = #{info,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       qrtz_instance = #{qrtzInstance,jdbcType=VARCHAR},
       sync_status = #{syncStatus,jdbcType=VARCHAR},
-      last_update_time = #{lastUpdateTime,jdbcType=BIGINT}
+      last_update_time = #{lastUpdateTime,jdbcType=BIGINT},
+      sql_variable_details = #{sqlVariableDetails,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

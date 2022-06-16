@@ -1,15 +1,18 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.hive;
 
-public class HiveConstants extends SQLConstants {
-    public static final String KEYWORD_TABLE = hive.getKeywordPrefix() + "%s" + hive.getKeywordSuffix();
 
-    public static final String KEYWORD_FIX = "%s." + hive.getKeywordPrefix() + "%s" + hive.getKeywordSuffix();
+import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 
-    public static final String ALIAS_FIX = hive.getAliasPrefix() + "%s" + hive.getAliasSuffix();
+public class MySQLConstants extends SQLConstants {
 
-    public static final String UNIX_TIMESTAMP = "unix_timestamp(%s)";
+    public static final String KEYWORD_TABLE = mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
+
+    public static final String KEYWORD_FIX = "%s." + mysql.getKeywordPrefix() + "%s" + mysql.getKeywordSuffix();
+
+    public static final String ALIAS_FIX = mysql.getAliasPrefix() + "%s" + mysql.getAliasSuffix();
+
+    public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
     public static final String DATE_FORMAT = "DATE_FORMAT(%s,'%s')";
 
@@ -19,7 +22,7 @@ public class HiveConstants extends SQLConstants {
 
     public static final String CAST = "CAST(%s AS %s)";
 
-    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_DATE_FORMAT = "%Y-%m-%d %H:%i:%S";
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
@@ -37,9 +40,8 @@ public class HiveConstants extends SQLConstants {
 
     public static final String BRACKETS = "(%s)";
 
-    public static final String GROUP_CONCAT = "concat_ws(',' ,collect_list(%s))";
+    public static final String NAME = "mysql";
 
-    public static final String NAME = "hive";
-
+    public static final String GROUP_CONCAT = "group_concat(%s)";
 
 }
