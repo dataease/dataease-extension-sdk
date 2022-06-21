@@ -37,14 +37,14 @@ public abstract class DefaultJdbcProvider extends Provider {
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
-            if (getType().equalsIgnoreCase("maxcompute") || getType().equalsIgnoreCase("presto")) {
+            if (getType().equalsIgnoreCase("maxcompute") || getType().equalsIgnoreCase("presto") || getType().equalsIgnoreCase("dm")) {
                 jarPath = DEFAULT_PATH + "/" + getType() + "Driver";
             } else {
                 jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
             }
-            while (classLoader.getParent() != null){
+            while (classLoader.getParent() != null) {
                 classLoader = classLoader.getParent();
-                if(classLoader.toString().contains("ExtClassLoader")){
+                if (classLoader.toString().contains("ExtClassLoader")) {
                     break;
                 }
             }
@@ -323,8 +323,8 @@ public abstract class DefaultJdbcProvider extends Provider {
         return null;
     }
 
-    public void reloadCustomJdbcClassLoader(DeDriver deDriver) throws Exception{
-        if(customJdbcClassLoaders.get(deDriver.getId()) != null){
+    public void reloadCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+        if (customJdbcClassLoaders.get(deDriver.getId()) != null) {
             customJdbcClassLoaders.remove(deDriver.getId());
         }
         addCustomJdbcClassLoader(deDriver);
@@ -450,9 +450,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     private synchronized ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
 
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        while (classLoader.getParent() != null){
+        while (classLoader.getParent() != null) {
             classLoader = classLoader.getParent();
-            if(classLoader.toString().contains("ExtClassLoader")){
+            if (classLoader.toString().contains("ExtClassLoader")) {
                 break;
             }
         }
