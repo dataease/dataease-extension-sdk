@@ -13,6 +13,7 @@ public class DataSourceType {
     public DatasourceCalculationMode calculationMode = DatasourceCalculationMode.DIRECT;
     public String extraParams;
     public List<String> charset;
+    public List<String> targetCharset;
     public boolean isJdbc = false;
 
     public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode,boolean isJdbc){
