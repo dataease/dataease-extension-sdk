@@ -17,7 +17,9 @@ public class Db2Constants extends SQLConstants {
 
     public static final String FROM_UNIXTIME = "TO_CHAR(TIMESTAMP('1970-01-01 08:00:00') +(%s)SECONDS, '%s')";
 
-    public static final String FORMAT_TIME = "TO_CHAR(TIMESTAMP(CAST(CONCAT('1970-01-01 ',%s) AS VARCHAR)),'%s') ";
+    public static final String FORMAT_TIME = "TO_CHAR(TIMESTAMP(REPLACE(CONCAT('1970-01-01 ',%s),'.',':') ),'%s')";
+
+    public static final String FORMAT_DATE = "TO_CHAR(TIMESTAMP(CONCAT(%s, ' 00:00:00')),'%s') ";
 
     public static final String STR_TO_DATE = "timestamp(trim(char(%s)))";
 
