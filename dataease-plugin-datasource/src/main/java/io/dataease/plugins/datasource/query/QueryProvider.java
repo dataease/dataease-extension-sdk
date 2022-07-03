@@ -100,4 +100,12 @@ public abstract class QueryProvider {
         }
         return "AND";
     }
+
+    public String transFilter(ChartExtFilterRequest chartExtFilterRequest){
+        if (chartExtFilterRequest.getOperator().equals("in")) {
+            return "('" + String.join("','", chartExtFilterRequest.getValue()) + "')";
+        } else {
+            return chartExtFilterRequest.getValue().get(0);
+        }
+    }
 }
