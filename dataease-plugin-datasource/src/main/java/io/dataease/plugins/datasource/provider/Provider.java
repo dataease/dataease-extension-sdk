@@ -1,6 +1,7 @@
 package io.dataease.plugins.datasource.provider;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import io.dataease.plugins.common.base.domain.Datasource;
 import io.dataease.plugins.common.dto.datasource.TableDesc;
 import io.dataease.plugins.common.dto.datasource.TableField;
 import io.dataease.plugins.common.request.datasource.DatasourceRequest;
@@ -65,4 +66,6 @@ public abstract class Provider {
 
     public void addToPool(DatasourceRequest datasourceRequest) throws PropertyVetoException, SQLException, Exception {
     }
+
+    public void checkConfiguration(Datasource datasource) throws Exception{}
 }

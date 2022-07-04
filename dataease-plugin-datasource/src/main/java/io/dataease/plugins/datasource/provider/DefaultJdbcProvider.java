@@ -4,6 +4,7 @@ import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.wall.WallFilter;
 import com.google.gson.Gson;
+import io.dataease.plugins.common.base.domain.Datasource;
 import io.dataease.plugins.common.base.domain.DeDriver;
 import io.dataease.plugins.common.constants.DatasourceTypes;
 import io.dataease.plugins.common.dto.datasource.TableDesc;
@@ -499,6 +500,18 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     protected boolean isDefaultClassLoader(String customDriver) {
         return StringUtils.isEmpty(customDriver) || customDriver.equalsIgnoreCase("default");
+    }
+
+    @Override
+    public void checkConfiguration(Datasource datasource)throws Exception{
+        if (StringUtils.isEmpty(datasource.getConfiguration())){
+            throw new Exception("Datasource configuration is empty");
+        }
+        try {
+            JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasource.getConfiguration(), JdbcConfiguration.class);
+        }catch (Exception e){
+            throw new Exception("Invalid configuration: " + e.getMessage());
+        }
     }
 
 }
