@@ -90,7 +90,10 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     public Statement getStatement(Connection connection, int queryTimeout) throws Exception{
         Statement stat = connection.createStatement();
-        stat.setQueryTimeout(queryTimeout);
+       try {
+           stat.setQueryTimeout(queryTimeout);
+       }catch (Exception e){
+       }
         return stat;
     }
 
