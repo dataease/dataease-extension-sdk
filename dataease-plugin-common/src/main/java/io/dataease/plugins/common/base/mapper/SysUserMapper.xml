@@ -20,6 +20,7 @@
     <result column="language" jdbcType="VARCHAR" property="language" />
     <result column="from" jdbcType="INTEGER" property="from" />
     <result column="sub" jdbcType="VARCHAR" property="sub" />
+    <result column="phone_prefix" jdbcType="VARCHAR" property="phonePrefix" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,7 +83,7 @@
   <sql id="Base_Column_List">
     user_id, dept_id, username, nick_name, gender, phone, email, `password`, is_admin, 
     enabled, create_by, update_by, pwd_reset_time, create_time, update_time, `language`, 
-    `from`, sub
+    `from`, sub, phone_prefix
   </sql>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.SysUserExample" resultMap="BaseResultMap">
     select
@@ -120,15 +121,15 @@
       email, `password`, is_admin, 
       enabled, create_by, update_by, 
       pwd_reset_time, create_time, update_time, 
-      `language`, `from`, sub
-      )
+      `language`, `from`, sub, 
+      phone_prefix)
     values (#{userId,jdbcType=BIGINT}, #{deptId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
       #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{isAdmin,jdbcType=BIT}, 
       #{enabled,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
       #{pwdResetTime,jdbcType=BIGINT}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
-      #{language,jdbcType=VARCHAR}, #{from,jdbcType=INTEGER}, #{sub,jdbcType=VARCHAR}
-      )
+      #{language,jdbcType=VARCHAR}, #{from,jdbcType=INTEGER}, #{sub,jdbcType=VARCHAR}, 
+      #{phonePrefix,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.SysUser">
     insert into sys_user
@@ -187,6 +188,9 @@
       <if test="sub != null">
         sub,
       </if>
+      <if test="phonePrefix != null">
+        phone_prefix,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -242,6 +246,9 @@
       </if>
       <if test="sub != null">
         #{sub,jdbcType=VARCHAR},
+      </if>
+      <if test="phonePrefix != null">
+        #{phonePrefix,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -308,6 +315,9 @@
       <if test="record.sub != null">
         sub = #{record.sub,jdbcType=VARCHAR},
       </if>
+      <if test="record.phonePrefix != null">
+        phone_prefix = #{record.phonePrefix,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -332,7 +342,8 @@
       update_time = #{record.updateTime,jdbcType=BIGINT},
       `language` = #{record.language,jdbcType=VARCHAR},
       `from` = #{record.from,jdbcType=INTEGER},
-      sub = #{record.sub,jdbcType=VARCHAR}
+      sub = #{record.sub,jdbcType=VARCHAR},
+      phone_prefix = #{record.phonePrefix,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -391,6 +402,9 @@
       <if test="sub != null">
         sub = #{sub,jdbcType=VARCHAR},
       </if>
+      <if test="phonePrefix != null">
+        phone_prefix = #{phonePrefix,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
@@ -412,7 +426,8 @@
       update_time = #{updateTime,jdbcType=BIGINT},
       `language` = #{language,jdbcType=VARCHAR},
       `from` = #{from,jdbcType=INTEGER},
-      sub = #{sub,jdbcType=VARCHAR}
+      sub = #{sub,jdbcType=VARCHAR},
+      phone_prefix = #{phonePrefix,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
 </mapper>
