@@ -35,10 +35,11 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     @PostConstruct
     public void init() throws Exception {
+        List<String> builtinPlugins = Arrays.asList("maxcompute", "presto", "dm", "mongobi");
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
-            if (getType().equalsIgnoreCase("maxcompute") || getType().equalsIgnoreCase("presto") || getType().equalsIgnoreCase("dm")) {
+            if (builtinPlugins.contains(getType())) {
                 jarPath = DEFAULT_PATH + "/" + getType() + "Driver";
             } else {
                 jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
