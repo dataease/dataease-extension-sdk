@@ -1283,6 +1283,76 @@ public class SysUserExample {
             addCriterion("sub not between", value1, value2, "sub");
             return (Criteria) this;
         }
+
+        public Criteria andPhonePrefixIsNull() {
+            addCriterion("phone_prefix is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixIsNotNull() {
+            addCriterion("phone_prefix is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixEqualTo(String value) {
+            addCriterion("phone_prefix =", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixNotEqualTo(String value) {
+            addCriterion("phone_prefix <>", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixGreaterThan(String value) {
+            addCriterion("phone_prefix >", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixGreaterThanOrEqualTo(String value) {
+            addCriterion("phone_prefix >=", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixLessThan(String value) {
+            addCriterion("phone_prefix <", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixLessThanOrEqualTo(String value) {
+            addCriterion("phone_prefix <=", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixLike(String value) {
+            addCriterion("phone_prefix like", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixNotLike(String value) {
+            addCriterion("phone_prefix not like", value, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixIn(List<String> values) {
+            addCriterion("phone_prefix in", values, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixNotIn(List<String> values) {
+            addCriterion("phone_prefix not in", values, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixBetween(String value1, String value2) {
+            addCriterion("phone_prefix between", value1, value2, "phonePrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhonePrefixNotBetween(String value1, String value2) {
+            addCriterion("phone_prefix not between", value1, value2, "phonePrefix");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
