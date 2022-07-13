@@ -15,8 +15,12 @@ public class DataSourceType {
     public List<String> charset;
     public List<String> targetCharset;
     public boolean isJdbc = false;
+    private String keywordPrefix = "";
+    private String keywordSuffix = "";
+    private String aliasPrefix = "";
+    private String aliasSuffix = "";
 
-    public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode,boolean isJdbc){
+    public DataSourceType(String type, String name, boolean isPlugin, String extraParams, DatasourceCalculationMode calculationMode, boolean isJdbc) {
         this.type = type;
         this.name = name;
         this.isPlugin = isPlugin;
