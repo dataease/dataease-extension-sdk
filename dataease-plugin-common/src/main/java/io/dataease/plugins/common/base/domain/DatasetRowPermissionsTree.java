@@ -11,9 +11,9 @@ public class DatasetRowPermissionsTree implements Serializable {
     private String id;
     @ApiModelProperty("是否禁用")
     private Boolean enable;
-    @ApiModelProperty("授权主体的类型：dept/role/user")
+    @ApiModelProperty("授权主体的类型：dept/role/user/sysParams")
     private String authTargetType;
-    @ApiModelProperty("授权主体的ID：组织ID/角色ID/用户ID")
+    @ApiModelProperty("授权主体的ID：组织ID/角色ID/用户ID，authTargetType为sysParams时，该值传null")
     private Long authTargetId;
     @ApiModelProperty("数据集ID")
     private String datasetId;
