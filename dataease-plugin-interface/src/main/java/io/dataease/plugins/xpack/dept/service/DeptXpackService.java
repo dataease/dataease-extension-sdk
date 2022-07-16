@@ -24,8 +24,8 @@ public abstract class DeptXpackService extends PluginMenuService {
 
     public abstract void move(XpackMoveDept xpackMoveDept);
     public abstract void bindUser(XpackDeptBindRequest request);
-    public abstract void unBindUsers(XpackDeptUnBindRequest request);
-    public abstract List<DeptUserItemDTO> queryBinded(XpackDeptUserRequest request);
+    public abstract void unBindUsers(XpackDeptBindRequest request);
+    public abstract List<DeptUserItemDTO> queryBinded(XpackDeptUserRequest request, boolean isPage);
 
 
 }
