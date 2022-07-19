@@ -20,7 +20,7 @@ public class CKConstants extends SQLConstants {
 
     public static final String formatDateTime = "formatDateTime(%s,'%s')";
 
-    public static final String toDecimal = "toDecimal64(%s,2)";
+    public static final String toDecimal = "toDecimal64(%s,8)";
 
     public static final String DEFAULT_DATE_FORMAT = "%Y-%m-%d %H:%M:%S";
 

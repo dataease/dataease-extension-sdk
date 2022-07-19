@@ -23,7 +23,7 @@ public class ImpalaConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "BIGINT";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 
