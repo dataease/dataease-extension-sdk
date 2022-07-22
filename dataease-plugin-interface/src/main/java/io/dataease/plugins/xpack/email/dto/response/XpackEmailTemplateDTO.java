@@ -20,5 +20,7 @@ public class XpackEmailTemplateDTO implements Serializable{
     private Long taskId;
 
     private byte[] content;
+
+    private String viewIds;
     
 }
