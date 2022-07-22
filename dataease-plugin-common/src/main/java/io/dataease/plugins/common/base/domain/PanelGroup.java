@@ -33,5 +33,9 @@ public class PanelGroup implements Serializable {
 
     private String status;
 
+    private String updateBy;
+
+    private Long updateTime;
+
     private static final long serialVersionUID = 1L;
 }
