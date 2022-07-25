@@ -16,6 +16,8 @@
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="mobile_layout" jdbcType="BIT" property="mobileLayout" />
     <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.dataease.plugins.common.base.domain.PanelGroupWithBLOBs">
     <result column="panel_style" jdbcType="LONGVARCHAR" property="panelStyle" />
@@ -81,7 +83,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, `name`, pid, `level`, node_type, create_by, create_time, panel_type, `source`, 
-    extend1, extend2, remark, mobile_layout, `status`
+    extend1, extend2, remark, mobile_layout, `status`, update_by, update_time
   </sql>
   <sql id="Blob_Column_List">
     panel_style, panel_data
@@ -139,14 +141,16 @@
       `level`, node_type, create_by, 
       create_time, panel_type, `source`, 
       extend1, extend2, remark, 
-      mobile_layout, `status`, panel_style, 
-      panel_data)
+      mobile_layout, `status`, update_by, 
+      update_time, panel_style, panel_data
+      )
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
       #{level,jdbcType=INTEGER}, #{nodeType,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=BIGINT}, #{panelType,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
       #{extend1,jdbcType=VARCHAR}, #{extend2,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{mobileLayout,jdbcType=BIT}, #{status,jdbcType=VARCHAR}, #{panelStyle,jdbcType=LONGVARCHAR}, 
-      #{panelData,jdbcType=LONGVARCHAR})
+      #{mobileLayout,jdbcType=BIT}, #{status,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=BIGINT}, #{panelStyle,jdbcType=LONGVARCHAR}, #{panelData,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.PanelGroupWithBLOBs">
     insert into panel_group
@@ -192,6 +196,12 @@
       </if>
       <if test="status != null">
         `status`,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
       </if>
       <if test="panelStyle != null">
         panel_style,
@@ -242,6 +252,12 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
       </if>
       <if test="panelStyle != null">
         #{panelStyle,jdbcType=LONGVARCHAR},
@@ -302,6 +318,12 @@
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=VARCHAR},
       </if>
+      <if test="record.updateBy != null">
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=BIGINT},
+      </if>
       <if test="record.panelStyle != null">
         panel_style = #{record.panelStyle,jdbcType=LONGVARCHAR},
       </if>
@@ -329,6 +351,8 @@
       remark = #{record.remark,jdbcType=VARCHAR},
       mobile_layout = #{record.mobileLayout,jdbcType=BIT},
       `status` = #{record.status,jdbcType=VARCHAR},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=BIGINT},
       panel_style = #{record.panelStyle,jdbcType=LONGVARCHAR},
       panel_data = #{record.panelData,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -350,7 +374,9 @@
       extend2 = #{record.extend2,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR},
       mobile_layout = #{record.mobileLayout,jdbcType=BIT},
-      `status` = #{record.status,jdbcType=VARCHAR}
+      `status` = #{record.status,jdbcType=VARCHAR},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -397,6 +423,12 @@
       <if test="status != null">
         `status` = #{status,jdbcType=VARCHAR},
       </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
       <if test="panelStyle != null">
         panel_style = #{panelStyle,jdbcType=LONGVARCHAR},
       </if>
@@ -421,6 +453,8 @@
       remark = #{remark,jdbcType=VARCHAR},
       mobile_layout = #{mobileLayout,jdbcType=BIT},
       `status` = #{status,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=BIGINT},
       panel_style = #{panelStyle,jdbcType=LONGVARCHAR},
       panel_data = #{panelData,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
@@ -439,7 +473,9 @@
       extend2 = #{extend2,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       mobile_layout = #{mobileLayout,jdbcType=BIT},
-      `status` = #{status,jdbcType=VARCHAR}
+      `status` = #{status,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
