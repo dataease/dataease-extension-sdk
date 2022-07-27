@@ -23,6 +23,8 @@ public class XpackBaseTreeRequest {
 
     private String withAuth;//需要根据权限返回
 
+    private String modelInnerType;
+
 
     public XpackBaseTreeRequest() {
     }
