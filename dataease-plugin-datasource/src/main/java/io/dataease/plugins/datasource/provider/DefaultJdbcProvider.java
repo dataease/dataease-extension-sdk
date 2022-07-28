@@ -90,6 +90,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     }
 
     public Statement getStatement(Connection connection, int queryTimeout) throws Exception{
+        if(connection == null){
+            throw new Exception("Failed to get connection!");
+        }
         Statement stat = connection.createStatement();
        try {
            stat.setQueryTimeout(queryTimeout);
