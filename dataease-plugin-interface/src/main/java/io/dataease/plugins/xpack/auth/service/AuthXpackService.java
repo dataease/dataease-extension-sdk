@@ -1,5 +1,6 @@
 package io.dataease.plugins.xpack.auth.service;
 
+import io.dataease.plugins.common.dto.DatasourceBaseType;
 import io.dataease.plugins.common.service.PluginMenuService;
 import io.dataease.plugins.xpack.auth.dto.request.XpackBaseTreeRequest;
 import io.dataease.plugins.xpack.auth.dto.request.XpackSysAuthRequest;
@@ -18,4 +19,6 @@ public abstract class AuthXpackService extends PluginMenuService {
     public abstract List<XpackSysAuthDetail> searchAuthDetailsModel(String authType);
 
     public abstract void authChange(XpackSysAuthRequest request, Long userId, String userName, Boolean isAdmin);
+
+    public abstract List<DatasourceBaseType> getDatasourceTypes();
 }
