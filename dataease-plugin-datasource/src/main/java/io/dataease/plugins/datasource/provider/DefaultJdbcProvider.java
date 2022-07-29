@@ -516,6 +516,9 @@ public abstract class DefaultJdbcProvider extends Provider {
         }
         try {
             JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasource.getConfiguration(), JdbcConfiguration.class);
+            if(jdbcConfiguration.getQueryTimeout() < 0){
+                throw new Exception("Querytimeout cannot be less than zero." );
+            }
         }catch (Exception e){
             throw new Exception("Invalid configuration: " + e.getMessage());
         }
