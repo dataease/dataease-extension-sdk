@@ -61,10 +61,7 @@
 
         <!--要生成的数据库表 -->
 
-        <table tableName="dataset_column_permissions">
-            <columnOverride column="permissions"   javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="white_list_user"   javaType="java.lang.String" jdbcType="VARCHAR"/>
-        </table>
+
 
 
 <!--        <table tableName="dataset_table">-->
@@ -72,6 +69,6 @@
 <!--            <columnOverride column="sql_variable_details"   javaType="java.lang.String" jdbcType="VARCHAR"/>-->
 <!--        </table>-->
 
-        <table tableName="panel_group"/>
+        <table tableName="testtable"/>
     </context>
 </generatorConfiguration>
