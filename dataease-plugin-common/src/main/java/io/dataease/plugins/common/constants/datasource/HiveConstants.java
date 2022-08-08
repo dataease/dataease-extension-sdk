@@ -1,4 +1,4 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.hive;
 
@@ -23,7 +23,7 @@ public class HiveConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 

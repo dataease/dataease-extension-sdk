@@ -1,7 +1,6 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 
-import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 import static io.dataease.plugins.common.constants.DatasourceTypes.sqlServer;
 
 public class SqlServerSQLConstants extends SQLConstants {
@@ -26,7 +25,7 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 

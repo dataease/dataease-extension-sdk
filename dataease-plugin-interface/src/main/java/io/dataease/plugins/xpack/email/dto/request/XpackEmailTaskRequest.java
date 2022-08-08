@@ -20,4 +20,6 @@ public class XpackEmailTaskRequest extends XpackTaskCreateRequest {
     private Long taskId;
 
     private byte[] content;
+
+    private String viewIds;
 }

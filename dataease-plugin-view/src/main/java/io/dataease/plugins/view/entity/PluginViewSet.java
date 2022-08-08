@@ -14,4 +14,6 @@ public class PluginViewSet {
     private Integer mode;
 
     private String tabelId;
+
+    private String sqlVariableDetails;
 }

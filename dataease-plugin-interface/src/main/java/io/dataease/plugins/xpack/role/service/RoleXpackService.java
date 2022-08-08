@@ -2,6 +2,9 @@ package io.dataease.plugins.xpack.role.service;
 
 import io.dataease.plugins.common.entity.XpackGridRequest;
 import io.dataease.plugins.common.service.PluginMenuService;
+import io.dataease.plugins.xpack.role.dto.request.RoleUserMappingRequest;
+import io.dataease.plugins.xpack.role.dto.request.RoleUserRequest;
+import io.dataease.plugins.xpack.role.dto.response.RoleUserItem;
 import io.dataease.plugins.xpack.role.dto.response.XpackRoleDto;
 import io.dataease.plugins.xpack.role.dto.response.XpackRoleItemDto;
 
@@ -21,5 +24,11 @@ public abstract class RoleXpackService extends PluginMenuService {
     public abstract List<XpackRoleDto> query(XpackGridRequest request);
 
     public abstract List<XpackRoleItemDto> allRoles();
+
+    public abstract List<RoleUserItem> userItems(RoleUserRequest request);
+
+    public abstract List<Long> addUser(RoleUserMappingRequest request);
+
+    public abstract void batchDelUser(RoleUserMappingRequest request);
 
 }

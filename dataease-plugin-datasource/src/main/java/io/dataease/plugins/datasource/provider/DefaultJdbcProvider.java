@@ -4,6 +4,7 @@ import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.wall.WallFilter;
 import com.google.gson.Gson;
+import io.dataease.plugins.common.base.domain.Datasource;
 import io.dataease.plugins.common.base.domain.DeDriver;
 import io.dataease.plugins.common.constants.DatasourceTypes;
 import io.dataease.plugins.common.dto.datasource.TableDesc;
@@ -34,17 +35,18 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     @PostConstruct
     public void init() throws Exception {
+        List<String> builtinPlugins = Arrays.asList("maxcompute", "presto", "dm", "mongobi");
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
-            if (getType().equalsIgnoreCase("maxcompute") || getType().equalsIgnoreCase("presto")) {
+            if (builtinPlugins.contains(getType())) {
                 jarPath = DEFAULT_PATH + "/" + getType() + "Driver";
             } else {
                 jarPath = THIRDPART_PATH + "/" + getType() + "Driver";
             }
-            while (classLoader.getParent() != null){
+            while (classLoader.getParent() != null) {
                 classLoader = classLoader.getParent();
-                if(classLoader.toString().contains("ExtClassLoader")){
+                if (classLoader.toString().contains("ExtClassLoader")) {
                     break;
                 }
             }
@@ -70,7 +72,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     @Override
     public List<String[]> getData(DatasourceRequest dsr) throws Exception {
         List<String[]> list = new LinkedList<>();
-        try (Connection connection = getConnectionFromPool(dsr); Statement stat = connection.createStatement(); ResultSet rs = stat.executeQuery(dsr.getQuery())) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(dsr.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection connection = getConnectionFromPool(dsr); Statement stat = getStatement(connection, queryTimeout); ResultSet rs = stat.executeQuery(dsr.getQuery())) {
             list = getDataResult(rs);
             if (dsr.isPageable() && (dsr.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.sqlServer.name()) || dsr.getDatasource().getType().equalsIgnoreCase(DatasourceTypes.db2.name()))) {
                 Integer realSize = dsr.getPage() * dsr.getPageSize() < list.size() ? dsr.getPage() * dsr.getPageSize() : list.size();
@@ -83,6 +87,18 @@ public abstract class DefaultJdbcProvider extends Provider {
             DataEaseException.throwException("Data source connection exception: " + e.getMessage());
         }
         return list;
+    }
+
+    public Statement getStatement(Connection connection, int queryTimeout) throws Exception{
+        if(connection == null){
+            throw new Exception("Failed to get connection!");
+        }
+        Statement stat = connection.createStatement();
+       try {
+           stat.setQueryTimeout(queryTimeout);
+       }catch (Exception e){
+       }
+        return stat;
     }
 
     public void exec(DatasourceRequest datasourceRequest) throws Exception {
@@ -99,7 +115,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     public List<TableDesc> getTables(DatasourceRequest datasourceRequest) throws Exception {
         List<TableDesc> tables = new ArrayList<>();
         String queryStr = getTablesSql(datasourceRequest);
-        try (Connection con = getConnectionFromPool(datasourceRequest); Statement statement = con.createStatement(); ResultSet resultSet = statement.executeQuery(queryStr)) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection con = getConnectionFromPool(datasourceRequest); Statement statement = getStatement(con, queryTimeout); ResultSet resultSet = statement.executeQuery(queryStr)) {
             while (resultSet.next()) {
                 tables.add(getTableDesc(datasourceRequest, resultSet));
             }
@@ -108,7 +126,7 @@ public abstract class DefaultJdbcProvider extends Provider {
         }
         String queryView = getViewSql(datasourceRequest);
         if (queryView != null) {
-            try (Connection con = getConnectionFromPool(datasourceRequest); Statement statement = con.createStatement(); ResultSet resultSet = statement.executeQuery(queryView)) {
+            try (Connection con = getConnectionFromPool(datasourceRequest); Statement statement = getStatement(con, queryTimeout); ResultSet resultSet = statement.executeQuery(queryView)) {
                 while (resultSet.next()) {
                     tables.add(getTableDesc(datasourceRequest, resultSet));
                 }
@@ -122,7 +140,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     @Override
     public String checkStatus(DatasourceRequest datasourceRequest) throws Exception {
         String queryStr = getTablesSql(datasourceRequest);
-        try (Connection con = getConnection(datasourceRequest); Statement statement = con.createStatement(); ResultSet resultSet = statement.executeQuery(queryStr)) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection con = getConnection(datasourceRequest); Statement statement = getStatement(con, queryTimeout); ResultSet resultSet = statement.executeQuery(queryStr)) {
         } catch (Exception e) {
             DataEaseException.throwException(e.getMessage());
         }
@@ -131,7 +151,9 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     @Override
     public List<String[]> fetchResult(DatasourceRequest datasourceRequest) throws Exception {
-        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = connection.createStatement(); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = getStatement(connection, queryTimeout); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
             return getDataResult(rs);
         } catch (SQLException e) {
             DataEaseException.throwException(e);
@@ -143,7 +165,9 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     @Override
     public List<TableField> fetchResultField(DatasourceRequest datasourceRequest) throws Exception {
-        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = connection.createStatement(); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = getStatement(connection, queryTimeout); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
             return fetchResultField(rs, datasourceRequest);
         } catch (SQLException e) {
             DataEaseException.throwException(e);
@@ -159,7 +183,9 @@ public abstract class DefaultJdbcProvider extends Provider {
         Map<String, List> result = new HashMap<>();
         List<String[]> dataList;
         List<TableField> fieldList;
-        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = connection.createStatement(); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection connection = getConnectionFromPool(datasourceRequest); Statement stat = getStatement(connection, queryTimeout); ResultSet rs = stat.executeQuery(datasourceRequest.getQuery())) {
             fieldList = fetchResultField(rs, datasourceRequest);
             result.put("fieldList", fieldList);
             dataList = getDataResult(rs);
@@ -212,7 +238,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     public List<String> getSchema(DatasourceRequest datasourceRequest) throws Exception {
         List<String> schemas = new ArrayList<>();
         String queryStr = getSchemaSql(datasourceRequest);
-        try (Connection con = getConnection(datasourceRequest); Statement statement = con.createStatement(); ResultSet resultSet = statement.executeQuery(queryStr)) {
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        int queryTimeout = jdbcConfiguration.getQueryTimeout() > 0 ? jdbcConfiguration.getQueryTimeout() : 0;
+        try (Connection con = getConnection(datasourceRequest); Statement statement = getStatement(con, queryTimeout); ResultSet resultSet = statement.executeQuery(queryStr)) {
             while (resultSet.next()) {
                 schemas.add(resultSet.getString(1));
             }
@@ -323,8 +351,8 @@ public abstract class DefaultJdbcProvider extends Provider {
         return null;
     }
 
-    public void reloadCustomJdbcClassLoader(DeDriver deDriver) throws Exception{
-        if(customJdbcClassLoaders.get(deDriver.getId()) != null){
+    public void reloadCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
+        if (customJdbcClassLoaders.get(deDriver.getId()) != null) {
             customJdbcClassLoaders.remove(deDriver.getId());
         }
         addCustomJdbcClassLoader(deDriver);
@@ -450,9 +478,9 @@ public abstract class DefaultJdbcProvider extends Provider {
     private synchronized ExtendedJdbcClassLoader addCustomJdbcClassLoader(DeDriver deDriver) throws Exception {
 
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        while (classLoader.getParent() != null){
+        while (classLoader.getParent() != null) {
             classLoader = classLoader.getParent();
-            if(classLoader.toString().contains("ExtClassLoader")){
+            if (classLoader.toString().contains("ExtClassLoader")) {
                 break;
             }
         }
@@ -479,6 +507,21 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     protected boolean isDefaultClassLoader(String customDriver) {
         return StringUtils.isEmpty(customDriver) || customDriver.equalsIgnoreCase("default");
+    }
+
+    @Override
+    public void checkConfiguration(Datasource datasource)throws Exception{
+        if (StringUtils.isEmpty(datasource.getConfiguration())){
+            throw new Exception("Datasource configuration is empty");
+        }
+        try {
+            JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasource.getConfiguration(), JdbcConfiguration.class);
+            if(jdbcConfiguration.getQueryTimeout() < 0){
+                throw new Exception("Querytimeout cannot be less than zero." );
+            }
+        }catch (Exception e){
+            throw new Exception("Invalid configuration: " + e.getMessage());
+        }
     }
 
 }

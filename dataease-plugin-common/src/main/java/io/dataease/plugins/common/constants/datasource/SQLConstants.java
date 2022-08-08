@@ -1,4 +1,4 @@
-package io.dataease.plugins.common.constants;
+package io.dataease.plugins.common.constants.datasource;
 
 import java.util.ArrayList;
 import java.util.List;

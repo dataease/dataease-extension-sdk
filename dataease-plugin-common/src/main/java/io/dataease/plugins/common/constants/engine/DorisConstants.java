@@ -1,6 +1,6 @@
 package io.dataease.plugins.common.constants.engine;
 
-import io.dataease.plugins.common.constants.SQLConstants;
+import io.dataease.plugins.common.constants.datasource.SQLConstants;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.engine_doris;
 
@@ -27,7 +27,7 @@ public class DorisConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "BIGINT";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 

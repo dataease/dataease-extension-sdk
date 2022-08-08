@@ -18,4 +18,8 @@ public class XpackSysAuthDetailDTO extends  XpackSysAuthDetail{
     private String authTarget;
 
     private String authTargetType;
+
+    private Integer extPrivilegeValue;
+
+    private String extTargetNames;
 }

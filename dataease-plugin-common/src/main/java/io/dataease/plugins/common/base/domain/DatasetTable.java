@@ -19,6 +19,8 @@ public class DatasetTable implements Serializable {
     private String type;
     @ApiModelProperty("模式")
     private Integer mode;
+    @ApiModelProperty("信息")
+    private String info;
     @ApiModelProperty("创建者")
     private String createBy;
     @ApiModelProperty("创建时间")
@@ -29,8 +31,8 @@ public class DatasetTable implements Serializable {
     private String syncStatus;
     @ApiModelProperty("上次更新时间")
     private Long lastUpdateTime;
-    @ApiModelProperty("信息")
-    private String info;
+
+    private String sqlVariableDetails;
 
     private static final long serialVersionUID = 1L;
 }

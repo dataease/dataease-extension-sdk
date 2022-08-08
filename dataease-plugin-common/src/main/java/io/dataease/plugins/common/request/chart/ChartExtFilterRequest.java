@@ -24,6 +24,8 @@ public class ChartExtFilterRequest {
     private List<String> value;
     @ApiModelProperty("目标视图ID集合")
     private List<String> viewIds;
+    @ApiModelProperty("sql 数据集参数")
+    private List<String> parameters;
     @ApiModelProperty("过滤字段")
     private DatasetTableField datasetTableField;
     @ApiModelProperty("是否树")

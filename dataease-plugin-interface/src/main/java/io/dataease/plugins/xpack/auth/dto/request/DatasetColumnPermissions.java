@@ -18,5 +18,8 @@ public class DatasetColumnPermissions implements Serializable {
 
     private String permissions;
 
+    @io.swagger.annotations.ApiModelProperty("白名单-用户ID->JSON Array")
+    private java.lang.String whiteListUser;
+
     private static final long serialVersionUID = 1L;
 }

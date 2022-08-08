@@ -1,9 +1,8 @@
 package io.dataease.plugins.common.constants.engine;
 
-import io.dataease.plugins.common.constants.SQLConstants;
+import io.dataease.plugins.common.constants.datasource.SQLConstants;
 
 import static io.dataease.plugins.common.constants.DatasourceTypes.engine_mysql;
-import static io.dataease.plugins.common.constants.DatasourceTypes.mysql;
 
 public class MysqlConstants extends SQLConstants {
     public static final String KEYWORD_TABLE = engine_mysql.getKeywordPrefix() + "%s" + engine_mysql.getKeywordSuffix();
@@ -26,7 +25,7 @@ public class MysqlConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,2)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 

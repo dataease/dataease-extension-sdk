@@ -26,6 +26,7 @@ public abstract class EmailXpackService extends PluginMenuService {
     public abstract XpackEmailTaskRequest taskForm(Long taskId);
 
     public abstract Long saveInstance(GlobalTaskInstance instance);
+    public abstract void delInstance(Long instanceId);
 
     public abstract GlobalTaskInstance instanceForm(Long instanceId);
 

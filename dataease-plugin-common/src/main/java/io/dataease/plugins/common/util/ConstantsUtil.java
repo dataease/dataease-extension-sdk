@@ -2,7 +2,7 @@ package io.dataease.plugins.common.util;
 
 
 import cn.hutool.core.util.ReflectUtil;
-import io.dataease.plugins.common.constants.SQLConstants;
+import io.dataease.plugins.common.constants.datasource.SQLConstants;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

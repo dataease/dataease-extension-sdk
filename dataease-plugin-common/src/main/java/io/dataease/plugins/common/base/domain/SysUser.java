@@ -61,5 +61,8 @@ public class SysUser implements Serializable {
     @ApiModelProperty(hidden = true)
     private String sub;
 
+    @ApiModelProperty("手机号前缀")
+    private String phonePrefix;
+
     private static final long serialVersionUID = 1L;
 }
