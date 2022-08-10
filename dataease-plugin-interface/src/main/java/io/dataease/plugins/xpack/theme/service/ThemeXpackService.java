@@ -11,11 +11,15 @@ public abstract class ThemeXpackService extends PluginComponentService{
 
     public abstract List<ThemeDto> themes();
 
-    public abstract void save(ThemeRequest request, MultipartFile file);
-
     public abstract void addTheme(ThemeCreateRequest request);
 
     public abstract void renameTheme(ThemeRenameRequest request);
+
+    public abstract void switchSenior(Integer themeId);
+
+    public abstract void switchStatus(Integer themeId);
+
+    public abstract void saveThemeItems(ThemeRequest request);
 
     public abstract List<ThemeItem> queryItems(int id);
 
