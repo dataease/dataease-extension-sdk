@@ -13,9 +13,7 @@ public class ThemeDto implements Serializable{
 
     private String name;
 
-    private String imgId;
-
-    private String img;
+    private Boolean senior;
 
     private Boolean status;
     

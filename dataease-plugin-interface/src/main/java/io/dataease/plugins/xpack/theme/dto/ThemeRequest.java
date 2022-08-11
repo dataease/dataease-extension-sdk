@@ -8,8 +8,10 @@ import lombok.Data;
 
 @Data
 public class ThemeRequest implements Serializable{
+    
+    private Integer themeId;
 
-    private ThemeDto themeDto;
+    private Boolean clearFirst;
 
     private List<ThemeItem> themeItems;
 }
