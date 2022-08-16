@@ -8,7 +8,7 @@ import io.dataease.plugins.common.service.PluginComponentService;
 
 public abstract class ThemeXpackService extends PluginComponentService{
 
-    public abstract List<ThemeDto> themes();
+    public abstract List<ThemeBaseDTO> themes(List<String> itemKeys);
 
     public abstract void addTheme(ThemeCreateRequest request);
 
