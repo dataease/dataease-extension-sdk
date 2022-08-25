@@ -383,6 +383,206 @@ public class DeDriverDetailsExample {
             addCriterion("version not between", value1, value2, "version");
             return (Criteria) this;
         }
+
+        public Criteria andDriverClassIsNull() {
+            addCriterion("driver_class is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassIsNotNull() {
+            addCriterion("driver_class is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassEqualTo(String value) {
+            addCriterion("driver_class =", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassNotEqualTo(String value) {
+            addCriterion("driver_class <>", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassGreaterThan(String value) {
+            addCriterion("driver_class >", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassGreaterThanOrEqualTo(String value) {
+            addCriterion("driver_class >=", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassLessThan(String value) {
+            addCriterion("driver_class <", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassLessThanOrEqualTo(String value) {
+            addCriterion("driver_class <=", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassLike(String value) {
+            addCriterion("driver_class like", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassNotLike(String value) {
+            addCriterion("driver_class not like", value, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassIn(List<String> values) {
+            addCriterion("driver_class in", values, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassNotIn(List<String> values) {
+            addCriterion("driver_class not in", values, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassBetween(String value1, String value2) {
+            addCriterion("driver_class between", value1, value2, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverClassNotBetween(String value1, String value2) {
+            addCriterion("driver_class not between", value1, value2, "driverClass");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameIsNull() {
+            addCriterion("trans_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameIsNotNull() {
+            addCriterion("trans_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameEqualTo(String value) {
+            addCriterion("trans_name =", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameNotEqualTo(String value) {
+            addCriterion("trans_name <>", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameGreaterThan(String value) {
+            addCriterion("trans_name >", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameGreaterThanOrEqualTo(String value) {
+            addCriterion("trans_name >=", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameLessThan(String value) {
+            addCriterion("trans_name <", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameLessThanOrEqualTo(String value) {
+            addCriterion("trans_name <=", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameLike(String value) {
+            addCriterion("trans_name like", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameNotLike(String value) {
+            addCriterion("trans_name not like", value, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameIn(List<String> values) {
+            addCriterion("trans_name in", values, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameNotIn(List<String> values) {
+            addCriterion("trans_name not in", values, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameBetween(String value1, String value2) {
+            addCriterion("trans_name between", value1, value2, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransNameNotBetween(String value1, String value2) {
+            addCriterion("trans_name not between", value1, value2, "transName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameIsNull() {
+            addCriterion("is_trans_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameIsNotNull() {
+            addCriterion("is_trans_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameEqualTo(Boolean value) {
+            addCriterion("is_trans_name =", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameNotEqualTo(Boolean value) {
+            addCriterion("is_trans_name <>", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameGreaterThan(Boolean value) {
+            addCriterion("is_trans_name >", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_trans_name >=", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameLessThan(Boolean value) {
+            addCriterion("is_trans_name <", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_trans_name <=", value, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameIn(List<Boolean> values) {
+            addCriterion("is_trans_name in", values, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameNotIn(List<Boolean> values) {
+            addCriterion("is_trans_name not in", values, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_trans_name between", value1, value2, "isTransName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTransNameNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_trans_name not between", value1, value2, "isTransName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

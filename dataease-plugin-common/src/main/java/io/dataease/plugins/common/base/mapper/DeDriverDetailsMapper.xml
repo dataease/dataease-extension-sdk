@@ -6,9 +6,9 @@
     <result column="de_driver_id" jdbcType="VARCHAR" property="deDriverId" />
     <result column="file_name" jdbcType="VARCHAR" property="fileName" />
     <result column="version" jdbcType="VARCHAR" property="version" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.dataease.plugins.common.base.domain.DeDriverDetails">
-    <result column="driver_class" jdbcType="LONGVARCHAR" property="driverClass" />
+    <result column="driver_class" jdbcType="VARCHAR" property="driverClass" />
+    <result column="trans_name" jdbcType="VARCHAR" property="transName" />
+    <result column="is_trans_name" jdbcType="BIT" property="isTransName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,27 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, de_driver_id, file_name, version
+    id, de_driver_id, file_name, version, driver_class, trans_name, is_trans_name
   </sql>
-  <sql id="Blob_Column_List">
-    driver_class
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetailsExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from de_driver_details
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetailsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -104,11 +85,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from de_driver_details
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -124,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetails">
     insert into de_driver_details (id, de_driver_id, file_name, 
-      version, driver_class)
+      version, driver_class, trans_name, 
+      is_trans_name)
     values (#{id,jdbcType=VARCHAR}, #{deDriverId,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, 
-      #{version,jdbcType=VARCHAR}, #{driverClass,jdbcType=LONGVARCHAR})
+      #{version,jdbcType=VARCHAR}, #{driverClass,jdbcType=VARCHAR}, #{transName,jdbcType=VARCHAR}, 
+      #{isTransName,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetails">
     insert into de_driver_details
@@ -146,6 +127,12 @@
       <if test="driverClass != null">
         driver_class,
       </if>
+      <if test="transName != null">
+        trans_name,
+      </if>
+      <if test="isTransName != null">
+        is_trans_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -161,7 +148,13 @@
         #{version,jdbcType=VARCHAR},
       </if>
       <if test="driverClass != null">
-        #{driverClass,jdbcType=LONGVARCHAR},
+        #{driverClass,jdbcType=VARCHAR},
+      </if>
+      <if test="transName != null">
+        #{transName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTransName != null">
+        #{isTransName,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -187,20 +180,15 @@
         version = #{record.version,jdbcType=VARCHAR},
       </if>
       <if test="record.driverClass != null">
-        driver_class = #{record.driverClass,jdbcType=LONGVARCHAR},
+        driver_class = #{record.driverClass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transName != null">
+        trans_name = #{record.transName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isTransName != null">
+        is_trans_name = #{record.isTransName,jdbcType=BIT},
       </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update de_driver_details
-    set id = #{record.id,jdbcType=VARCHAR},
-      de_driver_id = #{record.deDriverId,jdbcType=VARCHAR},
-      file_name = #{record.fileName,jdbcType=VARCHAR},
-      version = #{record.version,jdbcType=VARCHAR},
-      driver_class = #{record.driverClass,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,7 +198,10 @@
     set id = #{record.id,jdbcType=VARCHAR},
       de_driver_id = #{record.deDriverId,jdbcType=VARCHAR},
       file_name = #{record.fileName,jdbcType=VARCHAR},
-      version = #{record.version,jdbcType=VARCHAR}
+      version = #{record.version,jdbcType=VARCHAR},
+      driver_class = #{record.driverClass,jdbcType=VARCHAR},
+      trans_name = #{record.transName,jdbcType=VARCHAR},
+      is_trans_name = #{record.isTransName,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -228,24 +219,25 @@
         version = #{version,jdbcType=VARCHAR},
       </if>
       <if test="driverClass != null">
-        driver_class = #{driverClass,jdbcType=LONGVARCHAR},
+        driver_class = #{driverClass,jdbcType=VARCHAR},
+      </if>
+      <if test="transName != null">
+        trans_name = #{transName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTransName != null">
+        is_trans_name = #{isTransName,jdbcType=BIT},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetails">
-    update de_driver_details
-    set de_driver_id = #{deDriverId,jdbcType=VARCHAR},
-      file_name = #{fileName,jdbcType=VARCHAR},
-      version = #{version,jdbcType=VARCHAR},
-      driver_class = #{driverClass,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="io.dataease.plugins.common.base.domain.DeDriverDetails">
     update de_driver_details
     set de_driver_id = #{deDriverId,jdbcType=VARCHAR},
       file_name = #{fileName,jdbcType=VARCHAR},
-      version = #{version,jdbcType=VARCHAR}
+      version = #{version,jdbcType=VARCHAR},
+      driver_class = #{driverClass,jdbcType=VARCHAR},
+      trans_name = #{transName,jdbcType=VARCHAR},
+      is_trans_name = #{isTransName,jdbcType=BIT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

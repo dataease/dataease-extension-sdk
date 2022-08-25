@@ -64,11 +64,10 @@
 
 
 
-<!--        <table tableName="dataset_table">-->
-<!--            <columnOverride column="info"   javaType="java.lang.String" jdbcType="VARCHAR"/>-->
-<!--            <columnOverride column="sql_variable_details"   javaType="java.lang.String" jdbcType="VARCHAR"/>-->
-<!--        </table>-->
+        <table tableName="de_driver_details">
+            <columnOverride column="driver_class"    jdbcType="VARCHAR"/>
+        </table>
 
-        <table tableName="sys_param_assist"/>
+
     </context>
 </generatorConfiguration>
