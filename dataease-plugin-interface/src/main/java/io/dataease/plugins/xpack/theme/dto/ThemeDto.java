@@ -16,5 +16,7 @@ public class ThemeDto implements Serializable{
     private Boolean senior;
 
     private Boolean status;
+
+    private Integer originId;
     
 }
