@@ -30,6 +30,9 @@ public interface PluginParamConstants {
         MAIL("smtp"),
         BASE("base"),
         LDAP("ldap"),
+        WECOM("wecom"),
+        DINGTALK("dingtalk"),
+        LARK("lark"),
         REGISTRY("registry");
 
         private String value;
@@ -136,6 +139,25 @@ public interface PluginParamConstants {
         private String value;
 
         LDAP(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
+
+    public enum WECOM implements PluginParamConstants {
+        CORPID("wecom.corpid"),
+        AGENTID("wecom.agentid"),
+        SECRET("wecom.secret"),
+
+        OPEN("wecom.open");
+
+        private String value;
+
+        WECOM(String value) {
             this.value = value;
         }
 
