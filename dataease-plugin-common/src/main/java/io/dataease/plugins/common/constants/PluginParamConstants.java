@@ -152,7 +152,7 @@ public interface PluginParamConstants {
         CORPID("wecom.corpid"),
         AGENTID("wecom.agentid"),
         SECRET("wecom.secret"),
-
+        REDIRECT_URI("wecom.redirectUri"),
         OPEN("wecom.open");
 
         private String value;

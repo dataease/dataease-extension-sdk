@@ -11,7 +11,7 @@ public class BaseQrResult implements Serializable {
 
     private String agentid;
 
-    private String redirect_uri;
+    private String redirectUri;
 
     private String state;
 

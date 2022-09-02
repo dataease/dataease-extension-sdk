@@ -14,4 +14,6 @@ public class WecomInfo implements Serializable {
     private String secret;
 
     private String open;
+
+    private String redirectUri;
 }
