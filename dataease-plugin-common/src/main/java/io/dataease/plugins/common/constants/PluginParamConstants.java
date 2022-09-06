@@ -166,5 +166,25 @@ public interface PluginParamConstants {
             return value;
         }
     }
+
+    public enum DINGTALK implements PluginParamConstants {
+        CORPID("dingtalk.corpid"),
+        AGENTID("dingtalk.agentid"),
+        APPKEY("dingtalk.appKey"),
+        APPSECRET("dingtalk.appSecret"),
+        REDIRECT_URI("dingtalk.redirectUri"),
+        OPEN("dingtalk.open");
+
+        private String value;
+
+        DINGTALK(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
     
 }
