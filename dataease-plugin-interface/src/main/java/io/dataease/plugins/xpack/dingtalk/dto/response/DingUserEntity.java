@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class DingUserEntity {
 
-    private String userId;
+    private String userid;
     private String unionid;
     private String name;
     private String mobile;

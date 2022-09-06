@@ -8,5 +8,6 @@ import java.io.Serializable;
 public class UserIdEntity implements Serializable {
 
     private String contact_type;
-    private String userId;
+
+    private String userid;
 }
