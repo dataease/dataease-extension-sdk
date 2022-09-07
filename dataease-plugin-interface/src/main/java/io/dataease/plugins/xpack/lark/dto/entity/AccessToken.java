@@ -16,4 +16,8 @@ public class AccessToken implements Serializable {
     private String refresh_token;
 
     private String refresh_expires_in;
+
+    private String error;
+
+    private String error_description;
 }
