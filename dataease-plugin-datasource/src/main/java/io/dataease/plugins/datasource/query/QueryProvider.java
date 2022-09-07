@@ -7,6 +7,7 @@ import io.dataease.plugins.common.base.domain.Datasource;
 import io.dataease.plugins.common.constants.datasource.PgConstants;
 import io.dataease.plugins.common.dto.chart.ChartFieldCustomFilterDTO;
 import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
+import io.dataease.plugins.common.dto.dataset.SqlVariableDetails;
 import io.dataease.plugins.common.dto.datasource.DeSortField;
 import io.dataease.plugins.common.dto.sqlObj.SQLObj;
 import io.dataease.plugins.common.request.chart.ChartExtFilterRequest;
@@ -18,7 +19,9 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -108,9 +111,12 @@ public abstract class QueryProvider {
         return "AND";
     }
 
-    public String transFilter(ChartExtFilterRequest chartExtFilterRequest) {
+    public String transFilter(ChartExtFilterRequest chartExtFilterRequest, SqlVariableDetails sqlVariableDetails) {
         if (chartExtFilterRequest.getOperator().equals("in")) {
             return "('" + String.join("','", chartExtFilterRequest.getValue()) + "')";
+        } else if (chartExtFilterRequest.getOperator().equals("between")) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(sqlVariableDetails.getType().size() > 2 ? sqlVariableDetails.getType().get(1) : "YYYY");
+            return simpleDateFormat.format(new Date(Long.parseLong(chartExtFilterRequest.getValue().get(0))));
         } else {
             return chartExtFilterRequest.getValue().get(0);
         }
