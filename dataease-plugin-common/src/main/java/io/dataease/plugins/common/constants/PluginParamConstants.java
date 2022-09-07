@@ -186,5 +186,23 @@ public interface PluginParamConstants {
             return value;
         }
     }
+
+    public enum LARK implements PluginParamConstants {
+        APPK_ID("lark.app_id"),
+        APP_SECRET("lark.app_secret"),
+        REDIRECT_URI("lark.redirect_uri"),
+        OPEN("lark.open");
+
+        private String value;
+
+        LARK(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
     
 }
