@@ -1,6 +1,7 @@
 package io.dataease.plugins.xpack.dingtalk.service;
 
 import io.dataease.plugins.common.service.PluginComponentService;
+import io.dataease.plugins.xpack.dingtalk.dto.entity.DingtalkMsgResult;
 import io.dataease.plugins.xpack.dingtalk.dto.response.DingQrResult;
 import io.dataease.plugins.xpack.dingtalk.dto.response.DingUserEntity;
 import io.dataease.plugins.xpack.dingtalk.dto.response.DingtalkInfo;
@@ -24,8 +25,8 @@ public abstract class DingtalkXpackService extends PluginComponentService {
 
     public abstract DingUserEntity userInfo(String loginTmpCode);
 
-    public abstract void pushMsg(String userId, String message);
+    public abstract DingtalkMsgResult pushMsg(List<String> userIds, String message);
 
-    public abstract void pushOaMsg(String userId, String title, String content, byte[] bytes, List<File> files);
+    public abstract DingtalkMsgResult pushOaMsg(List<String> userIds, String title, String content, byte[] bytes, List<File> files);
 
 }

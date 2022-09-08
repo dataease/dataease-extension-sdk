@@ -4,6 +4,7 @@ import io.dataease.plugins.common.service.PluginComponentService;
 import io.dataease.plugins.xpack.display.dto.response.SysSettingDto;
 import io.dataease.plugins.xpack.wecom.dto.entity.BaseQrResult;
 import io.dataease.plugins.xpack.wecom.dto.entity.WecomAuthResult;
+import io.dataease.plugins.xpack.wecom.dto.entity.WecomMsgResult;
 import io.dataease.plugins.xpack.wecom.dto.response.WecomInfo;
 
 import java.io.File;
@@ -26,8 +27,8 @@ public abstract class WecomXpackService extends PluginComponentService {
 
     public abstract Map<String, Object> userInfo(String userId);
 
-    public abstract void pushMsg(String userId, String message);
+    public abstract WecomMsgResult pushMsg(List<String> userIds, String message);
 
-    public abstract void pushOaMsg(String userId, String title, String content, byte[] bytes, List<File> files);
+    public abstract WecomMsgResult pushOaMsg(List<String> userIds, String title, String content, byte[] bytes, List<File> files);
 
 }
