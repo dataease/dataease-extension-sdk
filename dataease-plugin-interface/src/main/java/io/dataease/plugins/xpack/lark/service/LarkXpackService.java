@@ -7,6 +7,7 @@ import io.dataease.plugins.xpack.lark.dto.entity.LarkUserInfo;
 import io.dataease.plugins.xpack.lark.dto.response.LarkInfo;
 
 
+import java.io.File;
 import java.util.List;
 
 public abstract class LarkXpackService extends PluginComponentService {
@@ -22,4 +23,8 @@ public abstract class LarkXpackService extends PluginComponentService {
     public abstract LarkQrResult getQrParam();
 
     public abstract LarkUserInfo userInfo(String code, String state);
+
+    public abstract void pushMsg(String userId, String message);
+
+    public abstract void pushOaMsg(String userId, String title, String content, byte[] bytes, List<File> files);
 }
