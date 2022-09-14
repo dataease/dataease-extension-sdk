@@ -36,12 +36,6 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>dingtalk</artifactId>
-            <version>1.4.26</version>
-        </dependency>
-
 
     </dependencies>
 
