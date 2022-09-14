@@ -24,4 +24,8 @@ public class GlobalTaskEntity implements Serializable{
     private Long creator;
 
     private Long createTime;
+
+    private String cron;
+
+    private String jobKey;
 }
