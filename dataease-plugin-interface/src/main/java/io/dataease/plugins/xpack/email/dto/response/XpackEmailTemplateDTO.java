@@ -22,5 +22,9 @@ public class XpackEmailTemplateDTO implements Serializable{
     private byte[] content;
 
     private String viewIds;
-    
+
+    private String recisetting;
+
+    private String conditions;
+
 }
