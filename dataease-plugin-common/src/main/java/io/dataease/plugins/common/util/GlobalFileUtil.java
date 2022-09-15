@@ -19,8 +19,8 @@ public class GlobalFileUtil {
 
     private static String root;
 
-    @Value("${dataease.busi_file_path:/opt/dataease/data/business/}")
-    public static void setRoot(String root) {
+    @Value("${dataease.busiFilePath:/opt/dataease/data/business/}")
+    public void setRoot(String root) {
         GlobalFileUtil.root = root;
     }
 
@@ -97,7 +97,7 @@ public class GlobalFileUtil {
             String fileName = fileNames.get(i);
             String prefix = FileUtil.getPrefix(fileName);
             if (StringUtils.equals(fileId, prefix)) {
-                return fileName;
+                return dirPath + "/" + fileName;
             }
         }
         return null;
