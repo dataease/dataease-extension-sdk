@@ -43,6 +43,8 @@ public class DatasetTableField implements Serializable {
     private Integer columnIndex;
     @ApiModelProperty("上次同步时间")
     private Long lastSyncTime;
+    @ApiModelProperty("精度")
+    private Integer accuracy;
 
     private static final long serialVersionUID = 1L;
 }
