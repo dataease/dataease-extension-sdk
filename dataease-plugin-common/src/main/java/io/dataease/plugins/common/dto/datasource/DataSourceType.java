@@ -1,5 +1,6 @@
 package io.dataease.plugins.common.dto.datasource;
 
+import io.dataease.plugins.common.constants.DatabaseClassification;
 import io.dataease.plugins.common.constants.DatasourceCalculationMode;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ public class DataSourceType {
     public String name;
     public boolean isPlugin = true;
     public DatasourceCalculationMode calculationMode = DatasourceCalculationMode.DIRECT;
+    public DatabaseClassification databaseClassification = DatabaseClassification.OTHER;
     public String extraParams;
     public List<String> charset;
     public List<String> targetCharset;
