@@ -115,7 +115,7 @@ public abstract class QueryProvider {
         if (chartExtFilterRequest.getOperator().equals("in")) {
             return "('" + String.join("','", chartExtFilterRequest.getValue()) + "')";
         } else if (chartExtFilterRequest.getOperator().equals("between")) {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(sqlVariableDetails.getType().size() > 2 ? sqlVariableDetails.getType().get(1) : "YYYY");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(sqlVariableDetails.getType().size() > 1 ? sqlVariableDetails.getType().get(1) : "YYYY");
             return simpleDateFormat.format(new Date(Long.parseLong(chartExtFilterRequest.getValue().get(0))));
         } else {
             return chartExtFilterRequest.getValue().get(0);
