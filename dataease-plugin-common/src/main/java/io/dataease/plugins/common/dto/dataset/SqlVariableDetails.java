@@ -11,5 +11,6 @@ public class SqlVariableDetails {
     private List<String> type;
     private String details;
     private String defaultValue;
+    private String id;
 
 }
