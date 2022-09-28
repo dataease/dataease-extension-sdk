@@ -23,7 +23,7 @@ public abstract class LarkXpackService extends PluginComponentService {
 
     public abstract LarkQrResult getQrParam();
 
-    public abstract LarkUserInfo userInfo(String code, String state);
+    public abstract LarkUserInfo userInfo(String code, String state, Boolean useBind);
 
     public abstract LarkMsgResult pushMsg(List<String> userIds, String message);
 
