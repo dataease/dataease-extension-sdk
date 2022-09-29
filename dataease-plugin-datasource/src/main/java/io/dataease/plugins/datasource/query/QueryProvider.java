@@ -167,4 +167,8 @@ public abstract class QueryProvider {
         }
         return CollectionUtils.isNotEmpty(list) ? "(" + String.join(" " + logic + " ", list) + ")" : null;
     }
+
+    public String sqlForPreview(String table, Datasource ds) {
+        return "SELECT * FROM " + table;
+    }
 }
