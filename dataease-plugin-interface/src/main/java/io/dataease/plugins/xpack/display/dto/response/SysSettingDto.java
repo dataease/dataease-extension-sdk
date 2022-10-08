@@ -18,4 +18,6 @@ public class SysSettingDto {
 
     private String fileName;
 
+    private Long blobId;
+
 }

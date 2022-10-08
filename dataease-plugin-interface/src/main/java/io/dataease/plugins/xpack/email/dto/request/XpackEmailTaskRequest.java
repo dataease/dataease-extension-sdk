@@ -22,4 +22,10 @@ public class XpackEmailTaskRequest extends XpackTaskCreateRequest {
     private byte[] content;
 
     private String viewIds;
+
+    private String recisetting;
+
+    private String reciUsers;
+
+    private String conditions;
 }

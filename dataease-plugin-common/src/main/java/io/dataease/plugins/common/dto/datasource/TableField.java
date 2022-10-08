@@ -10,5 +10,6 @@ public class TableField {
     private String remarks;
     private String fieldType;
     private int fieldSize;
+    private int accuracy;
 
 }

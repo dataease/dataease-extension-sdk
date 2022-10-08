@@ -1073,6 +1073,66 @@ public class DatasetTableFieldExample {
             addCriterion("last_sync_time not between", value1, value2, "lastSyncTime");
             return (Criteria) this;
         }
+
+        public Criteria andAccuracyIsNull() {
+            addCriterion("accuracy is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyIsNotNull() {
+            addCriterion("accuracy is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyEqualTo(Integer value) {
+            addCriterion("accuracy =", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyNotEqualTo(Integer value) {
+            addCriterion("accuracy <>", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyGreaterThan(Integer value) {
+            addCriterion("accuracy >", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("accuracy >=", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyLessThan(Integer value) {
+            addCriterion("accuracy <", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyLessThanOrEqualTo(Integer value) {
+            addCriterion("accuracy <=", value, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyIn(List<Integer> values) {
+            addCriterion("accuracy in", values, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyNotIn(List<Integer> values) {
+            addCriterion("accuracy not in", values, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyBetween(Integer value1, Integer value2) {
+            addCriterion("accuracy between", value1, value2, "accuracy");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccuracyNotBetween(Integer value1, Integer value2) {
+            addCriterion("accuracy not between", value1, value2, "accuracy");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

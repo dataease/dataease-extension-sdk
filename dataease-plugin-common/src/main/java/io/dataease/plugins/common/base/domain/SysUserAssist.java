@@ -1,14 +1,19 @@
 package io.dataease.plugins.common.base.domain;
 
-import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class SysUserAssist {
-
-    @ApiModelProperty("用户ID")
+public class SysUserAssist implements Serializable {
     private Long userId;
 
-    @ApiModelProperty("需要改密提示")
     private Boolean needFirstNoti;
+
+    private String wecomId;
+
+    private String dingtalkId;
+
+    private String larkId;
+
+    private static final long serialVersionUID = 1L;
 }

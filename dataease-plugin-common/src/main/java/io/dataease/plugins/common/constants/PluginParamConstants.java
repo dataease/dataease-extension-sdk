@@ -30,6 +30,9 @@ public interface PluginParamConstants {
         MAIL("smtp"),
         BASE("base"),
         LDAP("ldap"),
+        WECOM("wecom"),
+        DINGTALK("dingtalk"),
+        LARK("lark"),
         REGISTRY("registry");
 
         private String value;
@@ -136,6 +139,63 @@ public interface PluginParamConstants {
         private String value;
 
         LDAP(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
+
+    public enum WECOM implements PluginParamConstants {
+        CORPID("wecom.corpid"),
+        AGENTID("wecom.agentid"),
+        SECRET("wecom.secret"),
+        REDIRECT_URI("wecom.redirectUri"),
+        OPEN("wecom.open");
+
+        private String value;
+
+        WECOM(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
+
+    public enum DINGTALK implements PluginParamConstants {
+        CORPID("dingtalk.corpid"),
+        AGENTID("dingtalk.agentid"),
+        APPKEY("dingtalk.appKey"),
+        APPSECRET("dingtalk.appSecret"),
+        REDIRECT_URI("dingtalk.redirectUri"),
+        OPEN("dingtalk.open");
+
+        private String value;
+
+        DINGTALK(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
+
+    public enum LARK implements PluginParamConstants {
+        APPK_ID("lark.app_id"),
+        APP_SECRET("lark.app_secret"),
+        REDIRECT_URI("lark.redirect_uri"),
+        OPEN("lark.open");
+
+        private String value;
+
+        LARK(String value) {
             this.value = value;
         }
 

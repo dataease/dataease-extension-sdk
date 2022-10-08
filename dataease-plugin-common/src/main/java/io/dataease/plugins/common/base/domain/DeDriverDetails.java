@@ -15,5 +15,9 @@ public class DeDriverDetails implements Serializable {
 
     private String driverClass;
 
+    private String transName;
+
+    private Boolean isTransName;
+
     private static final long serialVersionUID = 1L;
 }

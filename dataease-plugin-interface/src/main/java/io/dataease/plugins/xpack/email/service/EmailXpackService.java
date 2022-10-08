@@ -38,4 +38,8 @@ public abstract class EmailXpackService extends PluginMenuService {
 
     public abstract byte[] printData(String url, String token, XpackPixelEntity XpackPixelEntity) throws Exception;
 
+    public abstract void batchDel(List<Long> taskIds);
+
+    public abstract void export(XpackGridRequest request);
+
 }
