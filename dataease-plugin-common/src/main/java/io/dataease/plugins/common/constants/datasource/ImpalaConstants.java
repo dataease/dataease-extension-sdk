@@ -15,6 +15,8 @@ public class ImpalaConstants extends SQLConstants {
 
     public static final String DATE_FORMAT = "from_unixtime(UNIX_TIMESTAMP(%s), '%s')";
 
+    public static final String STR_TO_DATE = "from_unixtime(UNIX_TIMESTAMP(%s, '%s'), '%s')";
+
     public static final String FROM_UNIXTIME = "FROM_UNIXTIME(%s,'%s')";
 
     public static final String CAST = "CAST(%s AS %s)";

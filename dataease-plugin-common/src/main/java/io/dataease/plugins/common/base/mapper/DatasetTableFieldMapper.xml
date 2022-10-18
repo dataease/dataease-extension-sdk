@@ -18,6 +18,7 @@
     <result column="column_index" jdbcType="INTEGER" property="columnIndex" />
     <result column="last_sync_time" jdbcType="BIGINT" property="lastSyncTime" />
     <result column="accuracy" jdbcType="INTEGER" property="accuracy" />
+    <result column="date_ format" jdbcType="VARCHAR" property="dateFormat" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,7 +81,7 @@
   <sql id="Base_Column_List">
     id, table_id, origin_name, `name`, dataease_name, group_type, `type`, `size`, de_type, 
     de_type_format, de_extract_type, ext_field, `checked`, column_index, last_sync_time, 
-    accuracy
+    accuracy, `date_ format`
   </sql>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.DatasetTableFieldExample" resultMap="BaseResultMap">
     select
@@ -118,13 +119,13 @@
       `type`, `size`, de_type, 
       de_type_format, de_extract_type, ext_field, 
       `checked`, column_index, last_sync_time, 
-      accuracy)
+      accuracy, `date_ format`)
     values (#{id,jdbcType=VARCHAR}, #{tableId,jdbcType=VARCHAR}, #{originName,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{dataeaseName,jdbcType=VARCHAR}, #{groupType,jdbcType=VARCHAR}, 
       #{type,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, #{deType,jdbcType=INTEGER}, 
       #{deTypeFormat,jdbcType=INTEGER}, #{deExtractType,jdbcType=INTEGER}, #{extField,jdbcType=INTEGER}, 
       #{checked,jdbcType=BIT}, #{columnIndex,jdbcType=INTEGER}, #{lastSyncTime,jdbcType=BIGINT}, 
-      #{accuracy,jdbcType=INTEGER})
+      #{accuracy,jdbcType=INTEGER}, #{dateFormat,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.DatasetTableField">
     insert into dataset_table_field
@@ -177,6 +178,9 @@
       <if test="accuracy != null">
         accuracy,
       </if>
+      <if test="dateFormat != null">
+        `date_ format`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -226,6 +230,9 @@
       </if>
       <if test="accuracy != null">
         #{accuracy,jdbcType=INTEGER},
+      </if>
+      <if test="dateFormat != null">
+        #{dateFormat,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -286,6 +293,9 @@
       <if test="record.accuracy != null">
         accuracy = #{record.accuracy,jdbcType=INTEGER},
       </if>
+      <if test="record.dateFormat != null">
+        `date_ format` = #{record.dateFormat,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -308,7 +318,8 @@
       `checked` = #{record.checked,jdbcType=BIT},
       column_index = #{record.columnIndex,jdbcType=INTEGER},
       last_sync_time = #{record.lastSyncTime,jdbcType=BIGINT},
-      accuracy = #{record.accuracy,jdbcType=INTEGER}
+      accuracy = #{record.accuracy,jdbcType=INTEGER},
+      `date_ format` = #{record.dateFormat,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -361,6 +372,9 @@
       <if test="accuracy != null">
         accuracy = #{accuracy,jdbcType=INTEGER},
       </if>
+      <if test="dateFormat != null">
+        `date_ format` = #{dateFormat,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -380,7 +394,8 @@
       `checked` = #{checked,jdbcType=BIT},
       column_index = #{columnIndex,jdbcType=INTEGER},
       last_sync_time = #{lastSyncTime,jdbcType=BIGINT},
-      accuracy = #{accuracy,jdbcType=INTEGER}
+      accuracy = #{accuracy,jdbcType=INTEGER},
+      `date_ format` = #{dateFormat,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -51,4 +51,6 @@ public class ChartViewFieldBaseDTO implements Serializable {
     private String filterType;
 
     private String chartId;
+
+    private String dateFormat;
 }

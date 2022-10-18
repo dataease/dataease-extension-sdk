@@ -16,6 +16,8 @@ public class PgConstants extends SQLConstants {
 
     public static final String DATE_FORMAT = "to_char(%s, '%s')";
 
+    public static final String STR_TO_DATE = "to_timestamp(%s, '%s')";
+
     public static final String FROM_UNIXTIME = "to_timestamp(%s)";
 
     public static final String CAST = "CAST(%s AS %s)";

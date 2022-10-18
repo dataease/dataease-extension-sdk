@@ -21,7 +21,7 @@ public class SqlServerSQLConstants extends SQLConstants {
 
     public static final String LONG_TO_DATE = "DATEADD(second,%s,'1970-01-01 08:00:00')";
 
-    public static final String STRING_TO_DATE = "CONVERT(datetime, %s ,120)";
+    public static final String STRING_TO_DATE = "CONVERT(datetime, %s , %s)";
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
@@ -42,5 +42,7 @@ public class SqlServerSQLConstants extends SQLConstants {
     public static final String NAME = "sqlServer";
 
     public static final String GROUP_CONCAT = "string_agg(%s, ',')";
+
+    public static final String DEFAULT_DATE_FORMAT = "120";
 
 }

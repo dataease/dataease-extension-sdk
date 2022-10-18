@@ -45,6 +45,8 @@ public class DatasetTableField implements Serializable {
     private Long lastSyncTime;
     @ApiModelProperty("精度")
     private Integer accuracy;
+    @ApiModelProperty("时间格式")
+    private String dateFormat;
 
     private static final long serialVersionUID = 1L;
 }
