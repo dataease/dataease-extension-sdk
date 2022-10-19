@@ -29,4 +29,6 @@ public class XpackEmailTemplateDTO implements Serializable{
 
     private String conditions;
 
+    private String viewDataRange = "view";
+
 }
