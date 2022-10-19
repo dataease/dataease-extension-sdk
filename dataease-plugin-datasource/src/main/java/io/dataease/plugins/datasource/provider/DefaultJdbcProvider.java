@@ -424,8 +424,8 @@ public abstract class DefaultJdbcProvider extends Provider {
         while (rs.next()) {
             String[] row = new String[columnCount];
             for (int j = 0; j < columnCount; j++) {
-                int columType = metaData.getColumnType(j + 1);
-                switch (columType) {
+                int columnType = metaData.getColumnType(j + 1);
+                switch (columnType) {
                     case Types.DATE:
                         if (rs.getDate(j + 1) != null) {
                             row[j] = rs.getDate(j + 1).toString();
