@@ -252,7 +252,7 @@ public abstract class DefaultJdbcProvider extends Provider {
     }
 
     @Override
-    public List<TableField> getTableFileds(DatasourceRequest datasourceRequest) throws Exception {
+    public List<TableField> getTableFields(DatasourceRequest datasourceRequest) throws Exception {
         List<TableField> list = new LinkedList<>();
         try (Connection connection = getConnectionFromPool(datasourceRequest)) {
 

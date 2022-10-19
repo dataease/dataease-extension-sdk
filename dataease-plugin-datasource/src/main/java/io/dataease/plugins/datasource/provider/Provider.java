@@ -36,7 +36,7 @@ public abstract class Provider {
         return null;
     }
 
-    public List<TableField> getTableFileds(DatasourceRequest datasourceRequest) throws Exception {
+    public List<TableField> getTableFields(DatasourceRequest datasourceRequest) throws Exception {
         return null;
     }
 

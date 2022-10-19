@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.dataease</groupId>
-    <artifactId>dataease-extenstion-sdk</artifactId>
+    <artifactId>dataease-extension-sdk</artifactId>
     <packaging>pom</packaging>
     <version>1.16.0</version>
     <modules>

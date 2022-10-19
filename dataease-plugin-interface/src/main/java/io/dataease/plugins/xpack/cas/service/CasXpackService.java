@@ -13,7 +13,7 @@ public abstract class CasXpackService extends PluginComponentService {
 
     public abstract CasSaveResult save(List<SysSettingDto> parameters);
 
-    public Boolean suuportCas() {
+    public Boolean supportCas() {
         return false;
     }
 

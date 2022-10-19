@@ -121,7 +121,7 @@ public class XpackGridExample {
 
 
 
-        public Criteria addCondtion(XpackConditionEntity conditionEntity){
+        public Criteria addCondition(XpackConditionEntity conditionEntity){
             String field = conditionEntity.getField();
             Object value = conditionEntity.getValue();
             String operator = conditionEntity.getOperator();

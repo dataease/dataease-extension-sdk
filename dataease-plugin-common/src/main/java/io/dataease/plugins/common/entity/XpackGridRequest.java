@@ -17,7 +17,7 @@ public class XpackGridRequest implements Serializable {
         XpackGridExample gridExample = new XpackGridExample();
         if (!CollectionUtils.isEmpty(conditions)){
             XpackGridExample.Criteria criteria = gridExample.createCriteria();
-            conditions.forEach(criteria::addCondtion);
+            conditions.forEach(criteria::addCondition);
         }
         if (!CollectionUtils.isEmpty(orders)) {
             String orderByClause = String.join(", ", orders);

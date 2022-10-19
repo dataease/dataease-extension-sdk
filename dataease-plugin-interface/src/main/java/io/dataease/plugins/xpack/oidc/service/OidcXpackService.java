@@ -13,7 +13,7 @@ public abstract class OidcXpackService extends PluginComponentService{
 
     public abstract Boolean save(List<SysSettingDto> parameters);
 
-    public Boolean isSuuportOIDC() {
+    public Boolean isSupportOIDC() {
         return false;
     }
 

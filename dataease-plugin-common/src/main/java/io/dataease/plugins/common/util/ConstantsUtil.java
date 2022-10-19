@@ -28,7 +28,7 @@ public class ConstantsUtil {
 
     public static List<Class> getAllSQLConstants() {
         if (CollectionUtils.isEmpty(SQLConstantsCache)){
-            Set<Class<? extends Class<?>>> classes = scanConstans(constsPackageName, SQLConstants.class);
+            Set<Class<? extends Class<?>>> classes = scanConstants(constsPackageName, SQLConstants.class);
             SQLConstantsCache.addAll(classes);
         }
         return SQLConstantsCache;
@@ -53,7 +53,7 @@ public class ConstantsUtil {
         return null;
     }
 
-    private static Set<Class<? extends Class<?>>> scanConstans(String packageName, Class<?> superType) {
+    private static Set<Class<? extends Class<?>>> scanConstants(String packageName, Class<?> superType) {
         ResolverUtil<Class<?>> resolverUtil = new ResolverUtil<>();
         resolverUtil.find(new ResolverUtil.IsA(superType), packageName);
         Set<Class<? extends Class<?>>> classesSet = resolverUtil.getClasses();
