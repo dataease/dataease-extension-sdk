@@ -7,6 +7,7 @@
     <result column="wecom_id" jdbcType="VARCHAR" property="wecomId" />
     <result column="dingtalk_id" jdbcType="VARCHAR" property="dingtalkId" />
     <result column="lark_id" jdbcType="VARCHAR" property="larkId" />
+    <result column="larksuite_id" jdbcType="VARCHAR" property="larksuiteId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, need_first_noti, wecom_id, dingtalk_id, lark_id
+    user_id, need_first_noti, wecom_id, dingtalk_id, lark_id, larksuite_id
   </sql>
   <select id="selectByExample" parameterType="io.dataease.plugins.common.base.domain.SysUserAssistExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="io.dataease.plugins.common.base.domain.SysUserAssist">
     insert into sys_user_assist (user_id, need_first_noti, wecom_id, 
-      dingtalk_id, lark_id)
+      dingtalk_id, lark_id, larksuite_id
+      )
     values (#{userId,jdbcType=BIGINT}, #{needFirstNoti,jdbcType=BIT}, #{wecomId,jdbcType=VARCHAR}, 
-      #{dingtalkId,jdbcType=VARCHAR}, #{larkId,jdbcType=VARCHAR})
+      #{dingtalkId,jdbcType=VARCHAR}, #{larkId,jdbcType=VARCHAR}, #{larksuiteId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.SysUserAssist">
     insert into sys_user_assist
@@ -123,6 +126,9 @@
       <if test="larkId != null">
         lark_id,
       </if>
+      <if test="larksuiteId != null">
+        larksuite_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -139,6 +145,9 @@
       </if>
       <if test="larkId != null">
         #{larkId,jdbcType=VARCHAR},
+      </if>
+      <if test="larksuiteId != null">
+        #{larksuiteId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +175,9 @@
       <if test="record.larkId != null">
         lark_id = #{record.larkId,jdbcType=VARCHAR},
       </if>
+      <if test="record.larksuiteId != null">
+        larksuite_id = #{record.larksuiteId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +189,8 @@
       need_first_noti = #{record.needFirstNoti,jdbcType=BIT},
       wecom_id = #{record.wecomId,jdbcType=VARCHAR},
       dingtalk_id = #{record.dingtalkId,jdbcType=VARCHAR},
-      lark_id = #{record.larkId,jdbcType=VARCHAR}
+      lark_id = #{record.larkId,jdbcType=VARCHAR},
+      larksuite_id = #{record.larksuiteId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +210,9 @@
       <if test="larkId != null">
         lark_id = #{larkId,jdbcType=VARCHAR},
       </if>
+      <if test="larksuiteId != null">
+        larksuite_id = #{larksuiteId,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
@@ -205,7 +221,8 @@
     set need_first_noti = #{needFirstNoti,jdbcType=BIT},
       wecom_id = #{wecomId,jdbcType=VARCHAR},
       dingtalk_id = #{dingtalkId,jdbcType=VARCHAR},
-      lark_id = #{larkId,jdbcType=VARCHAR}
+      lark_id = #{larkId,jdbcType=VARCHAR},
+      larksuite_id = #{larksuiteId,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
 </mapper>

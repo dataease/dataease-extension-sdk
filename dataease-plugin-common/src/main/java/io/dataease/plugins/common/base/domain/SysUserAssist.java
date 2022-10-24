@@ -15,5 +15,7 @@ public class SysUserAssist implements Serializable {
 
     private String larkId;
 
+    private String larksuiteId;
+
     private static final long serialVersionUID = 1L;
 }

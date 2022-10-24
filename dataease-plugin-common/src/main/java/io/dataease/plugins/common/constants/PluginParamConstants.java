@@ -33,6 +33,7 @@ public interface PluginParamConstants {
         WECOM("wecom"),
         DINGTALK("dingtalk"),
         LARK("lark"),
+        LARKSUITE("larksuite"),
         REGISTRY("registry");
 
         private String value;
@@ -196,6 +197,24 @@ public interface PluginParamConstants {
         private String value;
 
         LARK(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
+
+    public enum LARKSUITE implements PluginParamConstants {
+        APPK_ID("larksuite.app_id"),
+        APP_SECRET("larksuite.app_secret"),
+        REDIRECT_URI("larksuite.redirect_uri"),
+        OPEN("larksuite.open");
+
+        private String value;
+
+        LARKSUITE(String value) {
             this.value = value;
         }
 
