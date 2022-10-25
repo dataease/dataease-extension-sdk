@@ -35,7 +35,7 @@ public abstract class DefaultJdbcProvider extends Provider {
 
     @PostConstruct
     public void init() throws Exception {
-        List<String> builtinPlugins = Arrays.asList("maxcompute", "presto", "dm", "mongobi");
+        List<String> builtinPlugins = Arrays.asList("maxcompute", "presto", "dm", "mongobi", "kylin");
         String jarPath = FILE_PATH;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if (!getType().equalsIgnoreCase("built-in")) {
