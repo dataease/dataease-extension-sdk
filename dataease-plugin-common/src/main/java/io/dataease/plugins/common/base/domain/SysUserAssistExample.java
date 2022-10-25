@@ -433,6 +433,76 @@ public class SysUserAssistExample {
             addCriterion("lark_id not between", value1, value2, "larkId");
             return (Criteria) this;
         }
+
+        public Criteria andLarksuiteIdIsNull() {
+            addCriterion("larksuite_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdIsNotNull() {
+            addCriterion("larksuite_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdEqualTo(String value) {
+            addCriterion("larksuite_id =", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdNotEqualTo(String value) {
+            addCriterion("larksuite_id <>", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdGreaterThan(String value) {
+            addCriterion("larksuite_id >", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdGreaterThanOrEqualTo(String value) {
+            addCriterion("larksuite_id >=", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdLessThan(String value) {
+            addCriterion("larksuite_id <", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdLessThanOrEqualTo(String value) {
+            addCriterion("larksuite_id <=", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdLike(String value) {
+            addCriterion("larksuite_id like", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdNotLike(String value) {
+            addCriterion("larksuite_id not like", value, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdIn(List<String> values) {
+            addCriterion("larksuite_id in", values, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdNotIn(List<String> values) {
+            addCriterion("larksuite_id not in", values, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdBetween(String value1, String value2) {
+            addCriterion("larksuite_id between", value1, value2, "larksuiteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLarksuiteIdNotBetween(String value1, String value2) {
+            addCriterion("larksuite_id not between", value1, value2, "larksuiteId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
