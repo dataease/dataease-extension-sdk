@@ -453,6 +453,9 @@ public abstract class DefaultJdbcProvider extends Provider {
         if (datasourceType == DatasourceTypes.mysql) {
             tableDesc.setRemark(resultSet.getString(2));
         }
+        if (datasourceType == DatasourceTypes.xugu) {
+            tableDesc.setRemark(resultSet.getString(2));
+        }
         tableDesc.setName(resultSet.getString(1));
         return tableDesc;
     }
