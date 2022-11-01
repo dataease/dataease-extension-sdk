@@ -137,7 +137,9 @@ public abstract class QueryProvider {
                 continue;
             }
             String treeExp = transTreeToWhere(tableObj, tree);
-            res.add(treeExp);
+            if(StringUtils.isNotEmpty(treeExp)){
+                res.add(treeExp);
+            }
         }
         return CollectionUtils.isNotEmpty(res) ? "(" + String.join(" AND ", res) + ")" : null;
     }
