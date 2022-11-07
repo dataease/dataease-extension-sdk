@@ -21,7 +21,7 @@ public class PanelSubject implements Serializable {
     private Long updateTime;
     @ApiModelProperty("更新者")
     private String updateBy;
-    @ApiModelProperty("详息")
+    @ApiModelProperty("详细信息")
     private String details;
 
     private static final long serialVersionUID = 1L;

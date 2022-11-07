@@ -10,4 +10,6 @@ public class LoginLimitInfo {
     private Integer relieveTimes;
 
     private String open;
+
+    private String scanCreateUser;
 }
