@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import io.dataease.plugins.common.base.domain.ChartViewWithBLOBs;
 import io.dataease.plugins.common.base.domain.DatasetTableField;
 import io.dataease.plugins.common.base.domain.Datasource;
+import io.dataease.plugins.common.constants.datasource.MySQLConstants;
 import io.dataease.plugins.common.constants.datasource.PgConstants;
 import io.dataease.plugins.common.dto.chart.ChartFieldCustomFilterDTO;
 import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
@@ -15,6 +16,7 @@ import io.dataease.plugins.common.request.permission.DataSetRowPermissionsTreeDT
 import io.dataease.plugins.common.request.permission.DatasetRowPermissionsTreeItem;
 import io.dataease.plugins.common.request.permission.DatasetRowPermissionsTreeObj;
 import io.dataease.plugins.datasource.entity.JdbcConfiguration;
+import io.dataease.plugins.datasource.entity.PageInfo;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -57,6 +59,22 @@ public abstract class QueryProvider {
     public abstract String getSQLTableInfo(String table, List<ChartViewFieldDTO> xAxis, List<ChartFieldCustomFilterDTO> fieldCustomFilter, List<DataSetRowPermissionsTreeDTO> rowPermissionsTree, List<ChartExtFilterRequest> extFilterRequestList, Datasource ds, ChartViewWithBLOBs view);
 
     public abstract String getSQLAsTmpTableInfo(String sql, List<ChartViewFieldDTO> xAxis, List<ChartFieldCustomFilterDTO> fieldCustomFilter, List<DataSetRowPermissionsTreeDTO> rowPermissionsTree, List<ChartExtFilterRequest> extFilterRequestList, Datasource ds, ChartViewWithBLOBs view);
+
+    public String getSQLWithPage(boolean isTable, String sql, List<ChartViewFieldDTO> xAxis, List<ChartFieldCustomFilterDTO> fieldCustomFilter, List<DataSetRowPermissionsTreeDTO> rowPermissionsTree, List<ChartExtFilterRequest> extFilterRequestList, Datasource ds, ChartViewWithBLOBs view, PageInfo pageInfo) {
+        if(isTable){
+            return getSQLTableInfo(sql, xAxis, fieldCustomFilter, rowPermissionsTree, extFilterRequestList, ds, view);
+        }else {
+            return getSQLAsTmpTableInfo(sql, xAxis, fieldCustomFilter, rowPermissionsTree, extFilterRequestList, ds, view);
+        }
+    }
+
+    public String getResultCount(boolean isTable, String sql, List<ChartViewFieldDTO> xAxis, List<ChartFieldCustomFilterDTO> fieldCustomFilter, List<DataSetRowPermissionsTreeDTO> rowPermissionsTree, List<ChartExtFilterRequest> extFilterRequestList, Datasource ds, ChartViewWithBLOBs view) {
+        if(isTable){
+            return "SELECT COUNT(*) from (" + getSQLTableInfo(sql, xAxis, fieldCustomFilter, rowPermissionsTree, extFilterRequestList, ds, view) + ") COUNT_TEMP";
+        }else {
+            return "SELECT COUNT(*) from (" + getSQLAsTmpTableInfo(sql, xAxis, fieldCustomFilter, rowPermissionsTree, extFilterRequestList, ds, view) + ") COUNT_TEMP";
+        }
+    }
 
     public abstract String getSQLStack(String table, List<ChartViewFieldDTO> xAxis, List<ChartViewFieldDTO> yAxis, List<ChartFieldCustomFilterDTO> fieldCustomFilter, List<DataSetRowPermissionsTreeDTO> rowPermissionsTree, List<ChartExtFilterRequest> extFilterRequestList, List<ChartViewFieldDTO> extStack, Datasource ds, ChartViewWithBLOBs view);
 
@@ -137,7 +155,7 @@ public abstract class QueryProvider {
                 continue;
             }
             String treeExp = transTreeToWhere(tableObj, tree);
-            if(StringUtils.isNotEmpty(treeExp)){
+            if (StringUtils.isNotEmpty(treeExp)) {
                 res.add(treeExp);
             }
         }
