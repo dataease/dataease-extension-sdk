@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class PageInfo {
-    private long goPage;
-    private long pageSize;
+    private Long goPage;
+    private Long pageSize;
     private String dsVersion;
 }
