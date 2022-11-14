@@ -37,5 +37,7 @@ public class PanelGroup implements Serializable {
 
     private Long updateTime;
 
+    private Boolean watermarkOpen;
+
     private static final long serialVersionUID = 1L;
 }

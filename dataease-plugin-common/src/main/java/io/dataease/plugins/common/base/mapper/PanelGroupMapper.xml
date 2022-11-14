@@ -18,6 +18,7 @@
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="watermark_open" jdbcType="BIT" property="watermarkOpen" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.dataease.plugins.common.base.domain.PanelGroupWithBLOBs">
     <result column="panel_style" jdbcType="LONGVARCHAR" property="panelStyle" />
@@ -83,7 +84,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, `name`, pid, `level`, node_type, create_by, create_time, panel_type, `source`, 
-    extend1, extend2, remark, mobile_layout, `status`, update_by, update_time
+    extend1, extend2, remark, mobile_layout, `status`, update_by, update_time, watermark_open
   </sql>
   <sql id="Blob_Column_List">
     panel_style, panel_data
@@ -142,15 +143,15 @@
       create_time, panel_type, `source`, 
       extend1, extend2, remark, 
       mobile_layout, `status`, update_by, 
-      update_time, panel_style, panel_data
-      )
+      update_time, watermark_open, panel_style, 
+      panel_data)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
       #{level,jdbcType=INTEGER}, #{nodeType,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=BIGINT}, #{panelType,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
       #{extend1,jdbcType=VARCHAR}, #{extend2,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{mobileLayout,jdbcType=BIT}, #{status,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=BIGINT}, #{panelStyle,jdbcType=LONGVARCHAR}, #{panelData,jdbcType=LONGVARCHAR}
-      )
+      #{updateTime,jdbcType=BIGINT}, #{watermarkOpen,jdbcType=BIT}, #{panelStyle,jdbcType=LONGVARCHAR}, 
+      #{panelData,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.PanelGroupWithBLOBs">
     insert into panel_group
@@ -202,6 +203,9 @@
       </if>
       <if test="updateTime != null">
         update_time,
+      </if>
+      <if test="watermarkOpen != null">
+        watermark_open,
       </if>
       <if test="panelStyle != null">
         panel_style,
@@ -258,6 +262,9 @@
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="watermarkOpen != null">
+        #{watermarkOpen,jdbcType=BIT},
       </if>
       <if test="panelStyle != null">
         #{panelStyle,jdbcType=LONGVARCHAR},
@@ -324,6 +331,9 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=BIGINT},
       </if>
+      <if test="record.watermarkOpen != null">
+        watermark_open = #{record.watermarkOpen,jdbcType=BIT},
+      </if>
       <if test="record.panelStyle != null">
         panel_style = #{record.panelStyle,jdbcType=LONGVARCHAR},
       </if>
@@ -353,6 +363,7 @@
       `status` = #{record.status,jdbcType=VARCHAR},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=BIGINT},
+      watermark_open = #{record.watermarkOpen,jdbcType=BIT},
       panel_style = #{record.panelStyle,jdbcType=LONGVARCHAR},
       panel_data = #{record.panelData,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -376,7 +387,8 @@
       mobile_layout = #{record.mobileLayout,jdbcType=BIT},
       `status` = #{record.status,jdbcType=VARCHAR},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
-      update_time = #{record.updateTime,jdbcType=BIGINT}
+      update_time = #{record.updateTime,jdbcType=BIGINT},
+      watermark_open = #{record.watermarkOpen,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -429,6 +441,9 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=BIGINT},
       </if>
+      <if test="watermarkOpen != null">
+        watermark_open = #{watermarkOpen,jdbcType=BIT},
+      </if>
       <if test="panelStyle != null">
         panel_style = #{panelStyle,jdbcType=LONGVARCHAR},
       </if>
@@ -455,6 +470,7 @@
       `status` = #{status,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=BIGINT},
+      watermark_open = #{watermarkOpen,jdbcType=BIT},
       panel_style = #{panelStyle,jdbcType=LONGVARCHAR},
       panel_data = #{panelData,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
@@ -475,7 +491,8 @@
       mobile_layout = #{mobileLayout,jdbcType=BIT},
       `status` = #{status,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=BIGINT}
+      update_time = #{updateTime,jdbcType=BIGINT},
+      watermark_open = #{watermarkOpen,jdbcType=BIT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

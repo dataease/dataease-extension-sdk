@@ -1183,6 +1183,66 @@ public class PanelGroupExample {
             addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
+
+        public Criteria andWatermarkOpenIsNull() {
+            addCriterion("watermark_open is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenIsNotNull() {
+            addCriterion("watermark_open is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenEqualTo(Boolean value) {
+            addCriterion("watermark_open =", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenNotEqualTo(Boolean value) {
+            addCriterion("watermark_open <>", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenGreaterThan(Boolean value) {
+            addCriterion("watermark_open >", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("watermark_open >=", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenLessThan(Boolean value) {
+            addCriterion("watermark_open <", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenLessThanOrEqualTo(Boolean value) {
+            addCriterion("watermark_open <=", value, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenIn(List<Boolean> values) {
+            addCriterion("watermark_open in", values, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenNotIn(List<Boolean> values) {
+            addCriterion("watermark_open not in", values, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenBetween(Boolean value1, Boolean value2) {
+            addCriterion("watermark_open between", value1, value2, "watermarkOpen");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatermarkOpenNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("watermark_open not between", value1, value2, "watermarkOpen");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
