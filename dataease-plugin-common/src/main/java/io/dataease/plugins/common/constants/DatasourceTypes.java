@@ -19,6 +19,7 @@ public enum DatasourceTypes {
     ck("ck", "ClickHouse", "`", "`", "", "", "", true, DatasourceCalculationMode.DIRECT, null, null,true),
     db2("db2", "Db2", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC, null, null,true),
     redshift("redshift", "AWS Redshift", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT, null, null,true),
+    xugu("xugu", "XUGU", "`", "`", "", "", "", true, DatasourceCalculationMode.DIRECT_AND_SYNC, null,null, true),
 
     es("es", "Elasticsearch", "\"", "\"", "\"", "\"", "", true, DatasourceCalculationMode.DIRECT, null, null,false),
     api("api", "API", "\"", "\"", "\"", "\"", "rebuildschema=true&authSource=admin", true, DatasourceCalculationMode.SYNC, null, null,false),
@@ -28,6 +29,7 @@ public enum DatasourceTypes {
     //engine
     engine_doris("engine_doris", "engine_doris", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null, null,null, true),
     engine_mysql("engine_mysql", "engine_mysql", "`", "`", "", "", "characterEncoding=UTF-8&connectTimeout=5000&useSSL=false&allowPublicKeyRetrieval=true", false, null, null, null,true);
+
 
 
     private String type;
