@@ -524,4 +524,15 @@ public abstract class DefaultJdbcProvider extends Provider {
         }
     }
 
+
+    public String dsVersion(DatasourceRequest datasourceRequest) throws Exception{
+        JdbcConfiguration jdbcConfiguration = new Gson().fromJson(datasourceRequest.getDatasource().getConfiguration(), JdbcConfiguration.class);
+        try (Connection con = getConnectionFromPool(datasourceRequest)) {
+            return String.valueOf(con.getMetaData().getDatabaseMajorVersion());
+        } catch (Exception e) {
+            DataEaseException.throwException(e.getMessage());
+        }
+        return "";
+    }
+
 }

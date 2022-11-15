@@ -68,4 +68,6 @@ public abstract class Provider {
     }
 
     public void checkConfiguration(Datasource datasource) throws Exception{}
+
+    public String dsVersion(Datasource datasource) throws Exception{return "";}
 }
