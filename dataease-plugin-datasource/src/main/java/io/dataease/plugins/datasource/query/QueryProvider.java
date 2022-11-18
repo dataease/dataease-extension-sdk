@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import io.dataease.plugins.common.base.domain.ChartViewWithBLOBs;
 import io.dataease.plugins.common.base.domain.DatasetTableField;
 import io.dataease.plugins.common.base.domain.Datasource;
-import io.dataease.plugins.common.constants.datasource.MySQLConstants;
 import io.dataease.plugins.common.constants.datasource.PgConstants;
 import io.dataease.plugins.common.dto.chart.ChartFieldCustomFilterDTO;
 import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
@@ -15,6 +14,7 @@ import io.dataease.plugins.common.request.chart.ChartExtFilterRequest;
 import io.dataease.plugins.common.request.permission.DataSetRowPermissionsTreeDTO;
 import io.dataease.plugins.common.request.permission.DatasetRowPermissionsTreeItem;
 import io.dataease.plugins.common.request.permission.DatasetRowPermissionsTreeObj;
+import io.dataease.plugins.datasource.entity.Dateformat;
 import io.dataease.plugins.datasource.entity.JdbcConfiguration;
 import io.dataease.plugins.datasource.entity.PageInfo;
 import org.apache.commons.collections4.CollectionUtils;
@@ -190,5 +190,9 @@ public abstract class QueryProvider {
 
     public String sqlForPreview(String table, Datasource ds) {
         return "SELECT * FROM " + table;
+    }
+
+    public List<Dateformat> dateformat() {
+        return new ArrayList<>();
     }
 }
