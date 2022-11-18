@@ -39,5 +39,7 @@ public class PanelGroup implements Serializable {
 
     private Boolean watermarkOpen;
 
+    private Long panelSort;
+
     private static final long serialVersionUID = 1L;
 }

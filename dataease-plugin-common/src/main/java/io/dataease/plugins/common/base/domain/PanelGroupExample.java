@@ -1243,6 +1243,66 @@ public class PanelGroupExample {
             addCriterion("watermark_open not between", value1, value2, "watermarkOpen");
             return (Criteria) this;
         }
+
+        public Criteria andPanelSortIsNull() {
+            addCriterion("panel_sort is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortIsNotNull() {
+            addCriterion("panel_sort is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortEqualTo(Long value) {
+            addCriterion("panel_sort =", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortNotEqualTo(Long value) {
+            addCriterion("panel_sort <>", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortGreaterThan(Long value) {
+            addCriterion("panel_sort >", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortGreaterThanOrEqualTo(Long value) {
+            addCriterion("panel_sort >=", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortLessThan(Long value) {
+            addCriterion("panel_sort <", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortLessThanOrEqualTo(Long value) {
+            addCriterion("panel_sort <=", value, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortIn(List<Long> values) {
+            addCriterion("panel_sort in", values, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortNotIn(List<Long> values) {
+            addCriterion("panel_sort not in", values, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortBetween(Long value1, Long value2) {
+            addCriterion("panel_sort between", value1, value2, "panelSort");
+            return (Criteria) this;
+        }
+
+        public Criteria andPanelSortNotBetween(Long value1, Long value2) {
+            addCriterion("panel_sort not between", value1, value2, "panelSort");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
