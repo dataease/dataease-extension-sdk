@@ -79,7 +79,7 @@ public class GlobalFileUtil {
 
 
 
-    private static String filePathById(String fileId, String suffix) {
+    public static String filePathById(String fileId, String suffix) {
         String dateStr = dateByFileId(fileId);
         String dirPath = formatRoot() + dateStr;
         if (!FileUtil.exist(dirPath)) {
