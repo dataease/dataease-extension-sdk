@@ -1203,6 +1203,76 @@ public class DatasetTableFieldExample {
             addCriterion("date_format not between", value1, value2, "dateFormat");
             return (Criteria) this;
         }
+
+        public Criteria andDateFormatTypeIsNull() {
+            addCriterion("date_format_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeIsNotNull() {
+            addCriterion("date_format_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeEqualTo(String value) {
+            addCriterion("date_format_type =", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeNotEqualTo(String value) {
+            addCriterion("date_format_type <>", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeGreaterThan(String value) {
+            addCriterion("date_format_type >", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("date_format_type >=", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeLessThan(String value) {
+            addCriterion("date_format_type <", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeLessThanOrEqualTo(String value) {
+            addCriterion("date_format_type <=", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeLike(String value) {
+            addCriterion("date_format_type like", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeNotLike(String value) {
+            addCriterion("date_format_type not like", value, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeIn(List<String> values) {
+            addCriterion("date_format_type in", values, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeNotIn(List<String> values) {
+            addCriterion("date_format_type not in", values, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeBetween(String value1, String value2) {
+            addCriterion("date_format_type between", value1, value2, "dateFormatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateFormatTypeNotBetween(String value1, String value2) {
+            addCriterion("date_format_type not between", value1, value2, "dateFormatType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
