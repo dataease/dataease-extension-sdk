@@ -26,7 +26,7 @@ public class PgConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "numeric(18,0)";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "numeric(18,8)";
+    public static final String DEFAULT_FLOAT_FORMAT = "numeric(38,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 
