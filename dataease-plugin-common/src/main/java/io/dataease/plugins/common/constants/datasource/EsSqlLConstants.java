@@ -12,7 +12,7 @@ public class EsSqlLConstants extends SQLConstants {
 
     public static final String UNIX_TIMESTAMP = "UNIX_TIMESTAMP(%s)";
 
-    public static final String DATETIME_FORMAT = "DATETIME_PARSE(%s,'%s')";
+    public static final String DATETIME_FORMAT = "DATETIME_FORMAT(%s,'%s')";
 
     public static final String STR_TO_DATE = " DATETIME_FORMAT(DATETIME_PARSE(%s,'%s'),'%s') ";
 
