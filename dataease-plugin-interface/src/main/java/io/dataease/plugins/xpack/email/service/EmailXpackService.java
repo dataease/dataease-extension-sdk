@@ -30,7 +30,7 @@ public abstract class EmailXpackService extends PluginMenuService {
 
     public abstract GlobalTaskInstance instanceForm(Long instanceId);
 
-    public abstract String print(String url, String token, XpackPixelEntity XpackPixelEntity) throws Exception;
+    public abstract byte[] print(String url, String token, XpackPixelEntity XpackPixelEntity) throws Exception;
 
     public abstract List<GlobalTaskEntity> allTask();
 
