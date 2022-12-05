@@ -25,6 +25,8 @@ public abstract class DingtalkXpackService extends PluginComponentService {
 
     public abstract DingUserEntity userInfo(String loginTmpCode);
 
+    public abstract DingUserEntity userInfoWithoutLogin(String code);
+
     public abstract DingtalkMsgResult pushMsg(List<String> userIds, String message);
 
     public abstract DingtalkMsgResult pushOaMsg(List<String> userIds, String title, String content, byte[] bytes, List<File> files);
