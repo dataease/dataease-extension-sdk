@@ -5,6 +5,7 @@ import io.dataease.plugins.xpack.display.dto.response.SysSettingDto;
 import io.dataease.plugins.xpack.lark.dto.entity.LarkMsgResult;
 import io.dataease.plugins.xpack.lark.dto.entity.LarkQrResult;
 import io.dataease.plugins.xpack.lark.dto.entity.LarkUserInfo;
+import io.dataease.plugins.xpack.lark.dto.response.LarkAppUserResult;
 import io.dataease.plugins.xpack.lark.dto.response.LarkInfo;
 
 
@@ -15,6 +16,8 @@ public abstract class LarkXpackService extends PluginComponentService {
 
     public abstract LarkInfo info();
 
+    public abstract String appId();
+
     public abstract void save(List<SysSettingDto> settings);
 
     public abstract void testConn(LarkInfo info) throws Exception;
@@ -24,6 +27,8 @@ public abstract class LarkXpackService extends PluginComponentService {
     public abstract LarkQrResult getQrParam();
 
     public abstract LarkUserInfo userInfo(String code, String state, Boolean useBind);
+
+    public abstract LarkAppUserResult userInfoWithoutLogin(String code);
 
     public abstract LarkMsgResult pushMsg(List<String> userIds, String message);
 
