@@ -13,6 +13,8 @@ public class PanelAppTemplateLog implements Serializable {
 
     private String datasourceId;
 
+    private String datasourceFrom;
+
     private String sourceDatasourceName;
 
     private String datasetGroupId;

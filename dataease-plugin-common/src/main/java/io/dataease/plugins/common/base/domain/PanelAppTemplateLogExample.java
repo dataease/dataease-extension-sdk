@@ -384,6 +384,76 @@ public class PanelAppTemplateLogExample {
             return (Criteria) this;
         }
 
+        public Criteria andDatasourceFromIsNull() {
+            addCriterion("datasource_from is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromIsNotNull() {
+            addCriterion("datasource_from is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromEqualTo(String value) {
+            addCriterion("datasource_from =", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromNotEqualTo(String value) {
+            addCriterion("datasource_from <>", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromGreaterThan(String value) {
+            addCriterion("datasource_from >", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromGreaterThanOrEqualTo(String value) {
+            addCriterion("datasource_from >=", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromLessThan(String value) {
+            addCriterion("datasource_from <", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromLessThanOrEqualTo(String value) {
+            addCriterion("datasource_from <=", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromLike(String value) {
+            addCriterion("datasource_from like", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromNotLike(String value) {
+            addCriterion("datasource_from not like", value, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromIn(List<String> values) {
+            addCriterion("datasource_from in", values, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromNotIn(List<String> values) {
+            addCriterion("datasource_from not in", values, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromBetween(String value1, String value2) {
+            addCriterion("datasource_from between", value1, value2, "datasourceFrom");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatasourceFromNotBetween(String value1, String value2) {
+            addCriterion("datasource_from not between", value1, value2, "datasourceFrom");
+            return (Criteria) this;
+        }
+
         public Criteria andSourceDatasourceNameIsNull() {
             addCriterion("source_datasource_name is null");
             return (Criteria) this;
