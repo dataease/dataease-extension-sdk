@@ -5,8 +5,8 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class GlobalTaskEntity implements Serializable{
-    
+public class GlobalTaskEntity implements Serializable {
+
     private Long taskId;
 
     private String taskName;
@@ -28,4 +28,6 @@ public class GlobalTaskEntity implements Serializable{
     private String cron;
 
     private String jobKey;
+
+    private Boolean status = true;
 }

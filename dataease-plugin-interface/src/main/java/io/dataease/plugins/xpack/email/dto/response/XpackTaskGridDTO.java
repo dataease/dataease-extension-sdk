@@ -33,4 +33,6 @@ public class XpackTaskGridDTO implements Serializable {
 
     private Long endTime;
 
+    private Boolean status;
+
 }

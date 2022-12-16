@@ -1,6 +1,7 @@
 package io.dataease.plugins.xpack.email.service;
 
 import java.util.List;
+
 import io.dataease.plugins.common.entity.GlobalTaskEntity;
 import io.dataease.plugins.common.entity.GlobalTaskInstance;
 import io.dataease.plugins.common.entity.XpackGridRequest;
@@ -17,15 +18,20 @@ public abstract class EmailXpackService extends PluginMenuService {
 
     public abstract List<XpackTaskGridDTO> taskGrid(XpackGridRequest request);
 
+    public abstract Boolean status(GlobalTaskEntity taskEntity);
+
     public abstract List<XpackTaskInstanceDTO> taskInstanceGrid(XpackGridRequest request);
 
     public abstract void delete(Long taskId) throws Exception;
 
     public abstract void stop(Long taskId) throws Exception;
 
+    public abstract Boolean start(Long taskId) throws Exception;
+
     public abstract XpackEmailTaskRequest taskForm(Long taskId);
 
     public abstract Long saveInstance(GlobalTaskInstance instance);
+
     public abstract void delInstance(Long instanceId);
 
     public abstract GlobalTaskInstance instanceForm(Long instanceId);

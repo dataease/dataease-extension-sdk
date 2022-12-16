@@ -7,8 +7,8 @@ import lombok.Data;
 
 @PluginResultMap
 @Data
-public class XpackTaskCreateRequest implements Serializable{
-    
+public class XpackTaskCreateRequest implements Serializable {
+
     private Long taskId;
 
     private String taskName;
@@ -26,4 +26,6 @@ public class XpackTaskCreateRequest implements Serializable{
     private Long creator;
 
     private Long createTime;
+
+    private Boolean status;
 }
