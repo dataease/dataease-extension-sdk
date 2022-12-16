@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class XpackEmailTemplateDTO implements Serializable{
+public class XpackEmailTemplateDTO implements Serializable {
 
     private Long id;
 
@@ -30,5 +30,7 @@ public class XpackEmailTemplateDTO implements Serializable{
     private String conditions;
 
     private String viewDataRange = "view";
+
+    private Boolean status;
 
 }
