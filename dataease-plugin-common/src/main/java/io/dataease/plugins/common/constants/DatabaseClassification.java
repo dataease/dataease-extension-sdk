@@ -1,8 +1,9 @@
 package io.dataease.plugins.common.constants;
 
 public enum DatabaseClassification {
-    RDBMS("RDBMS"),
-    NORDBMS("NORDBMS"),
+    OLTP("OLTP"),
+    OLAP("OLAP"),
+    DL("DL"),
     OTHER("OTHER");
 
     private String  type;
