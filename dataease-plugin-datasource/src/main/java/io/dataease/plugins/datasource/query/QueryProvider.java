@@ -195,4 +195,8 @@ public abstract class QueryProvider {
     public List<Dateformat> dateformat() {
         return new ArrayList<>();
     }
+
+    public String getTotalCount(boolean isTable, String sql, Datasource ds) {
+        return null;
+    }
 }
