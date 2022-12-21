@@ -1183,6 +1183,196 @@ public class ChartViewExample {
             addCriterion("data_from not between", value1, value2, "dataFrom");
             return (Criteria) this;
         }
+
+        public Criteria andRefreshViewEnableIsNull() {
+            addCriterion("refresh_view_enable is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableIsNotNull() {
+            addCriterion("refresh_view_enable is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableEqualTo(Boolean value) {
+            addCriterion("refresh_view_enable =", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableNotEqualTo(Boolean value) {
+            addCriterion("refresh_view_enable <>", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableGreaterThan(Boolean value) {
+            addCriterion("refresh_view_enable >", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("refresh_view_enable >=", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableLessThan(Boolean value) {
+            addCriterion("refresh_view_enable <", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableLessThanOrEqualTo(Boolean value) {
+            addCriterion("refresh_view_enable <=", value, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableIn(List<Boolean> values) {
+            addCriterion("refresh_view_enable in", values, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableNotIn(List<Boolean> values) {
+            addCriterion("refresh_view_enable not in", values, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableBetween(Boolean value1, Boolean value2) {
+            addCriterion("refresh_view_enable between", value1, value2, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshViewEnableNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("refresh_view_enable not between", value1, value2, "refreshViewEnable");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitIsNull() {
+            addCriterion("refresh_unit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitIsNotNull() {
+            addCriterion("refresh_unit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitEqualTo(String value) {
+            addCriterion("refresh_unit =", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitNotEqualTo(String value) {
+            addCriterion("refresh_unit <>", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitGreaterThan(String value) {
+            addCriterion("refresh_unit >", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitGreaterThanOrEqualTo(String value) {
+            addCriterion("refresh_unit >=", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitLessThan(String value) {
+            addCriterion("refresh_unit <", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitLessThanOrEqualTo(String value) {
+            addCriterion("refresh_unit <=", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitLike(String value) {
+            addCriterion("refresh_unit like", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitNotLike(String value) {
+            addCriterion("refresh_unit not like", value, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitIn(List<String> values) {
+            addCriterion("refresh_unit in", values, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitNotIn(List<String> values) {
+            addCriterion("refresh_unit not in", values, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitBetween(String value1, String value2) {
+            addCriterion("refresh_unit between", value1, value2, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshUnitNotBetween(String value1, String value2) {
+            addCriterion("refresh_unit not between", value1, value2, "refreshUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeIsNull() {
+            addCriterion("refresh_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeIsNotNull() {
+            addCriterion("refresh_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeEqualTo(Integer value) {
+            addCriterion("refresh_time =", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeNotEqualTo(Integer value) {
+            addCriterion("refresh_time <>", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeGreaterThan(Integer value) {
+            addCriterion("refresh_time >", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("refresh_time >=", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeLessThan(Integer value) {
+            addCriterion("refresh_time <", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeLessThanOrEqualTo(Integer value) {
+            addCriterion("refresh_time <=", value, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeIn(List<Integer> values) {
+            addCriterion("refresh_time in", values, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeNotIn(List<Integer> values) {
+            addCriterion("refresh_time not in", values, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeBetween(Integer value1, Integer value2) {
+            addCriterion("refresh_time between", value1, value2, "refreshTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefreshTimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("refresh_time not between", value1, value2, "refreshTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -37,5 +37,11 @@ public class ChartView implements Serializable {
 
     private String dataFrom;
 
+    private Boolean refreshViewEnable;
+
+    private String refreshUnit;
+
+    private Integer refreshTime;
+
     private static final long serialVersionUID = 1L;
 }

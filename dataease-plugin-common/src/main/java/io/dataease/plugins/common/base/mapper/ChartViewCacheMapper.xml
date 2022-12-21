@@ -18,6 +18,9 @@
     <result column="chart_type" jdbcType="VARCHAR" property="chartType" />
     <result column="is_plugin" jdbcType="BIT" property="isPlugin" />
     <result column="data_from" jdbcType="VARCHAR" property="dataFrom" />
+    <result column="refresh_view_enable" jdbcType="BIT" property="refreshViewEnable" />
+    <result column="refresh_unit" jdbcType="VARCHAR" property="refreshUnit" />
+    <result column="refresh_time" jdbcType="INTEGER" property="refreshTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.dataease.plugins.common.base.domain.ChartViewCacheWithBLOBs">
     <result column="x_axis" jdbcType="LONGVARCHAR" property="xAxis" />
@@ -94,7 +97,8 @@
   </sql>
   <sql id="Base_Column_List">
     id, `name`, title, scene_id, table_id, `type`, render, result_count, result_mode, 
-    create_by, create_time, update_time, style_priority, chart_type, is_plugin, data_from
+    create_by, create_time, update_time, style_priority, chart_type, is_plugin, data_from, 
+    refresh_view_enable, refresh_unit, refresh_time
   </sql>
   <sql id="Blob_Column_List">
     x_axis, x_axis_ext, y_axis, y_axis_ext, ext_stack, ext_bubble, custom_attr, custom_style, 
@@ -154,7 +158,8 @@
       render, result_count, result_mode, 
       create_by, create_time, update_time, 
       style_priority, chart_type, is_plugin, 
-      data_from, x_axis, x_axis_ext, 
+      data_from, refresh_view_enable, refresh_unit, 
+      refresh_time, x_axis, x_axis_ext, 
       y_axis, y_axis_ext, ext_stack, 
       ext_bubble, custom_attr, custom_style, 
       custom_filter, drill_fields, senior, 
@@ -164,7 +169,8 @@
       #{render,jdbcType=VARCHAR}, #{resultCount,jdbcType=INTEGER}, #{resultMode,jdbcType=VARCHAR}, 
       #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
       #{stylePriority,jdbcType=VARCHAR}, #{chartType,jdbcType=VARCHAR}, #{isPlugin,jdbcType=BIT}, 
-      #{dataFrom,jdbcType=VARCHAR}, #{xAxis,jdbcType=LONGVARCHAR}, #{xAxisExt,jdbcType=LONGVARCHAR}, 
+      #{dataFrom,jdbcType=VARCHAR}, #{refreshViewEnable,jdbcType=BIT}, #{refreshUnit,jdbcType=VARCHAR}, 
+      #{refreshTime,jdbcType=INTEGER}, #{xAxis,jdbcType=LONGVARCHAR}, #{xAxisExt,jdbcType=LONGVARCHAR}, 
       #{yAxis,jdbcType=LONGVARCHAR}, #{yAxisExt,jdbcType=LONGVARCHAR}, #{extStack,jdbcType=LONGVARCHAR}, 
       #{extBubble,jdbcType=LONGVARCHAR}, #{customAttr,jdbcType=LONGVARCHAR}, #{customStyle,jdbcType=LONGVARCHAR}, 
       #{customFilter,jdbcType=LONGVARCHAR}, #{drillFields,jdbcType=LONGVARCHAR}, #{senior,jdbcType=LONGVARCHAR}, 
@@ -220,6 +226,15 @@
       </if>
       <if test="dataFrom != null">
         data_from,
+      </if>
+      <if test="refreshViewEnable != null">
+        refresh_view_enable,
+      </if>
+      <if test="refreshUnit != null">
+        refresh_unit,
+      </if>
+      <if test="refreshTime != null">
+        refresh_time,
       </if>
       <if test="xAxis != null">
         x_axis,
@@ -309,6 +324,15 @@
       </if>
       <if test="dataFrom != null">
         #{dataFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshViewEnable != null">
+        #{refreshViewEnable,jdbcType=BIT},
+      </if>
+      <if test="refreshUnit != null">
+        #{refreshUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshTime != null">
+        #{refreshTime,jdbcType=INTEGER},
       </if>
       <if test="xAxis != null">
         #{xAxis,jdbcType=LONGVARCHAR},
@@ -408,6 +432,15 @@
       <if test="record.dataFrom != null">
         data_from = #{record.dataFrom,jdbcType=VARCHAR},
       </if>
+      <if test="record.refreshViewEnable != null">
+        refresh_view_enable = #{record.refreshViewEnable,jdbcType=BIT},
+      </if>
+      <if test="record.refreshUnit != null">
+        refresh_unit = #{record.refreshUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refreshTime != null">
+        refresh_time = #{record.refreshTime,jdbcType=INTEGER},
+      </if>
       <if test="record.xAxis != null">
         x_axis = #{record.xAxis,jdbcType=LONGVARCHAR},
       </if>
@@ -470,6 +503,9 @@
       chart_type = #{record.chartType,jdbcType=VARCHAR},
       is_plugin = #{record.isPlugin,jdbcType=BIT},
       data_from = #{record.dataFrom,jdbcType=VARCHAR},
+      refresh_view_enable = #{record.refreshViewEnable,jdbcType=BIT},
+      refresh_unit = #{record.refreshUnit,jdbcType=VARCHAR},
+      refresh_time = #{record.refreshTime,jdbcType=INTEGER},
       x_axis = #{record.xAxis,jdbcType=LONGVARCHAR},
       x_axis_ext = #{record.xAxisExt,jdbcType=LONGVARCHAR},
       y_axis = #{record.yAxis,jdbcType=LONGVARCHAR},
@@ -504,7 +540,10 @@
       style_priority = #{record.stylePriority,jdbcType=VARCHAR},
       chart_type = #{record.chartType,jdbcType=VARCHAR},
       is_plugin = #{record.isPlugin,jdbcType=BIT},
-      data_from = #{record.dataFrom,jdbcType=VARCHAR}
+      data_from = #{record.dataFrom,jdbcType=VARCHAR},
+      refresh_view_enable = #{record.refreshViewEnable,jdbcType=BIT},
+      refresh_unit = #{record.refreshUnit,jdbcType=VARCHAR},
+      refresh_time = #{record.refreshTime,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -556,6 +595,15 @@
       </if>
       <if test="dataFrom != null">
         data_from = #{dataFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshViewEnable != null">
+        refresh_view_enable = #{refreshViewEnable,jdbcType=BIT},
+      </if>
+      <if test="refreshUnit != null">
+        refresh_unit = #{refreshUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshTime != null">
+        refresh_time = #{refreshTime,jdbcType=INTEGER},
       </if>
       <if test="xAxis != null">
         x_axis = #{xAxis,jdbcType=LONGVARCHAR},
@@ -616,6 +664,9 @@
       chart_type = #{chartType,jdbcType=VARCHAR},
       is_plugin = #{isPlugin,jdbcType=BIT},
       data_from = #{dataFrom,jdbcType=VARCHAR},
+      refresh_view_enable = #{refreshViewEnable,jdbcType=BIT},
+      refresh_unit = #{refreshUnit,jdbcType=VARCHAR},
+      refresh_time = #{refreshTime,jdbcType=INTEGER},
       x_axis = #{xAxis,jdbcType=LONGVARCHAR},
       x_axis_ext = #{xAxisExt,jdbcType=LONGVARCHAR},
       y_axis = #{yAxis,jdbcType=LONGVARCHAR},
@@ -647,7 +698,10 @@
       style_priority = #{stylePriority,jdbcType=VARCHAR},
       chart_type = #{chartType,jdbcType=VARCHAR},
       is_plugin = #{isPlugin,jdbcType=BIT},
-      data_from = #{dataFrom,jdbcType=VARCHAR}
+      data_from = #{dataFrom,jdbcType=VARCHAR},
+      refresh_view_enable = #{refreshViewEnable,jdbcType=BIT},
+      refresh_unit = #{refreshUnit,jdbcType=VARCHAR},
+      refresh_time = #{refreshTime,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
