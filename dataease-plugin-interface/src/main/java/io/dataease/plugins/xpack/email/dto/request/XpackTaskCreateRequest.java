@@ -26,6 +26,4 @@ public class XpackTaskCreateRequest implements Serializable {
     private Long creator;
 
     private Long createTime;
-
-    private Boolean status;
 }
