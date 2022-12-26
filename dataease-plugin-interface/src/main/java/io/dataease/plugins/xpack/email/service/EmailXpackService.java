@@ -48,4 +48,6 @@ public abstract class EmailXpackService extends PluginMenuService {
 
     public abstract void export(XpackGridRequest request);
 
+    public abstract Boolean status(Long taskId);
+
 }
