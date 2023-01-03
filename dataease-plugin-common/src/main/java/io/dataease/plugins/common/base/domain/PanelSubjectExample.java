@@ -314,6 +314,66 @@ public class PanelSubjectExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreateNumIsNull() {
+            addCriterion("create_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumIsNotNull() {
+            addCriterion("create_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumEqualTo(Integer value) {
+            addCriterion("create_num =", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumNotEqualTo(Integer value) {
+            addCriterion("create_num <>", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumGreaterThan(Integer value) {
+            addCriterion("create_num >", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("create_num >=", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumLessThan(Integer value) {
+            addCriterion("create_num <", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumLessThanOrEqualTo(Integer value) {
+            addCriterion("create_num <=", value, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumIn(List<Integer> values) {
+            addCriterion("create_num in", values, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumNotIn(List<Integer> values) {
+            addCriterion("create_num not in", values, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumBetween(Integer value1, Integer value2) {
+            addCriterion("create_num between", value1, value2, "createNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("create_num not between", value1, value2, "createNum");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

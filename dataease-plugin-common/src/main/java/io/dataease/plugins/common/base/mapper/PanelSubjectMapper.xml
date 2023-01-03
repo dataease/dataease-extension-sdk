@@ -5,6 +5,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="create_num" jdbcType="INTEGER" property="createNum" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, `type`, create_time, create_by, update_time, update_by
+    id, `name`, `type`, create_num, create_time, create_by, update_time, update_by
   </sql>
   <sql id="Blob_Column_List">
     details
@@ -127,11 +128,13 @@
   </delete>
   <insert id="insert" parameterType="io.dataease.plugins.common.base.domain.PanelSubject">
     insert into panel_subject (id, `name`, `type`, 
-      create_time, create_by, update_time, 
-      update_by, details)
+      create_num, create_time, create_by, 
+      update_time, update_by, details
+      )
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=BIGINT}, 
-      #{updateBy,jdbcType=VARCHAR}, #{details,jdbcType=LONGVARCHAR})
+      #{createNum,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=BIGINT}, #{updateBy,jdbcType=VARCHAR}, #{details,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="io.dataease.plugins.common.base.domain.PanelSubject">
     insert into panel_subject
@@ -144,6 +147,9 @@
       </if>
       <if test="type != null">
         `type`,
+      </if>
+      <if test="createNum != null">
+        create_num,
       </if>
       <if test="createTime != null">
         create_time,
@@ -170,6 +176,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createNum != null">
+        #{createNum,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=BIGINT},
@@ -206,6 +215,9 @@
       <if test="record.type != null">
         `type` = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.createNum != null">
+        create_num = #{record.createNum,jdbcType=INTEGER},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=BIGINT},
       </if>
@@ -231,6 +243,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       `name` = #{record.name,jdbcType=VARCHAR},
       `type` = #{record.type,jdbcType=VARCHAR},
+      create_num = #{record.createNum,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=BIGINT},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=BIGINT},
@@ -245,6 +258,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       `name` = #{record.name,jdbcType=VARCHAR},
       `type` = #{record.type,jdbcType=VARCHAR},
+      create_num = #{record.createNum,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=BIGINT},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=BIGINT},
@@ -261,6 +275,9 @@
       </if>
       <if test="type != null">
         `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createNum != null">
+        create_num = #{createNum,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=BIGINT},
@@ -284,6 +301,7 @@
     update panel_subject
     set `name` = #{name,jdbcType=VARCHAR},
       `type` = #{type,jdbcType=VARCHAR},
+      create_num = #{createNum,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=BIGINT},
@@ -295,6 +313,7 @@
     update panel_subject
     set `name` = #{name,jdbcType=VARCHAR},
       `type` = #{type,jdbcType=VARCHAR},
+      create_num = #{createNum,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=BIGINT},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=BIGINT},
