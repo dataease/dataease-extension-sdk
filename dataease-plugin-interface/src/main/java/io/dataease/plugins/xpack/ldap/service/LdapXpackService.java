@@ -15,7 +15,7 @@ public abstract class LdapXpackService extends PluginComponentService /* extends
 
     public abstract void save(List<SysSettingDto> settings);
 
-    public abstract void testConn();
+    public abstract void testConn(List<SysSettingDto> settings);
 
     public abstract void testLogin();
 
