@@ -2,9 +2,11 @@ package io.dataease.plugins.common.request.datasource;
 
 
 import io.dataease.plugins.common.base.domain.Datasource;
+import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,6 +35,7 @@ public class DatasourceRequest {
     private Integer fetchSize = 10000;
     private boolean pageable = false;
     private boolean previewData = false;
+    private List<ChartViewFieldDTO> xAxis;
 
     private String rebuildSqlWithFragment(String sql) {
         if (!sql.toLowerCase().startsWith("with")) {
