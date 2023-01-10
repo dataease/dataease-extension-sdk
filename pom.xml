@@ -7,7 +7,7 @@
     <groupId>io.dataease</groupId>
     <artifactId>dataease-extension-sdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.18.1</version>
+    <version>1.18.2</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
