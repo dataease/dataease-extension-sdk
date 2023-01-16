@@ -1,6 +1,7 @@
 package io.dataease.plugins.view.handler.impl;
 
 import io.dataease.plugins.common.constants.datasource.SQLConstants;
+import io.dataease.plugins.common.request.permission.DataSetRowPermissionsTreeDTO;
 import io.dataease.plugins.common.util.ConstantsUtil;
 import io.dataease.plugins.view.entity.*;
 import io.dataease.plugins.view.handler.PluginViewStatHandler;
@@ -20,6 +21,7 @@ public class DefaultViewStatHandler implements PluginViewStatHandler {
     public String build(PluginViewParam pluginViewParam, ViewPluginService viewPluginService) {
         ViewPluginBaseService baseService = viewPluginService.getBaseService();
         PluginViewSet pluginViewSet = pluginViewParam.getPluginViewSet();
+        List<DataSetRowPermissionsTreeDTO> rowPermissionsTree = pluginViewParam.getRowPermissionsTree();
         String dsType = pluginViewSet.getDsType();
         PluginViewSQL tableObj = baseService.getTableObj(pluginViewSet);
 
@@ -51,9 +53,11 @@ public class DefaultViewStatHandler implements PluginViewStatHandler {
         String panelWheres = baseService.panelWhere(dsType, pluginViewParam.getPluginChartExtFilters(), tableObj);
         // 构建sql所有参数
 
+        String permissionWhere = baseService.permissionWhere(dsType, rowPermissionsTree, tableObj);
         List<String> wheres = new ArrayList<>();
         if (customWheres != null) wheres.add(customWheres);
         if (panelWheres != null) wheres.add(panelWheres);
+        if (permissionWhere != null) wheres.add(permissionWhere);
         List<PluginViewSQL> groups = new ArrayList<>();
         groups.addAll(xFields);
         // 外层再次套sql

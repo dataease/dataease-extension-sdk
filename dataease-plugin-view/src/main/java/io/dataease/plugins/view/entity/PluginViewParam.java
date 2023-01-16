@@ -1,5 +1,6 @@
 package io.dataease.plugins.view.entity;
 
+import io.dataease.plugins.common.request.permission.DataSetRowPermissionsTreeDTO;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,6 +21,8 @@ public class PluginViewParam {
     private PluginViewLimit pluginViewLimit;
 
     private Long userId;
+
+    private List<DataSetRowPermissionsTreeDTO> rowPermissionsTree;
 
     public List<PluginViewField> getFieldsByType(String type) {
         return pluginViewFields.stream().filter(field -> StringUtils.equals(field.getTypeField(), type)).collect(Collectors.toList());
