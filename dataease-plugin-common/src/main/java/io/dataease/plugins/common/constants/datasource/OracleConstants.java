@@ -24,7 +24,7 @@ public class OracleConstants extends SQLConstants {
 
     public static final String DEFAULT_INT_FORMAT = "DECIMAL(20,0)";
 
-    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(28,8)";
+    public static final String DEFAULT_FLOAT_FORMAT = "DECIMAL(20,8)";
 
     public static final String WHERE_VALUE_NULL = "(NULL,'')";
 
