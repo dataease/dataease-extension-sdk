@@ -1,5 +1,6 @@
 package io.dataease.plugins.common.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -9,8 +10,9 @@ import lombok.Data;
  */
 @Data
 public class DatasourceBaseType {
+    @ApiModelProperty("数据源类型")
     private String type;
-
+    @ApiModelProperty("数据源名称")
     private String name;
 
     public DatasourceBaseType() {
