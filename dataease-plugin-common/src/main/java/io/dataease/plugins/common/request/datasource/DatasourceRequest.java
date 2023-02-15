@@ -1,6 +1,7 @@
 package io.dataease.plugins.common.request.datasource;
 
 
+import io.dataease.plugins.common.base.domain.DatasetTableField;
 import io.dataease.plugins.common.base.domain.Datasource;
 import io.dataease.plugins.common.dto.chart.ChartViewFieldDTO;
 import lombok.Getter;
@@ -36,6 +37,9 @@ public class DatasourceRequest {
     private boolean pageable = false;
     private boolean previewData = false;
     private List<ChartViewFieldDTO> xAxis;
+    private List<ChartViewFieldDTO> yAxis;
+    private List<DatasetTableField> permissionFields;
+    private boolean totalPageFlag;
 
     private String rebuildSqlWithFragment(String sql) {
         if (!sql.toLowerCase().startsWith("with")) {
