@@ -7,7 +7,7 @@
     <groupId>io.dataease</groupId>
     <artifactId>dataease-extension-sdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.18.4</version>
+    <version>${dataease.version}</version>
     <modules>
         <module>dataease-plugin-common</module>
         <module>dataease-plugin-interface</module>
@@ -24,6 +24,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dataease.version>1.18.5</dataease.version>
     </properties>
 
     <dependencies>
