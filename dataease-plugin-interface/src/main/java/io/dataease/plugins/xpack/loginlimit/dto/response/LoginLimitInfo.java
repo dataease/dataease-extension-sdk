@@ -12,4 +12,6 @@ public class LoginLimitInfo {
     private String open;
 
     private String scanCreateUser;
+
+    private String multiLogin;
 }
