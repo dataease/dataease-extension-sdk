@@ -32,4 +32,8 @@ public class ChartExtFilterRequest {
     private Boolean isTree = false;
     @ApiModelProperty("过滤字段集合")
     private List<DatasetTableField> datasetTableFieldList;
+    @ApiModelProperty("日期分隔符类型")
+    private String dateStyle;
+    @ApiModelProperty("日期格式")
+    private String datePattern;
 }
