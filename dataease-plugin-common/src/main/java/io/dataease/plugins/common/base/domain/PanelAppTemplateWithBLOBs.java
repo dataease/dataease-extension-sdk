@@ -9,6 +9,8 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class PanelAppTemplateWithBLOBs extends PanelAppTemplate implements Serializable {
+    private String icon;
+
     private String applicationInfo;
 
     private String panelInfo;
@@ -26,6 +28,14 @@ public class PanelAppTemplateWithBLOBs extends PanelAppTemplate implements Seria
     private String datasetTasksInfo;
 
     private String datasourceInfo;
+
+    private String linkJumps;
+
+    private String linkJumpInfos;
+
+    private String linkages;
+
+    private String linkageFields;
 
     private String snapshot;
 
