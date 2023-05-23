@@ -9,6 +9,7 @@ import io.dataease.plugins.common.service.PluginMenuService;
 import io.dataease.plugins.xpack.email.dto.request.XpackEmailTaskRequest;
 import io.dataease.plugins.xpack.email.dto.request.XpackPixelEntity;
 import io.dataease.plugins.xpack.email.dto.response.XpackEmailTemplateDTO;
+import io.dataease.plugins.xpack.email.dto.response.XpackTaskEntity;
 import io.dataease.plugins.xpack.email.dto.response.XpackTaskGridDTO;
 import io.dataease.plugins.xpack.email.dto.response.XpackTaskInstanceDTO;
 
@@ -29,6 +30,8 @@ public abstract class EmailXpackService extends PluginMenuService {
     public abstract Boolean start(Long taskId) throws Exception;
 
     public abstract XpackEmailTaskRequest taskForm(Long taskId);
+
+    public abstract XpackTaskEntity taskDetail(Long taskId);
 
     public abstract Long saveInstance(GlobalTaskInstance instance);
 
