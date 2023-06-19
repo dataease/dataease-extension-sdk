@@ -41,7 +41,7 @@ public abstract class EmailXpackService extends PluginMenuService {
 
     public abstract byte[] print(String url, String token, XpackPixelEntity XpackPixelEntity) throws Exception;
 
-    public abstract byte[] printPdf(String url, String token, XpackPixelEntity XpackPixelEntity, boolean showPageNo) throws Exception;
+    public abstract byte[] printPdf(String url, String token, XpackPixelEntity XpackPixelEntity, boolean showPageNo, boolean picture2pdf) throws Exception;
 
     public abstract List<GlobalTaskEntity> allTask();
 
