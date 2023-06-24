@@ -514,6 +514,66 @@ public class PanelViewLinkageExample {
             return (Criteria) this;
         }
 
+        public Criteria andLinkageActiveIsNull() {
+            addCriterion("linkage_active is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveIsNotNull() {
+            addCriterion("linkage_active is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveEqualTo(Boolean value) {
+            addCriterion("linkage_active =", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveNotEqualTo(Boolean value) {
+            addCriterion("linkage_active <>", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveGreaterThan(Boolean value) {
+            addCriterion("linkage_active >", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("linkage_active >=", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveLessThan(Boolean value) {
+            addCriterion("linkage_active <", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveLessThanOrEqualTo(Boolean value) {
+            addCriterion("linkage_active <=", value, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveIn(List<Boolean> values) {
+            addCriterion("linkage_active in", values, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveNotIn(List<Boolean> values) {
+            addCriterion("linkage_active not in", values, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveBetween(Boolean value1, Boolean value2) {
+            addCriterion("linkage_active between", value1, value2, "linkageActive");
+            return (Criteria) this;
+        }
+
+        public Criteria andLinkageActiveNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("linkage_active not between", value1, value2, "linkageActive");
+            return (Criteria) this;
+        }
+
         public Criteria andExt1IsNull() {
             addCriterion("ext1 is null");
             return (Criteria) this;

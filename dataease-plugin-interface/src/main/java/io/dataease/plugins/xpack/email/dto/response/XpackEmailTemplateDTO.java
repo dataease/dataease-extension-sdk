@@ -13,6 +13,8 @@ public class XpackEmailTemplateDTO implements Serializable {
 
     private String panelId;
 
+    private Integer panelFormat = 0;
+
     private String recipients;
 
     private String pixel;
